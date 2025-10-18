@@ -1,10 +1,10 @@
 # This is the sample uEnv.txt file for qemu-virt U-boot
 
 # kernel command line can be modified here
-bootargs=tilck -panic_regs -panic_mmap
+bootargs=usax -panic_regs -panic_mmap
 
 # When bootelf kernel, do not directly jump into kernel, bootelf is only used
-# to properly load tilck in elf format.
+# to properly load usax in elf format.
 # After bootelf, we use a 'bootm go' to jump into kernel, because boom can
 # pass the device tree pointer and boothart accurately to kernel.
 autostart=0

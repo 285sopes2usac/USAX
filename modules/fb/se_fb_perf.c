@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
 #if KERNEL_SELFTESTS
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/color_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/color_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/mods/fb_console.h>
-#include <tilck/kernel/self_tests.h>
-#include <tilck/kernel/hal.h>
+#include <usax/mods/fb_console.h>
+#include <usax/kernel/self_tests.h>
+#include <usax/kernel/hal.h>
 
 #include "fb_int.h"
 

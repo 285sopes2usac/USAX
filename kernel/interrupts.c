@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/interrupts.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/hal.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/interrupts.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/hal.h>
 
 void handle_syscall(regs_t *);
 void handle_fault(regs_t *);

@@ -14,10 +14,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/elf_types.h>
-#include <tilck/common/elf_calc_mem_size.c.h>
-#include <tilck/common/elf_get_section.c.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/elf_types.h>
+#include <usax/common/elf_calc_mem_size.c.h>
+#include <usax/common/elf_get_section.c.h>
 
 struct elf_file_info {
 
@@ -328,7 +328,7 @@ drop_last_section(struct elf_file_info *nfo, ...)
 
    /*
     * Unfortunately, the "bash for Windows" subsystem does not support
-    * ftruncate on memory-mapped files. Even if having the Tilck to work there
+    * ftruncate on memory-mapped files. Even if having the usax to work there
     * is _not_ a must (users are supposed to use Linux), it is a nice-to-have
     * feature. Therefore, here we first unmap the memory-mapped ELF file and
     * then we truncate it.

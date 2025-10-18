@@ -1,10 +1,10 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/arch/generic_x86/x86_utils.h>
-#include <tilck/common/arch/generic_x86/cpu_features.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/arch/generic_x86/x86_utils.h>
+#include <usax/common/arch/generic_x86/cpu_features.h>
 
 #include <multiboot.h>
 
@@ -172,7 +172,7 @@ void read_memory_map(void *buf, size_t buf_size, struct mem_info *mi)
        * Q: What if E820 legitimately returned a memory map with less than 1 MB
        * of usable memory?
        *
-       * A: Tilck cannot boot nor run in any case on x86 with less than 1 MB of
+       * A: usax cannot boot nor run in any case on x86 with less than 1 MB of
        * memory. On other architectures, it might be able to, but it won't use
        * this x86-specific bootloader.
        */

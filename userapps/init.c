@@ -19,10 +19,10 @@
 #include <sys/reboot.h>
 #include <linux/reboot.h>
 
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/config_init.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/config_init.h>
 
-#include <tilck/common/basic_defs.h> /* for MIN() and ARRAY_SIZE() */
+#include <usax/common/basic_defs.h> /* for MIN() and ARRAY_SIZE() */
 
 static char *start_script_args[2] = { START_SCRIPT, NULL };
 static char *shell_args[16] = { DEFAULT_SHELL, [1 ... 15] = NULL };
@@ -116,7 +116,7 @@ static int get_video_tty_count(void)
    struct stat statbuf;
    char buf[32];
 
-   if (!getenv("TILCK")) {
+   if (!getenv("usax")) {
       /* On Linux we're not going to use multiple TTYs for testing. */
       return 1;
    }
@@ -226,9 +226,9 @@ static void run_start_script(void)
 
 static void do_initial_setup(void)
 {
-   if (!getenv("TILCK")) {
+   if (!getenv("usax")) {
 
-      fprintf(stderr, "[init] Tilck specific program. Not tested on Linux\n");
+      fprintf(stderr, "[init] usax specific program. Not tested on Linux\n");
       exit(1);
 
       // if (prctl(PR_SET_CHILD_SUBREAPER, 1, 0, 0, 0) < 0)
@@ -438,7 +438,7 @@ static void setup_console_for_shell(int tty)
    tcsetpgrp(0, getpgid(0)); /* Make this pgid the foreground process group */
 }
 
-static void tilck_console_msg_loop(int tty)
+static void usax_console_msg_loop(int tty)
 {
    char buf[32];
    int poll_timeout = -1;                    /* infinite */
@@ -464,7 +464,7 @@ static void tilck_console_msg_loop(int tty)
          printf("\033[2J\033[1;1H");
       }
 
-      printf("Tilck console on /dev/tty%s%d\n",
+      printf("usax console on /dev/tty%s%d\n",
                serial_tty_suffix,
                user_tty_num);
 
@@ -529,7 +529,7 @@ static int fork_and_run_shell_on_tty(int tty)
        * until an user is connected and presses ENTER.
        */
 
-      tilck_console_msg_loop(tty);
+      usax_console_msg_loop(tty);
    }
 
    execve(shell_args[0], shell_args, NULL);

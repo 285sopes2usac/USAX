@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/paging.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/paging.h>
 
 #define PG_PRESENT_BIT_POS      0u
 #define PG_RW_BIT_POS           1u

@@ -1,22 +1,22 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/ringbuf.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/bintree.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/interrupts.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/ringbuf.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/bintree.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/interrupts.h>
 
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 #define TRACE_BUF_SIZE                       (128 * KB)
 

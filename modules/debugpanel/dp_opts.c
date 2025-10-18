@@ -1,30 +1,30 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck_gen_headers/config_boot.h>
-#include <tilck_gen_headers/config_kmalloc.h>
-#include <tilck_gen_headers/config_userlim.h>
-#include <tilck_gen_headers/config_mm.h>
-#include <tilck_gen_headers/mod_kb8042.h>
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/mod_fb.h>
-#include <tilck_gen_headers/mod_serial.h>
-#include <tilck_gen_headers/mod_debugpanel.h>
-#include <tilck_gen_headers/mod_tracing.h>
-#include <tilck_gen_headers/mod_sysfs.h>
-#include <tilck_gen_headers/mod_acpi.h>
-#include <tilck_gen_headers/mod_pci.h>
-#include <tilck_gen_headers/mod_sb16.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_kmalloc.h>
+#include <usax_gen_headers/config_userlim.h>
+#include <usax_gen_headers/config_mm.h>
+#include <usax_gen_headers/mod_kb8042.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_fb.h>
+#include <usax_gen_headers/mod_serial.h>
+#include <usax_gen_headers/mod_debugpanel.h>
+#include <usax_gen_headers/mod_tracing.h>
+#include <usax_gen_headers/mod_sysfs.h>
+#include <usax_gen_headers/mod_acpi.h>
+#include <usax_gen_headers/mod_pci.h>
+#include <usax_gen_headers/mod_sb16.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/sched.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/sched.h>
 
-#include <tilck/mods/fb_console.h>
+#include <usax/mods/fb_console.h>
 
 #include "termutil.h"
 

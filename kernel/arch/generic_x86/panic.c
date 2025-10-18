@@ -1,24 +1,24 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/atomics.h>
-#include <tilck/common/arch/generic_x86/cpu_features.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/atomics.h>
+#include <usax/common/arch/generic_x86/cpu_features.h>
 
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/process_int.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/system_mmap.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/process_int.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/system_mmap.h>
 
 volatile bool __in_panic;
 volatile bool __in_double_fault;
@@ -276,7 +276,7 @@ NORETURN void panic(const char *fmt, ...)
 
    if (kopt_panic_kb) {
       __in_panic_debugger = true;
-      sys_tilck_cmd(TILCK_CMD_DEBUGGER_TOOL, 0, 0, 0, 0);
+      sys_usax_cmd(usax_CMD_DEBUGGER_TOOL, 0, 0, 0, 0);
    }
 
 end:

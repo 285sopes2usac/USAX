@@ -8,8 +8,8 @@
 using namespace std;
 
 extern "C" {
-   #include <tilck/kernel/cmdline.h>
-   #include <tilck/kernel/test/cmdline.h>
+   #include <usax/kernel/cmdline.h>
+   #include <usax/kernel/test/cmdline.h>
 }
 
 using tvec = vector<string>;

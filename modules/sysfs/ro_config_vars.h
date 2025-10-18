@@ -2,24 +2,24 @@
 
 #pragma once
 
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck_gen_headers/config_boot.h>
-#include <tilck_gen_headers/config_kmalloc.h>
-#include <tilck_gen_headers/config_userlim.h>
-#include <tilck_gen_headers/config_mm.h>
-#include <tilck_gen_headers/config_sched.h>
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/mod_fb.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_kmalloc.h>
+#include <usax_gen_headers/config_userlim.h>
+#include <usax_gen_headers/config_mm.h>
+#include <usax_gen_headers/config_sched.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_fb.h>
 
-#include <tilck/mods/sysfs.h>
-#include <tilck/mods/sysfs_utils.h>
-#include <tilck/common/build_info.h>
+#include <usax/mods/sysfs.h>
+#include <usax/mods/sysfs_utils.h>
+#include <usax/common/build_info.h>
 
 /* config */
 DEF_STATIC_CONF_RO(STRING, buildtype,              BUILDTYPE_STR);
-DEF_STATIC_CONF_RO(STRING, version,                tilck_build_info.ver);
-DEF_STATIC_CONF_RO(STRING, arch,                   tilck_build_info.arch);
-DEF_STATIC_CONF_RO(STRING, commit,                 tilck_build_info.commit);
+DEF_STATIC_CONF_RO(STRING, version,                usax_build_info.ver);
+DEF_STATIC_CONF_RO(STRING, arch,                   usax_build_info.arch);
+DEF_STATIC_CONF_RO(STRING, commit,                 usax_build_info.commit);
 DEF_STATIC_CONF_RO(BOOL,   debugchecks,            DEBUG_CHECKS);
 
 /* kernel */

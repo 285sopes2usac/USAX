@@ -291,11 +291,11 @@ static void parse_opt(int argc, char **argv)
 
 const char *get_devshell_path(void)
 {
-   if (!getenv("TILCK")) {
+   if (!getenv("usax")) {
 
       /*
        * When running this test on Linux, we cannot expect to find the devshell
-       * in the same abs path (/initrd/...) as on Tilck.
+       * in the same abs path (/initrd/...) as on usax.
        */
 
       return "/proc/self/exe";
@@ -373,7 +373,7 @@ int main(int argc, char **argv, char **env)
          return 1;
       }
 
-      printf(COLOR_RED "[TilckDevShell]" RESET_ATTRS ":%s%c ", cwd_buf, uc);
+      printf(COLOR_RED "[usaxDevShell]" RESET_ATTRS ":%s%c ", cwd_buf, uc);
       fflush(stdout);
 
       rc = read_command(cmdline_buf, sizeof(cmdline_buf));

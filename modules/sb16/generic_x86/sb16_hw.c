@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/tilck_sound.h>
-#include <tilck/common/printk.h>
+#include <usax/common/usax_sound.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/arch/generic_x86/dma.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/hal.h>
+#include <usax/kernel/arch/generic_x86/dma.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/hal.h>
 
 #include "sb16.h"
 
@@ -180,7 +180,7 @@ sb16_set_sample_rate(u16 sample_rate)
 }
 
 void
-sb16_program(struct tilck_sound_params *p, u32 buf_sz)
+sb16_program(struct usax_sound_params *p, u32 buf_sz)
 {
    u8 prog_mode = 0;
    u8 sound_fmt = 0;

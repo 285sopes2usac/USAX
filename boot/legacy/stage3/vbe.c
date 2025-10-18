@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/string_util.h>
+#include <usax/common/string_util.h>
 
 #include "realmode_call.h"
 #include "vbe.h"

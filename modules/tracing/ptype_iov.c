@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/printk.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/user.h>
-#include <tilck/mods/tracing.h>
+#include <usax/kernel/user.h>
+#include <usax/mods/tracing.h>
 
 bool
 buf_append(char *dest, int *used, int *rem, char *str);

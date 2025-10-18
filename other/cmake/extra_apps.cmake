@@ -2,32 +2,32 @@
 cmake_minimum_required(VERSION 3.22)
 
 if (EXISTS ${TCROOT_ARCH_DIR}/vim/${VER_VIM})
-   set(EXTRA_VIM OFF CACHE BOOL "Load the real VIM in Tilck")
+   set(EXTRA_VIM OFF CACHE BOOL "Load the real VIM in usax")
    message(STATUS "EXTRA_VIM: ${EXTRA_VIM}")
 endif()
 
 if (EXISTS ${TCROOT_ARCH_DIR}/tcc/${VER_TCC})
-   set(EXTRA_TCC OFF CACHE BOOL "Load the TinyCC compiler in Tilck")
+   set(EXTRA_TCC OFF CACHE BOOL "Load the TinyCC compiler in usax")
    message(STATUS "EXTRA_TCC: ${EXTRA_TCC}")
 endif()
 
 if (EXISTS ${TCROOT_ARCH_DIR}/fbdoom/${VER_FBDOOM})
-   set(EXTRA_FBDOOM OFF CACHE BOOL "Load fbDOOM in Tilck")
+   set(EXTRA_FBDOOM OFF CACHE BOOL "Load fbDOOM in usax")
    message(STATUS "EXTRA_FBDOOM: ${EXTRA_FBDOOM}")
 endif()
 
 if (EXISTS ${TCROOT_ARCH_DIR}/micropython/${VER_MICROPYTHON})
-   set(EXTRA_MICROPYTHON OFF CACHE BOOL "Load micropython in Tilck")
+   set(EXTRA_MICROPYTHON OFF CACHE BOOL "Load micropython in usax")
    message(STATUS "EXTRA_MICROPYTHON: ${EXTRA_MICROPYTHON}")
 endif()
 
 if (EXISTS ${TCROOT_ARCH_DIR}/treecmd/${VER_TREECMD})
-   set(EXTRA_TREE_CMD OFF CACHE BOOL "Load the tree command Tilck")
+   set(EXTRA_TREE_CMD OFF CACHE BOOL "Load the tree command usax")
    message(STATUS "EXTRA_TREE_CMD: ${EXTRA_TREE_CMD}")
 endif()
 
 if (EXISTS ${TCROOT_ARCH_DIR}/lua/${VER_LUA})
-   set(EXTRA_LUA OFF CACHE BOOL "Load LUA in Tilck")
+   set(EXTRA_LUA OFF CACHE BOOL "Load LUA in usax")
    message(STATUS "EXTRA_LUA: ${EXTRA_LUA}")
 endif()
 
@@ -37,7 +37,7 @@ endif()
 
 if (EXTRA_TCC)
    set(msg "")
-   string(CONCAT msg "The TinyCC compiler works on Tilck, but can be used "
+   string(CONCAT msg "The TinyCC compiler works on usax, but can be used "
                      "only for generatic static binaries, as the kernel does "
                      "not support dynamic linking, at the moment.")
    message(WARNING "${msg}")

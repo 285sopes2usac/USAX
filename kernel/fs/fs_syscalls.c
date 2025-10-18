@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/fs/kernelfs.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/pipe.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/fs/kernelfs.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/pipe.h>
 
 static inline bool is_fd_in_valid_range(int fd)
 {
@@ -68,14 +68,14 @@ int sys_open(const char *u_path, int flags, mode_t mode)
 
    /*
     * NOTE: O_DIRECT for regular files (not pipes!) is supported out-of-the-box
-    * because Tilck has no I/O cache.
+    * because usax has no I/O cache.
     */
 
    if (flags & O_ASYNC)
       return -EINVAL;
 
    if ((flags & O_TMPFILE) == O_TMPFILE)
-      return -EOPNOTSUPP; /* TODO: Tilck does not support O_TMPFILE yet */
+      return -EOPNOTSUPP; /* TODO: usax does not support O_TMPFILE yet */
 
    /* Apply the umask upfront */
    mode &= ~curr->pi->umask;
@@ -671,7 +671,7 @@ long sys_faccessat(int dfd, const char *u_path, int mode)
 }
 
 /*
- * NOTE: on Tilck, this syscall _can_ return -ENOMEM, while Linux would return
+ * NOTE: on usax, this syscall _can_ return -ENOMEM, while Linux would return
  * -EBADF or -EMFILE in the same case. See the comment below.
  */
 int sys_dup2(int oldfd, int newfd)
@@ -717,7 +717,7 @@ int sys_dup2(int oldfd, int newfd)
        *    rc = -EBADF;
        *
        * [BE_NICE] Creating a new file handle means allocating memory, no matter
-       * if that happens every time like in Tilck or it's deferred using a sort
+       * if that happens every time like in usax or it's deferred using a sort
        * of dynamic array like the Linux kernel does. A memory allocation can
        * always fail, even when that's highly unlikely. In such cases, the
        * kernel _must_ return -ENOMEM.
@@ -727,7 +727,7 @@ int sys_dup2(int oldfd, int newfd)
        * not clear to me why. In the Linux kernel, in the out-of-memory case,
        * dup() returns -EMFILE while dup2() returns -EBADF.
        *
-       * Tilck tries to be more honest and returns -ENOMEM.
+       * usax tries to be more honest and returns -ENOMEM.
        */
       goto out;
    }
@@ -866,9 +866,9 @@ int sys_fcntl64(int fd, int cmd, int arg)
       case F_SETFL:
 
          /*
-          * In general, O_DIRECT is implicitly supported by Tilck, but for
+          * In general, O_DIRECT is implicitly supported by usax, but for
           * pipes O_DIRECT has a different meaning: it makes the pipes to work
-          * in a "packet" mode, which is not supported by Tilck, at the moment.
+          * in a "packet" mode, which is not supported by usax, at the moment.
           *
           * Therefore, in order to avoid debugging weird stuff, while in
           * development, just crash the kernel with NOT_IMPLEMENTED() making the
@@ -1125,7 +1125,7 @@ int sys_pipe2(int u_pipefd[2], int flags)
        * comment in sys_dup2()] and what the Linux kernel does in case of real
        * out-of-memory it's simply lying by failing with -ENFILE here.
        *
-       * Tilck tries to be more honest even at the price of breaking a little
+       * usax tries to be more honest even at the price of breaking a little
        * the POSIX standard, by returning -ENOMEM here.
        */
       goto no_mem;

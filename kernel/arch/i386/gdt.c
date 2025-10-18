@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/syscalls.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/syscalls.h>
 
 #include "gdt_int.h"
 #include "double_fault.h"
@@ -22,7 +22,7 @@ static struct gdt_entry *gdt = initial_gdt_in_bss;
 static s32 *gdt_refcount = initial_gdt_refcount_in_bss;
 
 /*
- * Tilck doesn't use i386's tasks because they don't exist in many
+ * usax doesn't use i386's tasks because they don't exist in many
  * architectures. Therefore, we have just need a two tss entries: one generic
  * and one dedicated for the double-fault handling.
  *

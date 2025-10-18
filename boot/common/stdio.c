@@ -1,10 +1,10 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_boot.h>
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/assert.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax_gen_headers/config_boot.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/assert.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
 #include "common_int.h"
 

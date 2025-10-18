@@ -11,8 +11,8 @@
 using namespace std;
 
 extern "C" {
-   #include <tilck/common/string_util.h>
-   #include <tilck/kernel/test/itoa.h>
+   #include <usax/common/string_util.h>
+   #include <usax/kernel/test/itoa.h>
 }
 
 // Wrapper defined only for s32, s64, u32, u64.
@@ -45,22 +45,22 @@ inline T strtol_wrapper(const char *s, int base);
 
 template <>
 inline s32 strtol_wrapper<s32>(const char *s, int base) {
-   return tilck_strtol32(s, NULL, base, NULL);
+   return usax_strtol32(s, NULL, base, NULL);
 }
 
 template <>
 inline s64 strtol_wrapper<s64>(const char *s, int base) {
-   return tilck_strtol64(s, NULL, base, NULL);
+   return usax_strtol64(s, NULL, base, NULL);
 }
 
 template <>
 inline u32 strtol_wrapper<u32>(const char *s, int base) {
-   return tilck_strtoul32(s, NULL, base, NULL);
+   return usax_strtoul32(s, NULL, base, NULL);
 }
 
 template <>
 inline u64 strtol_wrapper<u64>(const char *s, int base) {
-   return tilck_strtoul64(s, NULL, base, NULL);
+   return usax_strtoul64(s, NULL, base, NULL);
 }
 
 
@@ -216,7 +216,7 @@ TEST(itoa, u64_hex_fixed)
 }
 
 
-TEST(tilck_strtol, basic_tests)
+TEST(usax_strtol, basic_tests)
 {
    EXPECT_EQ(strtol_wrapper<s32>("0", 10), 0);
    EXPECT_EQ(strtol_wrapper<s32>("1", 10), 1);
@@ -240,7 +240,7 @@ TEST(tilck_strtol, basic_tests)
    EXPECT_EQ(strtol_wrapper<s32>("755", 8), 0755);
 }
 
-TEST(tilck_strtoll, basic_tests)
+TEST(usax_strtoll, basic_tests)
 {
    EXPECT_EQ(strtol_wrapper<s64>("2147483648", 10), 2147483648); // INT_MAX+1
    EXPECT_EQ(strtol_wrapper<s64>("21474836480", 10), 21474836480);
@@ -256,7 +256,7 @@ TEST(tilck_strtoll, basic_tests)
    ); // LLONG_MIN
 }
 
-TEST(tilck_strtoul, basic_tests)
+TEST(usax_strtoul, basic_tests)
 {
    EXPECT_EQ(strtol_wrapper<u32>("0", 10), 0u);
    EXPECT_EQ(strtol_wrapper<u32>("1234", 10), 1234u);
@@ -270,7 +270,7 @@ TEST(tilck_strtoul, basic_tests)
    EXPECT_EQ(strtol_wrapper<u32>("-134", 10), 0u);
 }
 
-TEST(tilck_strtol, errors)
+TEST(usax_strtol, errors)
 {
    const char *str;
    const char *endptr;
@@ -278,19 +278,19 @@ TEST(tilck_strtol, errors)
    int res;
 
    str = "abc";
-   res = tilck_strtol32(str, &endptr, 10, &error);
+   res = usax_strtol32(str, &endptr, 10, &error);
    EXPECT_EQ(res, 0);
    EXPECT_EQ(endptr, str);
    EXPECT_EQ(error, -EINVAL);
 
    str = "2147483648"; // INT_MAX + 1
-   res = tilck_strtol32(str, &endptr, 10, &error);
+   res = usax_strtol32(str, &endptr, 10, &error);
    EXPECT_EQ(res, 0);
    EXPECT_EQ(endptr, str);
    EXPECT_EQ(error, -ERANGE);
 
    str = "-2147483649"; // INT_MIN - 1
-   res = tilck_strtol32(str, &endptr, 10, &error);
+   res = usax_strtol32(str, &endptr, 10, &error);
    EXPECT_EQ(res, 0);
    EXPECT_EQ(error, -ERANGE);
 }

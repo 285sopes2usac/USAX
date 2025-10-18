@@ -8,12 +8,12 @@
 #if defined(__i386__) || defined(__x86_64__)
 #include <x86intrin.h>    /* for __rdtsc() */
 #elif defined(__riscv)
-   #include <tilck/common/arch/riscv/riscv_utils.h>
+   #include <usax/common/arch/riscv/riscv_utils.h>
    #undef RDTSC
 #endif
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/syscalls.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/syscalls.h>
 #include "sysenter.h"
 
 typedef unsigned long long ull_t;
@@ -101,41 +101,41 @@ getdents64(unsigned fd, struct linux_dirent64 *dirp, unsigned count)
    return sysenter_call3(SYS_getdents64, fd, dirp, count);
 }
 
-static inline int tilck_get_num_gcov_files(void)
+static inline int usax_get_num_gcov_files(void)
 {
-   return sysenter_call1(TILCK_CMD_SYSCALL,
-                         TILCK_CMD_GCOV_GET_NUM_FILES);
+   return sysenter_call1(usax_CMD_SYSCALL,
+                         usax_CMD_GCOV_GET_NUM_FILES);
 }
 
 static inline int
-tilck_get_gcov_file_info(int fn,
+usax_get_gcov_file_info(int fn,
                          char *fname,
                          unsigned fname_size,
                          unsigned *fsize)
 {
-   return sysenter_call5(TILCK_CMD_SYSCALL,
-                         TILCK_CMD_GCOV_FILE_INFO,
+   return sysenter_call5(usax_CMD_SYSCALL,
+                         usax_CMD_GCOV_FILE_INFO,
                          fn, fname, fname_size, fsize);
 }
 
 static inline int
-tilck_get_gcov_file(int fn, char *buf)
+usax_get_gcov_file(int fn, char *buf)
 {
-   return sysenter_call3(TILCK_CMD_SYSCALL,
-                         TILCK_CMD_GCOV_GET_FILE,
+   return sysenter_call3(usax_CMD_SYSCALL,
+                         usax_CMD_GCOV_GET_FILE,
                          fn, buf);
 }
 
 static inline int
-tilck_debug_qemu_poweroff(void)
+usax_debug_qemu_poweroff(void)
 {
-   return sysenter_call1(TILCK_CMD_SYSCALL, TILCK_CMD_QEMU_POWEROFF);
+   return sysenter_call1(usax_CMD_SYSCALL, usax_CMD_QEMU_POWEROFF);
 }
 
 static inline int
-tilck_set_sched_alive_thread_enabled(bool enabled)
+usax_set_sched_alive_thread_enabled(bool enabled)
 {
-   return sysenter_call2(TILCK_CMD_SYSCALL,
-                         TILCK_CMD_SET_SAT_ENABLED,
+   return sysenter_call2(usax_CMD_SYSCALL,
+                         usax_CMD_SET_SAT_ENABLED,
                          enabled);
 }

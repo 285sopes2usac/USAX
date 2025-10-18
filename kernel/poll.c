@@ -1,14 +1,14 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_userlim.h>
-#include <tilck/common/basic_defs.h>
+#include <usax_gen_headers/config_userlim.h>
+#include <usax/common/basic_defs.h>
 
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/timer.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/timer.h>
 
 static int
 poll_count_conds(struct pollfd *fds, nfds_t nfds)

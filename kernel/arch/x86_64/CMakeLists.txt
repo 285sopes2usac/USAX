@@ -14,7 +14,7 @@ set(ACTUAL_KERNEL_ONLY_FLAGS_LIST "")
 list(
    APPEND ACTUAL_KERNEL_ONLY_FLAGS_LIST
 
-   -D__ACTUAL_TILCK_KERNEL_BINARY__
+   -D__ACTUAL_usax_KERNEL_BINARY__
    -mcmodel=kernel
    -fno-pic
 
@@ -47,7 +47,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 add_executable(
 
-   tilck_unstripped
+   usax_unstripped
 
    ${ARCH_START_FILE}
    ${ARCH_SOURCES}
@@ -71,7 +71,7 @@ JOIN("${KERNEL_LINK_FLAGS_LIST}" ${SPACE} KERNEL_LINK_FLAGS)
 
 set_target_properties(
 
-   tilck_unstripped
+   usax_unstripped
 
    PROPERTIES
       COMPILE_FLAGS "${KERNEL_FLAGS} ${ACTUAL_KERNEL_ONLY_FLAGS}"
@@ -79,10 +79,10 @@ set_target_properties(
       LINK_DEPENDS ${KERNEL_SCRIPT}
 )
 
-build_all_modules(tilck_unstripped)
+build_all_modules(usax_unstripped)
 
 # -lgcc is necessary for things like 64 bit integers in 32 bit mode.
-target_link_libraries(tilck_unstripped gcc)
+target_link_libraries(usax_unstripped gcc)
 
 if (KERNEL_SYMBOLS)
 
@@ -90,7 +90,7 @@ if (KERNEL_SYMBOLS)
       OUTPUT
          ${KERNEL_FILE}
       COMMAND
-         ${BUILD_SCRIPTS}/tilck_set_commit_hash ${ELFHACK} ${KERNEL_UNSTRIPPED}
+         ${BUILD_SCRIPTS}/usax_set_commit_hash ${ELFHACK} ${KERNEL_UNSTRIPPED}
       COMMAND
          ${CMAKE_STRIP} --strip-debug ${KERNEL_UNSTRIPPED} -o ${KERNEL_FILE}
       COMMAND
@@ -116,7 +116,7 @@ if (KERNEL_SYMBOLS)
       COMMAND
          elfhack64 ${KERNEL_FILE} --set-phdr-rwx-flags 2 r
       DEPENDS
-         tilck_unstripped
+         usax_unstripped
          elfhack64
          ${CMAKE_BINARY_DIR}/scripts/build_apps/elfhack64
       COMMENT
@@ -129,13 +129,13 @@ else()
       OUTPUT
          ${KERNEL_FILE}
       COMMAND
-         ${BUILD_SCRIPTS}/tilck_set_commit_hash ${ELFHACK} ${KERNEL_UNSTRIPPED}
+         ${BUILD_SCRIPTS}/usax_set_commit_hash ${ELFHACK} ${KERNEL_UNSTRIPPED}
       COMMAND
          ${CMAKE_STRIP} --strip-debug ${KERNEL_UNSTRIPPED} -o ${KERNEL_FILE}
       COMMAND
          elfhack64 ${KERNEL_FILE} --move-metadata
       DEPENDS
-         elfhack64 tilck_unstripped
+         elfhack64 usax_unstripped
       COMMENT
          "Preparing kernel's stripped binary"
    )

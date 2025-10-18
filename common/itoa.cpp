@@ -3,16 +3,16 @@
 
 extern "C" {
 
-   #include <tilck/common/basic_defs.h>
-   #include <tilck/common/assert.h>
-   #include <tilck/common/string_util.h>
-   #include <tilck/kernel/errno.h>
-   #include <tilck/kernel/test/itoa.h>
+   #include <usax/common/basic_defs.h>
+   #include <usax/common/assert.h>
+   #include <usax/common/string_util.h>
+   #include <usax/kernel/errno.h>
+   #include <usax/kernel/test/itoa.h>
 
    extern const s8 digit_to_val[128];
 }
 
-#include <tilck/common/cpputils.h>
+#include <usax/common/cpputils.h>
 
 #define DIGITS "0123456789abcdef"
 
@@ -65,7 +65,7 @@ static inline bool is_valid_digit(u8 d, int base)
 }
 
 template<typename T>
-T __tilck_strtol(const char *str, const char **endptr, int base, int *error)
+T __usax_strtol(const char *str, const char **endptr, int base, int *error)
 {
    T next, res = 0, sign = 1;
    const char *p;
@@ -123,9 +123,9 @@ T __tilck_strtol(const char *str, const char **endptr, int base, int *error)
 
 extern "C" {
 
-   long tilck_strtol(const char *s, const char **endptr, int base, int *err)
+   long usax_strtol(const char *s, const char **endptr, int base, int *err)
    {
-      return __tilck_strtol<long>(s, endptr, base, err);
+      return __usax_strtol<long>(s, endptr, base, err);
    }
 
    void uitoa32_hex_fixed(u32 value, char *buf)
@@ -173,41 +173,41 @@ extern "C" {
       __itoa(value, buf, base);
    }
 
-#ifdef __TILCK_KERNEL__
+#ifdef __usax_KERNEL__
 
    /*
     * No other reason for this #ifdef except to avoid unnecessary code-bloat
     * in the legacy bootloader.
     */
 
-   ulong tilck_strtoul(const char *s, const char **endptr, int base, int *err) {
-      return __tilck_strtol<ulong>(s, endptr, base, err);
+   ulong usax_strtoul(const char *s, const char **endptr, int base, int *err) {
+      return __usax_strtol<ulong>(s, endptr, base, err);
    }
 
 #ifdef KERNEL_TEST
-   s32 tilck_strtol32(const char *s, const char **endptr, int base, int *err) {
-      return __tilck_strtol<s32>(s, endptr, base, err);
+   s32 usax_strtol32(const char *s, const char **endptr, int base, int *err) {
+      return __usax_strtol<s32>(s, endptr, base, err);
    }
-   u32 tilck_strtoul32(const char *s, const char **endptr, int base, int *err) {
-      return __tilck_strtol<u32>(s, endptr, base, err);
+   u32 usax_strtoul32(const char *s, const char **endptr, int base, int *err) {
+      return __usax_strtol<u32>(s, endptr, base, err);
    }
-   s64 tilck_strtol64(const char *s, const char **endptr, int base, int *err) {
-      return __tilck_strtol<s64>(s, endptr, base, err);
+   s64 usax_strtol64(const char *s, const char **endptr, int base, int *err) {
+      return __usax_strtol<s64>(s, endptr, base, err);
    }
-   u64 tilck_strtoul64(const char *s, const char **endptr, int base, int *err) {
-      return __tilck_strtol<u64>(s, endptr, base, err);
+   u64 usax_strtoul64(const char *s, const char **endptr, int base, int *err) {
+      return __usax_strtol<u64>(s, endptr, base, err);
    }
 #endif // #ifdef KERNEL_TEST
-#endif // #ifdef __TILCK_KERNEL__
+#endif // #ifdef __usax_KERNEL__
 
-#if defined(__TILCK_KERNEL__) && !defined(KERNEL_TEST)
+#if defined(__usax_KERNEL__) && !defined(KERNEL_TEST)
 
    long strtol(const char *s, char **endptr, int base) {
-      return tilck_strtol(s, (const char **)endptr, base, NULL);
+      return usax_strtol(s, (const char **)endptr, base, NULL);
    }
 
    ulong strtoul(const char *s, char **endptr, int base) {
-      return tilck_strtoul(s, (const char **)endptr, base, NULL);
+      return usax_strtoul(s, (const char **)endptr, base, NULL);
    }
 
 #endif

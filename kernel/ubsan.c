@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_kernel.h>
-#include <tilck/common/basic_defs.h>
+#include <usax_gen_headers/config_kernel.h>
+#include <usax/common/basic_defs.h>
 
 #if KERNEL_UBSAN
 

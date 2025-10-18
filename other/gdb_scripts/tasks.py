@@ -2,7 +2,7 @@
 
 import gdb # pylint: disable=import-error
 from . import base_utils as bu
-from . import tilck_types as tt
+from . import usax_types as tt
 
 def get_all_tasks():
 

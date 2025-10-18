@@ -1,5 +1,5 @@
 
-Testing Tilck
+Testing usax
 ------------------------
 
 The project has four types of tests:
@@ -14,12 +14,12 @@ The project has four types of tests:
      linked together as part of the `devshell` user application.
 
    * [Kernel self-tests](#kernel-self-tests): a special type of tests built as
-     part of the kernel itself, runnable through a special Tilck syscall. They
+     part of the kernel itself, runnable through a special usax syscall. They
      are located in the `tests/self` directory.
 
    * [Interactive tests](#interactive-tests): a special type of tests that
      simulate real user input via a virtual PS/2 keyboard (through QEMU's
-     monitor) and parse the actual graphical output of Tilck's framebuffer
+     monitor) and parse the actual graphical output of usax's framebuffer
      console, comparing it to an expected text screen. Have something in
      common with [output comparison testing] (see below for more).
 
@@ -38,15 +38,15 @@ most of those limitations and are used in this project but still, unit tests
 cannot replace other kinds of testing. Said that, most of the code *can* and
 *shall be* be tested this way.
 
-![Tilck's unit tests](http://vvaltchev.github.io/tilck_imgs/v2/gtests.png)
+![usax's unit tests](http://vvaltchev.github.io/usax_imgs/v2/gtests.png)
 
 #### How the unit tests are compiled
-As mentioned above, Tilck's unit tests are compiled by linking together a static
+As mentioned above, usax's unit tests are compiled by linking together a static
 library made by compiling kernel's arch-independent code for the *host*
 architecture, plus the files in `tests/unit`. It is important to remark what
 building for the *host* architecture means: the kernel code *and* the tests must
-build on *any* architecture, even if Tilck has no support it, simply because
-they are made by *portable* code. For example, while *currently* Tilck has no
+build on *any* architecture, even if usax has no support it, simply because
+they are made by *portable* code. For example, while *currently* usax has no
 ARM support, its unit tests build and run just fine on any ARM machine running
 Linux.
 
@@ -55,13 +55,13 @@ C++11. That's because C++'s abstractions are very convenient for writing tests
 in a shorter and more expressive way compared to C. Also, the overhead of having
 temporary C++ objects created, copied, and destroyed (even quite often) is
 *insignificant* compared to the overhead of starting a VM for running the kernel
-itself. The unit tests are the *fastest* way of testing Tilck's code at runtime:
+itself. The unit tests are the *fastest* way of testing usax's code at runtime:
 currently, the whole suite passes in **under 4 seconds**, using the slowest debug
 build and in **under 2 seconds** in the case of release builds.
 
 #### Prerequisites
 In order to build the unit tests, it is necessary to download and build the
-[googletest] library in Tilck's toolchain. To do that, just run:
+[googletest] library in usax's toolchain. To do that, just run:
 
     ./scripts/build_toolchain -s gtest gmock
 
@@ -83,21 +83,21 @@ check the dedicated [building] document.
 System tests
 ---------------
 
-Tilck's system tests are exactly what everybody would expect as a primary way of
+usax's system tests are exactly what everybody would expect as a primary way of
 testing a kernel: userspace applications executing syscalls and checking their
 effect. In this case, all of them are part of one single binary, called
 `devshell`. That app is a trivial shell that was actually used in the past as a
-shell when Tilck was not ready to run Busybox's `ASH` yet. Today, it's used
+shell when usax was not ready to run Busybox's `ASH` yet. Today, it's used
 just as a runner for `shellcmds`, an *internal name* for system tests. The
 source code of `devshell` is split between `userapps/devshell`, which contains
 application's core and the individual *shellcmds*, which are located in
 `tests/system`.
 
-![Tilck's devshell](http://vvaltchev.github.io/tilck_imgs/v2/devshell.png)
+![usax's devshell](http://vvaltchev.github.io/usax_imgs/v2/devshell.png)
 
-#### Running the tests on Tilck
+#### Running the tests on usax
 
-One way of running those tests is to do that directly on Tilck. Just run:
+One way of running those tests is to do that directly on usax. Just run:
 
     runall
 
@@ -111,23 +111,23 @@ Of course, any specific test can be run instead of `runall` in the same way:
     devshell -c <TESTNAME>
 
 It's possible to list all the tests in a human-friendly form by running
-`devshell` and then `help` or by running: `devshell -c help`. Tilck's test
+`devshell` and then `help` or by running: `devshell -c help`. usax's test
 infrastructure instead, runs `devshell -l`.
 
-![Tilck's system tests](http://vvaltchev.github.io/tilck_imgs/v2/runall.png)
+![usax's system tests](http://vvaltchev.github.io/usax_imgs/v2/runall.png)
 
 #### Running the tests with the runner
 
-Another way of running Tilck's system tests is using `run_all_tests`: a python
+Another way of running usax's system tests is using `run_all_tests`: a python
 script designed to run multiple types of tests. Due to its versatility, it is
 possible that *in the future* it will be able to run *all* the types of tests
-supported in the Tilck project. Back to the topic, running just the classic
+supported in the usax project. Back to the topic, running just the classic
 system tests is simple as:
 
     <BUILD_DIR>/st/run_all_tests -T shellcmd
 
 It essential to remark that, by default, this script runs *each* test in a
-dedicated VM. This means, powering on a QEMU virtual machine, booting Tilck, and
+dedicated VM. This means, powering on a QEMU virtual machine, booting usax, and
 only then running just a single test. It is *slow*, but not so much: all of that
 happens in **less than 1 second** on a typical laptop (using KVM) and currently,
 all the tests way pass in less than 1 minute (slowest debug build). The main
@@ -145,7 +145,7 @@ In case of a failure, we'll still see the whole output but, the runner will
 consider `runall` as one test, in the *tests passed* report at the end. Also,
 the whole run will have a single timeout from the runner's point of view.
 
-![Tilck's test runner](http://vvaltchev.github.io/tilck_imgs/v2/runner01.png)
+![usax's test runner](http://vvaltchev.github.io/usax_imgs/v2/runner01.png)
 
 #### Runner's other options
 
@@ -161,7 +161,7 @@ a regex.
 
 While anything part of the kernel/userspace interface can be tested with *shellcmds*
 as described above, sometimes that's simply not very convenient to do. For example,
-to check that BusyBox's `tar` works as expected on Tilck, it would be nicer to use
+to check that BusyBox's `tar` works as expected on usax, it would be nicer to use
 a shell script instead of writing a test in C. That's why a special shellcmd called
 `extra` has been introduced. It's just a mini test-runner for all the scripts in
 `tests/system/scripts`. It fails when a script fails (exits with a code different
@@ -173,9 +173,9 @@ of the same type.
 Kernel self-tests
 -------------------
 
-Tilck's self-tests are, roughly speaking, just a bunch of kernel functions that
-our `devshell` run by calling a special syscall, `sys_tilck_cmd()`. Their source
-is located in the `tests/self` directory. By default, they're built-in Tilck, on
+usax's self-tests are, roughly speaking, just a bunch of kernel functions that
+our `devshell` run by calling a special syscall, `sys_usax_cmd()`. Their source
+is located in the `tests/self` directory. By default, they're built-in usax, on
 any configuration except when in the `minimal` configuration. To compile the
 out of the kernel's binary, just disable the `KERNEL_SELFTESTS` CMake option
 (see [building]).
@@ -183,7 +183,7 @@ out of the kernel's binary, just disable the `KERNEL_SELFTESTS` CMake option
 ## Running the self-tests
 
 Because a failure in a *kernel* self-test means almost always a kernel panic,
-most of the time it isn't very convenient to run them manually in Tilck. Also,
+most of the time it isn't very convenient to run them manually in usax. Also,
 because the self-tests *by definition* check the correctness of *core* kernel
 features like mutexes, there's no safe way (in general) to impose a timeout
 and *safely kill* the test when it's taking too long to complete: that can be
@@ -199,25 +199,25 @@ To list all the self-tests run:
 
     <BUILD_DIR>/st/run_all_tests -T selftest -l
 
-## Running the self-tests directly on Tilck
+## Running the self-tests directly on usax
 
 In some special cases, it *does* make sense to run some self-tests directly on
-Tilck, especially the *perf* ones. Those tests are actually *performance* tests,
+usax, especially the *perf* ones. Those tests are actually *performance* tests,
 not *functional* ones. A classic test of this kind is `kmalloc_perf`, introduced
-to measure the performance of Tilck's memory allocator. To run it or any other
-self-test directly on Tilck, use the `selftest` symlink to `devshell` this way:
+to measure the performance of usax's memory allocator. To run it or any other
+self-test directly on usax, use the `selftest` symlink to `devshell` this way:
 
     selftest <test-name>
 
 Some tests like `kmalloc_perf` are affected a lot by the optimization level.
-If you run them on Tilck, you'll see quite a difference between regular DEBUG
+If you run them on usax, you'll see quite a difference between regular DEBUG
 builds and optimized RELEASE builds with `DEBUG_CHECKS=0` (see [building]).
 One more nice thing about the `kmalloc_perf` test is that it can be run
 as a unit test as well. In particular, if the unit tests are built for the
 same *target* architecture as the kernel itself (using `ARCH_GTESTS=1`, see
 [Unit tests](#unit-tests) (above) and [building]), we can reproduce on the
 *host* machine a performance test with results very close to what we get can
-on get Tilck: that makes a lot easier to measure and improve the implementation
+on get usax: that makes a lot easier to measure and improve the implementation
 of any piece of kernel code.
 
 Interactive tests
@@ -234,7 +234,7 @@ to test part of the PS/2 driver in unit tests, that's not very convenient and
 it's far too *unrealistic*: no IRQs, no (real or emulated) 8042 controller, etc.
 A better way is to test it against a *reference* implementation like the one in
 QEMU but, how to do that? QEMU's monitor has an interface for sending keystrokes
-to the VM, but the real problem is the following: when Tilck's console gets its
+to the VM, but the real problem is the following: when usax's console gets its
 input from the PS/2 keyboard, its output goes to the default (video) monitor,
 not to the serial port and that's how it should be. In order to check if the
 output produced after a given input is correct, the test infrastructure needs
@@ -254,15 +254,15 @@ store the set of expected images (screenshots)? Project's git repository doesn't
 look like a good place for that purpose. Create a dedicated "assets" git repo and
 use git sub-modules or make the scripts to download the "assets" from somewhere
 else? How to keep everything in sync? All of those approaches could work with
-enough effort, but none of them is in Tilck's minimalistic/extra-light style.
+enough effort, but none of them is in usax's minimalistic/extra-light style.
 
-#### Tilck's approach
+#### usax's approach
 What would be really cool is to work with VM screenshots the same way we do with
 plain text because, after all, we're always only interested in the text contained
 in those images, nothing else. So, the solution is to use an OCR, right?
 **Wrong**: OCRs are big, bloated, and tend to be not very reliable even with
 purely digitally-generated images, like in this case. A **perfect** solution
-would be to have a custom OCR that knows exactly the font used by Tilck and take
+would be to have a custom OCR that knows exactly the font used by usax and take
 advantage of that to do an image-to-text conversion in a **100% reliable** way.
 While that initially seemed hard to do, it turned out that it required just a
 few hundred lines of C code (also thanks to the fact that QEMU saves screenshots
@@ -272,14 +272,14 @@ Now, with a perfect image-to-text conversion not only it's trivial to do exact
 output comparisons like in the case of [output comparison testing], but we can
 also define tests that just search for a series of words in the output and,
 based on that, define test's outcome as *pass* or *fail*. Both kinds of tests
-exist in Tilck.
+exist in usax.
 
 [PPM]: https://en.wikipedia.org/wiki/Netpbm#File_formats
 [pnm2text]: ../scripts/build_apps/pnm2text.c
 
 
 #### Running the interactive tests (advanced)
-Tilck's interactive tests require a special build configuration and extra
+usax's interactive tests require a special build configuration and extra
 packages in the toolchain. Please check [building] before proceeding further.
 
 **Steps**
@@ -292,7 +292,7 @@ packages in the toolchain. Please check [building] before proceeding further.
 
    - Create a dedicated build directory and enter there
 
-   - Run: `<TILCK>/cmake_run --intr`
+   - Run: `<usax>/cmake_run --intr`
 
    - Build the kernel as always with `make`
 
@@ -305,7 +305,7 @@ multiple INVALID CONFIG errors like:
     [interactive tests runner] INVALID CONFIG: expected FB_CONSOLE_BANNER to be `False`
     [interactive tests runner] INVALID CONFIG: expected FB_CONSOLE_CURSOR_BLINK to be `False`
 
-![Tilck screenshots](http://vvaltchev.github.io/tilck_imgs/v2/interactive03.png)
+![usax screenshots](http://vvaltchev.github.io/usax_imgs/v2/interactive03.png)
 
 **Using the top runner**
 

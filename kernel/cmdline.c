@@ -1,18 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/mod_kb8042.h>
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck_gen_headers/config_kernel.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_kb8042.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_kernel.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/test/cmdline.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/test/cmdline.h>
 
 const char *cmd_args[MAX_CMD_ARGS] = { "/initrd/bin/init", [1 ... 15] = NULL };
 void (*self_test_to_run)(void);
@@ -48,7 +48,7 @@ static void kopt_handle_long(long *var, const char *arg)
    int err = 0;
    long res;
 
-   res = tilck_strtol(arg, NULL, 10, &err);
+   res = usax_strtol(arg, NULL, 10, &err);
 
    if (err) {
       printk("WARNING: failed to parse integer argument '%s'\n", arg);
@@ -68,7 +68,7 @@ static void kopt_handle_ulong(ulong *var, const char *arg)
       arg += 2;
    }
 
-   res = tilck_strtoul(arg, NULL, base, &err);
+   res = usax_strtoul(arg, NULL, base, &err);
 
    if (err) {
       printk("WARNING: failed to parse unsigned argument '%s'\n", arg);
@@ -93,13 +93,13 @@ static void kopt_handle_wordstr(const char **var, const char *arg)
 }
 
 #define DEFINE_KOPT(name, alias, type, default) type kopt_##name = default;
-   #include <tilck/common/cmdline_opts.h>
+   #include <usax/common/cmdline_opts.h>
 #undef DEFINE_KOPT
 
 #define DEFINE_KOPT KOPT_DEFAULT_ELEM
 
 static const struct kopt all_kopts[] = {
-   #include <tilck/common/cmdline_opts.h>
+   #include <usax/common/cmdline_opts.h>
 };
 
 #undef DEFINE_KOPT

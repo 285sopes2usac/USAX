@@ -1,13 +1,13 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/fs/vfs.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/fs/vfs.h>
 
 static void
 set_process_str_cwd(struct process *pi, const char *path)

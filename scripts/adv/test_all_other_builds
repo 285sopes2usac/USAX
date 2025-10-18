@@ -21,12 +21,12 @@ function show_help {
    echo "run the 'gen_other_builds' script. Note: you can also put your own"
    echo "special builds in that directory. This script will just iterate over "
    echo "all the subdirectories of 'other_builds' and it will treat each one "
-   echo "of them as a build of Tilck."
+   echo "of them as a build of usax."
    echo ""
-   echo -ne "${RED}WARNING${RATTRS}: if you're new to Tilck, that's probably "
+   echo -ne "${RED}WARNING${RATTRS}: if you're new to usax, that's probably "
    echo -ne "${RED}not${RATTRS} the script you're looking\nfor. "
    echo -ne "${BROWN}Check out${RATTRS} the main README.md file for info about "
-   echo -ne "how to build Tilck and\nrun its tests.\n"
+   echo -ne "how to build usax and\nrun its tests.\n"
    echo ""
 }
 

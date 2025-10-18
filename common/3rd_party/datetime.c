@@ -1,6 +1,6 @@
 
 /*
- * The following is a Tilck adaptation of the following libmusl (v1.1.19) files:
+ * The following is a usax adaptation of the following libmusl (v1.1.19) files:
  *
  *    - src/time/__secs_to_tm.c.
  *    - src/time/__tm_to_secs.c
@@ -34,8 +34,8 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/datetime.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/datetime.h>
 
 /* 2000-03-01 (mod 400 year, immediately after feb29 */
 #define LEAPOCH (946684800LL + 86400*(31+29))

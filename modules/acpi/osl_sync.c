@@ -1,13 +1,13 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/timer.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/timer.h>
 
 #include <limits.h>           // system header
 
@@ -31,7 +31,7 @@ AcpiOsCreateLock(ACPI_SPINLOCK *OutHandle)
       return_ACPI_STATUS(AE_BAD_PARAMETER);
 
    /*
-    * Tilck does not support SMP, therefore there's no need for real spinlocks:
+    * usax does not support SMP, therefore there's no need for real spinlocks:
     * disabling the interrupts is enough. Hopefully, ACPI will accept a NULL
     * value, by treating the handle as completely opaque value.
     */

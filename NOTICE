@@ -1,4 +1,4 @@
-3rd party code included in the Tilck project
+3rd party code included in the usax project
 ----------------------------------------------
 
 **************************************************************************
@@ -84,7 +84,7 @@ Original source[1]:
 
 Comments:
    The UNIX timestamp to struct tm and vice-versa from libmusl has been copied
-   and adapter to work with Tilck's struct datetime.
+   and adapter to work with usax's struct datetime.
    Also, the coding style has been changed as well.
 
 Original license (MIT), from the COPYRIGHT file:
@@ -130,7 +130,7 @@ Original license:
 Files:
    - everything in modules/acpi/acpica/
    - everything in include/3rd_party/acpi/
-   - everything in include/3rd_party/acpi/platform/ except "actilck.h"
+   - everything in include/3rd_party/acpi/platform/ except "acusax.h"
 
 Original source:
    https://acpica.org/sites/acpica/files/acpica-unix-20200717.tar.gz

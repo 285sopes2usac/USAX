@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/atomics.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/atomics.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/self_tests.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/self_tests.h>
 
 static ATOMIC(u32) g_counter;
 static u64 g_cycles_begin;

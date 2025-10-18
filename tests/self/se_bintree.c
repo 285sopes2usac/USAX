@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/self_tests.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/bintree.h>
-#include <tilck/kernel/list.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/self_tests.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/bintree.h>
+#include <usax/kernel/list.h>
 
 #include "se_data.h"
 
@@ -153,7 +153,7 @@ selftest_bintree_perf(void)
       10, 15, 20, 25, 35, 50, 75, 100, 250, 500, 1000
    };
 
-   printk("Tilck's BST ptr-lookup performance compared to linked list\n");
+   printk("usax's BST ptr-lookup performance compared to linked list\n");
    printk("\n");
    printk("    elems    |     bst    |     list\n");
    printk("-------------+------------+--------------\n");
@@ -167,7 +167,7 @@ selftest_bintree_perf(void)
    }
 
    printk("\n");
-   printk("Tilck's BST generic-lookup performance compared to linked list\n");
+   printk("usax's BST generic-lookup performance compared to linked list\n");
    printk("\n");
    printk("    elems    |     bst    |     list\n");
    printk("-------------+------------+--------------\n");
@@ -181,7 +181,7 @@ selftest_bintree_perf(void)
    }
 
    printk("\n");
-   printk("Tilck's BST insert performance compared to linked list\n");
+   printk("usax's BST insert performance compared to linked list\n");
    printk("\n");
    printk("    elems    |     bst    |     list\n");
    printk("-------------+------------+--------------\n");

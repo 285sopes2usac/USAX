@@ -1,30 +1,30 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_mm.h>
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_mm.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/unaligned.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/utils.h>
+#include <usax/common/unaligned.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/process_int.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/signal.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/vdso.h>
-#include <tilck/kernel/switch.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/process_int.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/signal.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/vdso.h>
+#include <usax/kernel/switch.h>
 
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 void asm_trap_entry_resume(void);
 

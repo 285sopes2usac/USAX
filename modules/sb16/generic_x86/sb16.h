@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/hal.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/hal.h>
 
 #define SB16_DBG_ENABLED       0
 
@@ -48,7 +48,7 @@ u8 sb16_get_irq(void);
 int sb16_detect_dsp_hw_and_reset(void);
 int sb16_check_version(void);
 void sb16_program_dma(u8 bits, u32 buf_sz);
-void sb16_program(struct tilck_sound_params *params, u32 buf_sz);
+void sb16_program(struct usax_sound_params *params, u32 buf_sz);
 void sb16_generate_test_sound(void);
 
 static inline void sb16_irq_ack(void)

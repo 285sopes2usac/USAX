@@ -1,14 +1,14 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/string_util.h>
-#include <tilck/common/unaligned.h>
-#include <tilck/common/utils.h>
+#include <usax/common/string_util.h>
+#include <usax/common/unaligned.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/paging.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/paging.h>
 
 #include <linux/auxvec.h> // system header
 

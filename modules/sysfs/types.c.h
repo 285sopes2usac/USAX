@@ -80,7 +80,7 @@ sysfs_ulong_store(struct sysobj *obj,
    char tmp[32] = {0};
    memcpy(tmp, buf, (size_t)MAX(buf_sz, 31));
 
-   val = tilck_strtoul(tmp, NULL, 10, &err);
+   val = usax_strtoul(tmp, NULL, 10, &err);
 
    if (!err)
       *(ulong *)data = val;
@@ -128,7 +128,7 @@ sysfs_long_store(struct sysobj *obj,
    char tmp[32] = {0};
    memcpy(tmp, buf, (size_t)MAX(buf_sz, (offt)sizeof(tmp) - 1));
 
-   val = tilck_strtol(tmp, NULL, 10, &err);
+   val = usax_strtol(tmp, NULL, 10, &err);
 
    if (!err)
       *(long *)data = val;

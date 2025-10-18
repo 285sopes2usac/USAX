@@ -1,18 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/sys_types.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/sched.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/sys_types.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/sched.h>
 
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 #define FULL_RESYNC_MAX_ATTEMPTS          10
 #define MICRO_ATTEMPTS_BEFORE_SLEEP      400
@@ -520,7 +520,7 @@ static void clock_drift_adj()
    kernel_sleep(TIMER_HZ);
 
    /*
-    * When Tilck starts, in init_system_time() we register system clock's time.
+    * When usax starts, in init_system_time() we register system clock's time.
     * But that time has a resolution of one second. After that, we keep the
     * time using PIT's interrupts and here below we compensate any drifts.
     *
@@ -544,7 +544,7 @@ static void clock_drift_adj()
       /*
        * Since we got here, everything is alright. There is no more clock drift.
        * Sleep some time and then start the actual infinite loop of this thread,
-       * which will compensate any clock drifts that might occur as Tilck runs
+       * which will compensate any clock drifts that might occur as usax runs
        * for a long time.
        */
 

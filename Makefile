@@ -20,11 +20,11 @@ clean: $(PREREQUISITES)
 
 # Rem is a shortcut for rebuild_img
 rem: $(PREREQUISITES)
-	@rm -rf ./build/fatpart ./build/tilck.img
+	@rm -rf ./build/fatpart ./build/usax.img
 	@$(MAKE) -C build
 
 rebuild_img: $(PREREQUISITES)
-	@rm -rf ./build/fatpart ./build/tilck.img
+	@rm -rf ./build/fatpart ./build/usax.img
 	@$(MAKE) -C build
 
 config: $(PREREQUISITES)
@@ -34,7 +34,7 @@ menuconfig: $(PREREQUISITES)
 	@./scripts/run_config
 
 $(TCROOT):
-	$(error Before building Tilck, you need to build the toolchain by running ./scripts/build_toolchain)
+	$(error Before building usax, you need to build the toolchain by running ./scripts/build_toolchain)
 
 build/CMakeCache.txt:
 	@echo No CMakeCache.txt found: running CMake first.

@@ -1,23 +1,23 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_tracing.h>
+#include <usax_gen_headers/mod_tracing.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/signal.h>
-#include <tilck/mods/tracing.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/signal.h>
+#include <usax/mods/tracing.h>
 
 typedef long (*syscall_type)(
    ulong, ulong, ulong, ulong, ulong, ulong // args
@@ -385,9 +385,9 @@ static struct syscall syscalls[MAX_SYSCALLS] =
    [450] = DECL_SYS(sys_set_mempolicy_home_node, 0),
    [451] = DECL_SYS(sys_cachestat, 0),
    [452] = DECL_SYS(sys_fchmodat2, 0),
-   [453 ... (TILCK_CMD_SYSCALL - 1)] = DECL_UNKNOWN_SYSCALL,
+   [453 ... (usax_CMD_SYSCALL - 1)] = DECL_UNKNOWN_SYSCALL,
 
-   [TILCK_CMD_SYSCALL] = DECL_SYS(sys_tilck_cmd, 0),
+   [usax_CMD_SYSCALL] = DECL_SYS(sys_usax_cmd, 0),
 };
 
 void *get_syscall_func_ptr(u32 n)

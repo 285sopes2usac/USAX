@@ -1,10 +1,10 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/kmalloc_debug.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/kmalloc_debug.h>
 
 #include "termutil.h"
 #include "dp_int.h"

@@ -13,7 +13,7 @@
 #include <sys/stat.h>
 #include <sys/ioctl.h>
 
-#include <tilck/common/tilck_sound.h>
+#include <usax/common/usax_sound.h>
 
 static char opt_device[64] = "/dev/sb16";
 static char opt_file[64];
@@ -237,7 +237,7 @@ test_sound(int devfd)
    printf("Playing test sound: %u bits, %u channels at 22050 Hz\n",
           opt_test_bits, opt_test_channels);
 
-   struct tilck_sound_params p = {
+   struct usax_sound_params p = {
       .sample_rate = 22050,
       .bits = opt_test_bits,
       .channels = opt_test_channels,
@@ -249,7 +249,7 @@ test_sound(int devfd)
    );
 
    tot_sz *= (opt_test_bits >> 3) * opt_test_channels;
-   rc = ioctl(devfd, TILCK_IOCTL_SOUND_SETUP, &p);
+   rc = ioctl(devfd, usax_IOCTL_SOUND_SETUP, &p);
 
    if (rc < 0) {
       printf("Sound device setup ioctl() failed: %s\n", strerror(errno));
@@ -401,14 +401,14 @@ play_wav_file(int devfd)
       goto out;
    }
 
-   struct tilck_sound_params params = {
+   struct usax_sound_params params = {
       .sample_rate = hdr.SampleRate,
       .bits = hdr.BitsPerSample,
       .channels = hdr.NumChannels,
       .sign = 1,
    };
 
-   rc = ioctl(devfd, TILCK_IOCTL_SOUND_SETUP, &params);
+   rc = ioctl(devfd, usax_IOCTL_SOUND_SETUP, &params);
 
    if (rc < 0) {
       printf("Unable to setup sound device: %s\n", strerror(errno));
@@ -493,7 +493,7 @@ show_sb16_message_warning(void)
    printf("\n");
    printf("Workarounds (alternatives):\n\n");
 
-   printf("  1. Best: use virt-manager and create a Tilck VM with the sb16\n");
+   printf("  1. Best: use virt-manager and create a usax VM with the sb16\n");
    printf("     sound card. To do that it's necessary to manually edit\n");
    printf("     the XML config for the sound device. Make it be:\n");
    printf("          <sound model=\"sb16\"/>\n");
@@ -513,7 +513,7 @@ show_sb16_message_warning(void)
 int main(int argc, char **argv)
 {
    int rc, cmd_rc, devfd;
-   struct tilck_sound_card_info nfo;
+   struct usax_sound_card_info nfo;
 
    parse_args(argc-1, argv+1);
 
@@ -525,14 +525,14 @@ int main(int argc, char **argv)
       return 1;
    }
 
-   rc = ioctl(devfd, TILCK_IOCTL_SOUND_ACQUIRE, NULL);
+   rc = ioctl(devfd, usax_IOCTL_SOUND_ACQUIRE, NULL);
 
    if (rc < 0) {
       printf("Failed to acquire the sound device\n");
       return 1;
    }
 
-   rc = ioctl(devfd, TILCK_IOCTL_SOUND_GET_INFO, &nfo);
+   rc = ioctl(devfd, usax_IOCTL_SOUND_GET_INFO, &nfo);
 
    if (rc < 0) {
       printf("Failed to get info for the sound device\n");
@@ -552,14 +552,14 @@ int main(int argc, char **argv)
    cmd_rc = do_run_cmd(devfd);
 
    /* Finalization */
-   rc = ioctl(devfd, TILCK_IOCTL_SOUND_WAIT_COMPLETION, NULL);
+   rc = ioctl(devfd, usax_IOCTL_SOUND_WAIT_COMPLETION, NULL);
 
    if (rc < 0) {
       printf("Failed to wait for completion\n");
       return 1;
    }
 
-   rc = ioctl(devfd, TILCK_IOCTL_SOUND_RELEASE, NULL);
+   rc = ioctl(devfd, usax_IOCTL_SOUND_RELEASE, NULL);
 
    if (rc < 0) {
       printf("Failed to release the sound device\n");

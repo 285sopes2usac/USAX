@@ -1,7 +1,7 @@
 List of supported Linux syscalls
 ---------------------------------
 
-`Tilck` supports both the `int 0x80` syscall interface and the `sysenter` one.
+`usax` supports both the `int 0x80` syscall interface and the `sysenter` one.
 Here below there is an up-to-date table containing the status of each supported
 syscall at the moment. Because the list of the not-yet-supported syscalls is
 much longer than the list of supported ones, the table below mentions only the
@@ -124,7 +124,7 @@ Definitions:
  minimal       | Like partial, just even less features are supported
  compliant     | Syscall supported in a way compliant with a full
  ...           | implementation, but actually it has several limitations due to
- ...           | the different design of Tilck. Example: see the note [3].
+ ...           | the different design of usax. Example: see the note [3].
  limited       | The syscall supports by design only a subset of the cases
  ...           | supported by the Linux implementation.
 
@@ -137,7 +137,7 @@ Notes:
 2. Because custom signal handlers are not supported, pause() puts the process
    to sleep until a signal actually kills it.
 
-3. Tilck does not support *by design* multiple users nor any form of
+3. usax does not support *by design* multiple users nor any form of
    authentication. Therefore, the following statement is always true:
    UID == GID == EUID == EGID == 0. All the calls like setuid(), seteuid(),
    setgid(), setegid(), chown() etc. succeed only when UID/GID == 0.
@@ -163,7 +163,7 @@ Notes:
 
 13. The O_DIRECT mode is not supported.
 
-14. Tilck has a partial support for POSIX signals. SIG_IGN and SIG_DFL are
+14. usax has a partial support for POSIX signals. SIG_IGN and SIG_DFL are
     fully supported. Custom signal handlers are supported as well, but signal
     handlers (even of different type) cannot interrupt each other. In other
     words, nested custom signal handlers are not supported, yet. Also, even if

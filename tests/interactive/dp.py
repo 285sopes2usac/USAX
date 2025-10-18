@@ -5,7 +5,7 @@
 # context as their runner (run_interactive_test).
 
 send_to_vm_and_find_text(r"dp{ret}", True, [
-   "TilckDebugPanel",
+   "usaxDebugPanel",
    "TERM_ROWS",
    "DEBUG_CHECKS",
 ])

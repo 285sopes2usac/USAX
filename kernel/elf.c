@@ -1,21 +1,21 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_mm.h>
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_mm.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/string_util.h>
-#include <tilck/common/utils.h>
+#include <usax/common/string_util.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/elf_loader.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/fs/flock.h>
+#include <usax/kernel/elf_loader.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/fs/flock.h>
 
 #include <sys/mman.h>      // system header
 

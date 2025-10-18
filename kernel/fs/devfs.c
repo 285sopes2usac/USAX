@@ -1,20 +1,20 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/rwlock.h>
-#include <tilck/kernel/paging.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/rwlock.h>
+#include <usax/kernel/paging.h>
 
 #include <dirent.h> // system header
 
@@ -85,7 +85,7 @@ struct devfs_dir {
     */
    enum vfs_entry_type type;     /* Must be FIRST, because of devfs_file */
    struct list files_list;
-   tilck_ino_t inode;
+   usax_ino_t inode;
 };
 
 struct devfs_data {
@@ -93,10 +93,10 @@ struct devfs_data {
    struct devfs_dir root_dir;
    struct rwlock_wp rwlock;
    time_t wrt_time;
-   tilck_ino_t next_inode;
+   usax_ino_t next_inode;
 };
 
-static inline tilck_ino_t
+static inline usax_ino_t
 devfs_get_next_inode(struct devfs_data *d)
 {
    return d->next_inode++;

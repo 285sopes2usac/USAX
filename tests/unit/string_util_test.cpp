@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 extern "C" {
-   #include <tilck/common/string_util.h>
+   #include <usax/common/string_util.h>
 }
 
 TEST(strstr, basic)
@@ -13,9 +13,9 @@ TEST(strstr, basic)
    const char *hay = "hay";
    const char *empty = "";
 
-   ASSERT_STREQ(tilck_strstr(empty, needle), (char *) NULL);
-   ASSERT_STREQ(tilck_strstr(haystack, needle), (char *) NULL);
-   ASSERT_STREQ(tilck_strstr(haystack, hay), haystack);
+   ASSERT_STREQ(usax_strstr(empty, needle), (char *) NULL);
+   ASSERT_STREQ(usax_strstr(haystack, needle), (char *) NULL);
+   ASSERT_STREQ(usax_strstr(haystack, hay), haystack);
 }
 
 TEST(strncpy, basic)
@@ -23,7 +23,7 @@ TEST(strncpy, basic)
    char dest[4] = {};
    const char *src = "a";
 
-   tilck_strncpy(dest, src, 2);
+   usax_strncpy(dest, src, 2);
    ASSERT_STREQ(dest, "a");
 }
 
@@ -32,24 +32,24 @@ TEST(strncat, basic)
    char dest[6] = "abc";
    const char *src = "d";
 
-   tilck_strncat(dest, src, 4);
+   usax_strncat(dest, src, 4);
    ASSERT_STREQ(dest, "abcd");
 }
 
 TEST(isxdigit, basic)
 {
-   ASSERT_EQ(tilck_isxdigit(48), true);
-   ASSERT_EQ(tilck_isxdigit(58), false);
-   ASSERT_EQ(tilck_isxdigit(71), false);
-   ASSERT_EQ(tilck_isxdigit(127), false);
-   ASSERT_EQ(tilck_isxdigit(128), false);
+   ASSERT_EQ(usax_isxdigit(48), true);
+   ASSERT_EQ(usax_isxdigit(58), false);
+   ASSERT_EQ(usax_isxdigit(71), false);
+   ASSERT_EQ(usax_isxdigit(127), false);
+   ASSERT_EQ(usax_isxdigit(128), false);
 }
 
 TEST(isspace, basic)
 {
-   ASSERT_EQ(tilck_isspace(' '), true);
-   ASSERT_EQ(tilck_isspace('\n'), true);
-   ASSERT_EQ(tilck_isspace('a'), false);
+   ASSERT_EQ(usax_isspace(' '), true);
+   ASSERT_EQ(usax_isspace('\n'), true);
+   ASSERT_EQ(usax_isspace('a'), false);
 }
 
 TEST(str_reverse, basic)

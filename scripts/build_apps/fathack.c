@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/fat32_base.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/fat32_base.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -145,9 +145,9 @@ static int action_do_align(struct action_ctx *ctx)
    }
 
    /*
-    * While on the Linux kernel (and on Tilck as well) it's fine to expand or
+    * While on the Linux kernel (and on usax as well) it's fine to expand or
     * shrink a file while being memory-mapped, that's NOT true on WSL. While
-    * it's true that WSL is not supposed to be Tilck's main build host type,
+    * it's true that WSL is not supposed to be usax's main build host type,
     * it is still nice to support it, in particular because that does not
     * require a huge effort; just minor fixes here and there.
     */

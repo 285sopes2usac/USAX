@@ -1,21 +1,21 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_mm.h>
+#include <usax_gen_headers/config_mm.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/switch.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/process_int.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/vdso.h>
-#include <tilck/kernel/hal.h>
+#include <usax/kernel/switch.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/process_int.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/vdso.h>
+#include <usax/kernel/hal.h>
 
 void save_current_task_state(regs_t *r,  bool irq)
 {

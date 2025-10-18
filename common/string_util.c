@@ -2,10 +2,10 @@
 
 #define __STRING_UTIL_C__
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/assert.h>
-#include <tilck/common/string_util.h>
-#include <tilck/kernel/errno.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/assert.h>
+#include <usax/common/string_util.h>
+#include <usax/kernel/errno.h>
 
 const s8 digit_to_val[128] =
 {
@@ -79,7 +79,7 @@ int memcmp(const void *_m1, const void *_m2, size_t n)
    return i == n ? 0 : (int)*m1 - (int)*m2;
 }
 
-char *tilck_strstr(const char *haystack, const char *needle)
+char *usax_strstr(const char *haystack, const char *needle)
 {
    size_t sl, nl;
 
@@ -103,7 +103,7 @@ char *tilck_strstr(const char *haystack, const char *needle)
 
 #if !defined(TESTING) && !defined(USERMODE_APP)
    char *strstr(const char *haystack, const char *needle) \
-   __attribute__((alias("tilck_strstr")));
+   __attribute__((alias("usax_strstr")));
 #endif
 
 
@@ -118,7 +118,7 @@ char *strcpy(char *dest, const char *src)
    return dest;
 }
 
-char *tilck_strncpy(char *dest, const char *src, size_t n)
+char *usax_strncpy(char *dest, const char *src, size_t n)
 {
    char *p = dest;
    size_t i = 0;
@@ -136,7 +136,7 @@ char *tilck_strncpy(char *dest, const char *src, size_t n)
 
 #if !defined(TESTING) && !defined(USERMODE_APP)
    char *strncpy(char *dest, const char *src, size_t n) \
-   __attribute__((alias("tilck_strncpy")));
+   __attribute__((alias("usax_strncpy")));
 #endif
 
 char *strcat(char *dest, const char *src)
@@ -144,7 +144,7 @@ char *strcat(char *dest, const char *src)
    return strcpy(dest + strlen(dest), src);
 }
 
-char *tilck_strncat(char *dest, const char *src, size_t n)
+char *usax_strncat(char *dest, const char *src, size_t n)
 {
    char *p = dest + strlen(dest);
    size_t i = 0;
@@ -160,26 +160,26 @@ char *tilck_strncat(char *dest, const char *src, size_t n)
 
 #if !defined(TESTING) && !defined(USERMODE_APP)
    char *strncat(char *dest, const char *src, size_t n) \
-   __attribute__((alias("tilck_strncat")));
+   __attribute__((alias("usax_strncat")));
 #endif
 
-int tilck_isxdigit(int c)
+int usax_isxdigit(int c)
 {
    return c < 128 && digit_to_val[c] >= 0;
 }
 
 #if !defined(TESTING) && !defined(USERMODE_APP)
-   int isxdigit(int c) __attribute__((alias("tilck_isxdigit")));
+   int isxdigit(int c) __attribute__((alias("usax_isxdigit")));
 #endif
 
-int tilck_isspace(int c)
+int usax_isspace(int c)
 {
    return c == ' ' || c == '\t' || c == '\r' ||
           c == '\n' || c == '\v' || c == '\f';
 }
 
 #if !defined(TESTING) && !defined(USERMODE_APP)
-   int isspace(int c) __attribute__((alias("tilck_isspace")));
+   int isspace(int c) __attribute__((alias("usax_isspace")));
 #endif
 
 #endif // #if !defined(TESTING) && !defined(USERMODE_APP)

@@ -1,18 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/timer.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/timer.h>
 
 #include "i8042.h"
 
 #define KB_ITERS_TIMEOUT   10000
 
 /*
- * The array `sw_port_enabled` determines which ports Tilck wants to keep
+ * The array `sw_port_enabled` determines which ports usax wants to keep
  * enabled, not which ports are currently enabled on the controller.
  * The difference is great because temporarely we can disable all the ports,
  * but later we must re-enable only the ones "logically" enabled, as determined

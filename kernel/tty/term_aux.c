@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/term_aux.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/term_aux.h>
 
 void
 term_handle_full_ringbuf(term *t,

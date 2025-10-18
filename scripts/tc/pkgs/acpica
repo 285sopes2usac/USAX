@@ -4,19 +4,19 @@
 function patch_acpica {
 
    local def_before='#if defined(_LINUX) || defined(__linux__)'
-   local def_after='#if defined(__TILCK_KERNEL__)   // patched'
+   local def_after='#if defined(__usax_KERNEL__)   // patched'
    local inc_before='#include "aclinux.h"'
-   local inc_after='#include "tilck/acpi/actilck.h" // patched'
+   local inc_after='#include "usax/acpi/acusax.h" // patched'
 
    pushd 'source/include/platform'
    run_command "sed -i 's@$def_before@$def_after@g' acenv.h"
    run_command "sed -i 's@$inc_before@$inc_after@g' acenv.h"
    popd
 
-   # Make 3rd_party/acpi to point to source/include in order Tilck's code
+   # Make 3rd_party/acpi to point to source/include in order usax's code
    # to see the ACPICA headers using "3rd_party/acpi".
    run_command "mkdir 3rd_party"
-   run_command "echo 'Directory created by Tilck' > 3rd_party/README"
+   run_command "echo 'Directory created by usax' > 3rd_party/README"
    run_command "ln -s '../source/include' '3rd_party/acpi'"
 }
 

@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/process.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/process.h>
 
 #include <linux/major.h> // system header
 

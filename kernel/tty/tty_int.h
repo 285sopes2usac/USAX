@@ -2,14 +2,14 @@
 
 #pragma once
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/kb.h>
-#include <tilck/kernel/tty_struct.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/fs/vfs_base.h>
-#include <tilck/kernel/fs/devfs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/kb.h>
+#include <usax/kernel/tty_struct.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/fs/vfs_base.h>
+#include <usax/kernel/fs/devfs.h>
 
 #define TTY_READ_BS   4096
 

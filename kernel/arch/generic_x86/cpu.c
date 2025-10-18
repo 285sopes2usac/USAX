@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_mm.h>
+#include <usax_gen_headers/config_mm.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/arch/generic_x86/cpu_features.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
+#include <usax/common/arch/generic_x86/cpu_features.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/interrupts.h>
-#include <tilck/kernel/hal.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/interrupts.h>
+#include <usax/kernel/hal.h>
 
 extern const char *x86_exception_names[32];
 
@@ -162,8 +162,8 @@ out:
     *
     * NOTES
     * ----------------
-    * [1] In Tilck, we'll allow user space FPU only in the case at least FXSAVE
-    * is available (=> SSE is available). This makes Tilck simpler allowing us
+    * [1] In usax, we'll allow user space FPU only in the case at least FXSAVE
+    * is available (=> SSE is available). This makes usax simpler allowing us
     * to not having to save the "legacy x87 FPU" context using the "legacy FPU"
     * instructions. The newer FXSAVE and XSAVE save everything, including the
     * "legacy x87 FPU" state.

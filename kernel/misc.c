@@ -1,22 +1,22 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/mod_fb.h>
-#include <tilck_gen_headers/mod_ramfb.h>
-#include <tilck_gen_headers/modules_list.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_fb.h>
+#include <usax_gen_headers/mod_ramfb.h>
+#include <usax_gen_headers/modules_list.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/compiler.h>
-#include <tilck/common/build_info.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/color_defs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/compiler.h>
+#include <usax/common/build_info.h>
+#include <usax/common/string_util.h>
+#include <usax/common/color_defs.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/process_int.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/term.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/process_int.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/term.h>
 
 char zero_page[PAGE_SIZE] ALIGNED_AT(PAGE_SIZE);
 
@@ -49,7 +49,7 @@ static void print_banner_line(const char *s)
 }
 
 static void
-show_tilck_logo(void)
+show_usax_logo(void)
 {
    char *banner[] =
    {
@@ -137,9 +137,9 @@ void
 show_hello_message(void)
 {
    struct commit_hash_and_date comm;
-   extract_commit_hash_and_date(&tilck_build_info, &comm);
+   extract_commit_hash_and_date(&usax_build_info, &comm);
 
-   printk("\e[32mHello from Tilck \e[m\e[1m%d.%d.%d\e[m\e[32m, "
+   printk("\e[32mHello from usax \e[m\e[1m%d.%d.%d\e[m\e[32m, "
           "commit: \e[m\e[1m%s\e[m\e[32m (%s)\e[m\n",
           VER_MAJOR, VER_MINOR, VER_PATCH,
           comm.hash,
@@ -160,7 +160,7 @@ show_hello_message(void)
    show_system_info();
 
    if (KERNEL_SHOW_LOGO)
-      show_tilck_logo();
+      show_usax_logo();
 
 #ifdef __riscv64
    if (MOD_ramfb && MOD_console && MOD_fb) {
@@ -173,7 +173,7 @@ WEAK const char *get_signal_name(int signum) {
    return "";
 }
 
-const struct build_info tilck_build_info ATTR_SECTION(".tilck_info") = {
+const struct build_info usax_build_info ATTR_SECTION(".usax_info") = {
    .commit = {0}, /* It will get patched after the build */
    .ver = VER_MAJOR_STR "." VER_MINOR_STR "." VER_PATCH_STR,
    .arch = ARCH_GCC_TC,

@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_sysfs.h>
+#include <usax_gen_headers/mod_sysfs.h>
 
 #if MOD_sysfs
 
-#include <tilck/mods/sysfs.h>
-#include <tilck/mods/sysfs_utils.h>
+#include <usax/mods/sysfs.h>
+#include <usax/mods/sysfs_utils.h>
 
 static struct sysobj *dir_sysfs_pci;                /* /sysfs/pci           */
 

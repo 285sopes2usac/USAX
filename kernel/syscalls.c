@@ -2,18 +2,18 @@
 
 #define __SYSCALLS_C__
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/build_info.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/build_info.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/signal.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/fs/vfs.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/signal.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/fs/vfs.h>
 
 #include <linux/sched.h> // system header
 
@@ -121,13 +121,13 @@ int sys_newuname(struct utsname *user_buf)
    struct commit_hash_and_date comm;
    struct utsname buf = {0};
 
-   extract_commit_hash_and_date(&tilck_build_info, &comm);
+   extract_commit_hash_and_date(&usax_build_info, &comm);
 
-   strcpy(buf.sysname, "Tilck");
-   strcpy(buf.nodename, "tilck");
+   strcpy(buf.sysname, "usax");
+   strcpy(buf.nodename, "usax");
    strcpy(buf.version, comm.hash);
-   strcpy(buf.release, tilck_build_info.ver);
-   strcpy(buf.machine, tilck_build_info.arch);
+   strcpy(buf.release, usax_build_info.ver);
+   strcpy(buf.machine, usax_build_info.arch);
 
    if (copy_to_user(user_buf, &buf, sizeof(struct utsname)) < 0)
       return -EFAULT;

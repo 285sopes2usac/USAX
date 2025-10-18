@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
 #include <cstdio>
 #include <cstdint>
@@ -17,8 +17,8 @@
 
 extern "C" {
 
-   #include <tilck/kernel/kmalloc.h>
-   #include <tilck/kernel/worker_thread.h>
+   #include <usax/kernel/kmalloc.h>
+   #include <usax/kernel/worker_thread.h>
    #include "kernel/wth_int.h" // private header
 }
 

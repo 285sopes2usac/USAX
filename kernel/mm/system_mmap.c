@@ -1,17 +1,17 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/utils.h>
+#include <usax/common/printk.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/sort.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/test/mem_regions.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/sort.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/test/mem_regions.h>
 
 u32 __mem_lower_kb;
 u32 __mem_upper_kb;

@@ -1,14 +1,14 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_kb8042.h>
+#include <usax_gen_headers/mod_kb8042.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/mods/acpi.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/mods/acpi.h>
 
 NORETURN void poweroff(void)
 {

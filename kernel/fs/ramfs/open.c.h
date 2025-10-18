@@ -77,7 +77,7 @@ static int ramfs_open_existing_checks(int fl, struct ramfs_inode *i)
 
    /*
     * On some systems O_TRUNC | O_RDONLY has undefined behavior and on some
-    * the file might actually be truncated. On Tilck, that is simply NOT
+    * the file might actually be truncated. On usax, that is simply NOT
     * allowed.
     */
    if ((fl & O_TRUNC) && !(fl & (O_WRONLY | O_RDWR)))

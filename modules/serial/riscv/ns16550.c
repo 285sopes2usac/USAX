@@ -1,18 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/boot.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/hal.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/boot.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/hal.h>
 #include <3rd_party/fdt_helper.h>
 #include <libfdt.h>
-#include <tilck/mods/irqchip.h>
+#include <usax/mods/irqchip.h>
 #include "fdt_serial.h"
 
 /*
@@ -220,7 +220,7 @@ static void ns16550_uart_init(struct ns16550 *uart, int baud_divisor)
    ns16550_reg_wr(uart, UART_LCR, LCR_8_BITS | LCR_1_STOP_BIT | LCR_NO_PARITY);
 
    /*
-    * TODO: Since tilck does not currently implement the "clock" framework,
+    * TODO: Since usax does not currently implement the "clock" framework,
     * if it is not specify the clock frequency at the uart node of the device
     * tree, then we just do not touch the baud divisor register.
     */

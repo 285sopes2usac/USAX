@@ -5,14 +5,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/sched.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/sched.h>
 
-#include <tilck_gen_headers/config_kmalloc.h>
+#include <usax_gen_headers/config_kmalloc.h>
 
-#include <tilck/kernel/kmalloc.h>
+#include <usax/kernel/kmalloc.h>
 #include <kernel/kmalloc/kmalloc_heap_struct.h> // kmalloc private header
 #include <kernel/kmalloc/kmalloc_block_node.h>  // kmalloc private header
 
@@ -42,7 +42,7 @@ void panic(const char *fmt, ...)
    abort();
 }
 
-void __wrap_tilck_vprintk(u32 flags, const char *fmt, va_list args)
+void __wrap_usax_vprintk(u32 flags, const char *fmt, va_list args)
 {
    if (suppress_printk)
       return;
@@ -88,7 +88,7 @@ void __wrap_kmutex_unlock(struct kmutex *m) {
 }
 
 /*
- * Decide with just a global flag whether to use glibc's malloc() or Tilck's
+ * Decide with just a global flag whether to use glibc's malloc() or usax's
  * kmalloc() implementation, instead of using a proper GMock in kmalloc_test.cpp
  * with ON_CALL(mock, general_kmalloc).WillByDefault([&mock](...) { ... }),
  * simply because that is too slow for performance measurements. Otherwise, the

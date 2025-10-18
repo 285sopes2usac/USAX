@@ -1,19 +1,19 @@
-Contributing to Tilck
+Contributing to usax
 ---------------------------
 
 First off, thanks for taking the time to contribute!
 
-Contributions to the Tilck project are more than welcome. The project needs
+Contributions to the usax project are more than welcome. The project needs
 features and tests in many areas in order to become production-ready. Pull
 requests will be reviewed and, after addressing any eventual comments from the
 maintainer, will be merged in the master branch. Pull requests should meet a few
 requirements:
 
-  - Contain high-quality code following Tilck's coding style (see [coding style](#coding-style))
+  - Contain high-quality code following usax's coding style (see [coding style](#coding-style))
   - Build with *all* the currently supported configurations (see [building])
   - Pass *all* the existing tests (see [testing])
   - Contain tests for the new code
-  - Implement features aligned with the goals of the Tilck project
+  - Implement features aligned with the goals of the usax project
   - Follow one of the two accepted models for pull requests (see [commit style & pull requests](#commit-style--pull-requests))
 
 [building]: building.md
@@ -27,10 +27,10 @@ interested in making. Unit tests require a fair amount of C++ experience.
 The system tests (shellcmds) require experience with C and system programming.
 Working on the test runners require some experience with Python. Changes to
 the `build_toolchain` script and related require good Bash skills and
-deep knowledge about how to build C/C++ projects with cross-compilers. Tilck's
+deep knowledge about how to build C/C++ projects with cross-compilers. usax's
 build itself requires CMake experience.
 
-Contributions to the kernel Tilck are the generally harder compared to the
+Contributions to the kernel usax are the generally harder compared to the
 rest of the components and require a *significant* experience with C, *good*
 theoretical understanding of operating systems and at least *some* practical
 experience with embedded or OS development or at least good knowledge of x86
@@ -65,7 +65,7 @@ in the Linux kernel style that is edited *as series* on each review iteration (*
 If the contributors prefers, a hybrid approach between model 1 and model 2 is also possible
 (= a short but *curated* series of medium-sized commits), after synching up with the maintainer
 about how to properly split the work in a way that makes sense. The only model that definitively
-is *not* acceptable in Tilck is what we call here **model 0**. It is described below for
+is *not* acceptable in usax is what we call here **model 0**. It is described below for
 completeness.
 
 #### Model 0 [UNACCEPTABLE!]
@@ -119,7 +119,7 @@ own work.
 
 #### Model 1
 Model 1 is simple and requires just a single change to be correct, polished, tested and
-overall good-enough to be merged into Tilck's source. The only thing that contributors
+overall good-enough to be merged into usax's source. The only thing that contributors
 need to do is to keep a single commit into the topic branch and save changes to it with
 `git commit --amend` and then update the remote branch with `push --force`. This approach
 doesn't have any of the issues of model 0, because it is, by definition, self-consistent
@@ -165,13 +165,13 @@ more work on each review *iteration*. Indeed, with model 2, on each review itera
 necessary to modify one or more commits, therefore re-writing the history of the topic-branch with
 the git interactive rebase feature (`rebase -i`) and resolving all the rebase conflicts that will
 be generated because of that. Also, commits might be re-ordered, squashed or split. Finally, because
-that is error-prone even for expert developers, on each iteration, it is necessary to rebuild Tilck
+that is error-prone even for expert developers, on each iteration, it is necessary to rebuild usax
 in *all* the configurations, for *every* single commit in the series, to make sure that the series
 don't break anything, at no point in time.
 
-Because of model 2's overhead and complexity, the preferred model in Tilck is **model 1**. We can
-afford that since Tilck is a medium-sized project and doesn't have many contributors. However,
-contributors exicited to learn the Linux-kernel contribution style, who want to use Tilck as a
+Because of model 2's overhead and complexity, the preferred model in usax is **model 1**. We can
+afford that since usax is a medium-sized project and doesn't have many contributors. However,
+contributors exicited to learn the Linux-kernel contribution style, who want to use usax as a
 form of *preparation* for contributing to a major open source project like Linux, might use
 model 2, accepting the extra overhead for that.
 
@@ -186,7 +186,7 @@ to quickly mention a few points:
 
   - The snake_case is used
   - The line length is *strictly* limited to 80 columns
-  - The indentation is *3 spaces* ([see here](https://github.com/vvaltchev/tilck/discussions/88))
+  - The indentation is *3 spaces* ([see here](https://github.com/vvaltchev/usax/discussions/88))
   - The opening braces are generally on the same line for all code blocks except
     for functions bodies and the initialization of arrays:
       ```C
@@ -341,7 +341,7 @@ to quickly mention a few points:
     don't intermix with actual code. For example:
     ```C
     #ifndef TESTING
-    
+
        #ifndef __cplusplus
           #define NORETURN _Noreturn /* C11 no return attribute */
        #else
@@ -349,7 +349,7 @@ to quickly mention a few points:
           #define NULL nullptr
           #define NORETURN [[ noreturn ]] /* C++11 no return attribute */
        #endif
-    
+
     #else
        #define NORETURN
     #endif

@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/self_tests.h>
-#include <tilck/kernel/paging.h>
+#include <usax/kernel/self_tests.h>
+#include <usax/kernel/paging.h>
 
 /*
  * Special selftest that cannot be run by the system test runner.

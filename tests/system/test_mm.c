@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_mm.h>
+#include <usax_gen_headers/config_mm.h>
 
 #include <stdio.h>
 #include <string.h>
@@ -338,8 +338,8 @@ int cmd_fork_oom(int argc, char **argv)
       return 0;
    }
 
-   if (!getenv("TILCK")) {
-      printf(PFX "[SKIP] because we're not running on Tilck\n");
+   if (!getenv("usax")) {
+      printf(PFX "[SKIP] because we're not running on usax\n");
       return 0;
    }
 
@@ -359,7 +359,7 @@ int cmd_fork_oom(int argc, char **argv)
    } else {
 
       /*
-       * We're running on a machine with plenty of memory, but Tilck's heap
+       * We're running on a machine with plenty of memory, but usax's heap
        * for user mappings is limited to 512 MB at the moment. Therefore, if
        * we don't commit enough memory, it's possible this test to fail because
        * the overall memory on the system will be enough for both the parent

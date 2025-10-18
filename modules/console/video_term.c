@@ -1,21 +1,21 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_console.h>
 
-#include <tilck/common/color_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/color_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/term_aux.h>
-#include <tilck/kernel/safe_ringbuf.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/interrupts.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/cmdline.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/term_aux.h>
+#include <usax/kernel/safe_ringbuf.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/interrupts.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/cmdline.h>
 
 #include "video_term_int.h"
 
@@ -114,11 +114,11 @@ static const struct video_interface no_output_vi =
  *
  * Before (inline funcs):
  *    text     data      bss      dec    hex   filename
- *  466397    34104   316082   816583  c75c7   ./build/tilck
+ *  466397    34104   316082   816583  c75c7   ./build/usax
  *
  * After (with macros):
  *    text     data     bss      dec     hex   filename
- *  465421    34104  316082   815607   c71f7   ./build/tilck
+ *  465421    34104  316082   815607   c71f7   ./build/usax
 
  * full optimization, -O3, no debug checks:
  * -------------------------------------------
@@ -126,11 +126,11 @@ static const struct video_interface no_output_vi =
  * Before (inline funcs):
  *
  *    text     data     bss      dec     hex   filename
- *  301608    29388  250610   581606   8dfe6   tilck
+ *  301608    29388  250610   581606   8dfe6   usax
  *
  * After (with macros):
  *    text     data     bss      dec     hex   filename
- *  301288    29388  250610   581286   8dea6   tilck
+ *  301288    29388  250610   581286   8dea6   usax
  */
 
 #define calc_buf_row(t, r) (((r) + (t)->scroll) % (t)->total_buffer_rows)

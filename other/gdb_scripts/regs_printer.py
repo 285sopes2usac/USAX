@@ -79,6 +79,6 @@ class printer_regs:
       return res
 
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'regs_t', '^(regs_t|x86_regs)$', printer_regs
 )

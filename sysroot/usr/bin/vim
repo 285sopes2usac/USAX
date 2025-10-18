@@ -18,7 +18,7 @@ oldpwd="$PWD"
 if ! [ -f $VIM_GZ ] || ! [ -f $VR_TGZ ]; then
 
    echo ""
-   echo "VIM is not built-in. Tilck image rebuild needed. Steps:"
+   echo "VIM is not built-in. usax image rebuild needed. Steps:"
    echo " - Run: ./scripts/build_toolchain -s build_vim"
    echo " - Run: CMAKE_ARGS='-DEXTRA_VIM=1' ./scripts/cmake_run"
    echo " - Run: make rem"
@@ -51,5 +51,5 @@ fi
 cd $oldpwd
 
 # Start vim with no swap file (-n) and no viminfo (-i)
-# simply because they're useless for the use case of Tilck.
+# simply because they're useless for the use case of usax.
 exec $vim_binary -n -i NONE "$@"

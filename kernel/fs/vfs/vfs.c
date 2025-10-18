@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/fs/flock.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/debug_utils.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/fs/flock.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/debug_utils.h>
 
 #include <dirent.h> // system header
 
@@ -59,7 +59,7 @@ void vfs_close(fs_handle h)
 }
 
 /*
- * Note: because of the way file handles are allocated on Tilck, dup() can
+ * Note: because of the way file handles are allocated on usax, dup() can
  * fail with -ENOMEM, while on POSIX systems that is not allowed.
  *
  * TODO: fix the file-handles allocation mechanism in order to make impossible
@@ -177,7 +177,7 @@ offt vfs_seek(fs_handle h, offt off, int whence)
    ASSERT(h != NULL);
 
    if (whence != SEEK_SET && whence != SEEK_CUR && whence != SEEK_END)
-      return -EINVAL; /* Tilck does NOT support SEEK_DATA and SEEK_HOLE */
+      return -EINVAL; /* usax does NOT support SEEK_DATA and SEEK_HOLE */
 
    struct fs_handle_base *hb = (struct fs_handle_base *) h;
 
@@ -823,7 +823,7 @@ ssize_t vfs_readv(fs_handle h, const struct iovec *iov, int iovcnt)
     *
     * Note: Linux's man page claims that readv/writev must be atomic: that's
     * possible now because all of the Linux file systems support internally the
-    * scatter/gather I/O. On Tilck, not all the file systems will support it.
+    * scatter/gather I/O. On usax, not all the file systems will support it.
     */
 
    for (int i = 0; i < iovcnt; i++) {
@@ -869,7 +869,7 @@ ssize_t vfs_writev(fs_handle h, const struct iovec *iov, int iovcnt)
     *
     * Note: Linux's man page claims that readv/writev must be atomic: that's
     * possible now because all of the Linux file systems support internally the
-    * scatter/gather I/O. On Tilck, not all the file systems will support it.
+    * scatter/gather I/O. On usax, not all the file systems will support it.
     */
 
    for (int i = 0; i < iovcnt; i++) {

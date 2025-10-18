@@ -1,20 +1,20 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_mm.h>
-#include <tilck_gen_headers/mod_fb.h>
+#include <usax_gen_headers/config_mm.h>
+#include <usax_gen_headers/mod_fb.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/vdso.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/hal.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/vdso.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/hal.h>
 
 #include "paging_generic.h"
 #include "paging_int.h"
@@ -199,7 +199,7 @@ map_framebuffer(pdir_t *pdir,
 
          /*
           * This should NEVER happen. The allocation of the hi vmem does not
-          * depend at all from the system. It's all on Tilck. We have 128 MB
+          * depend at all from the system. It's all on usax. We have 128 MB
           * of virtual space that we can allocate as we want. Unless there's
           * a bug in kmalloc(), we'll never get here.
           */

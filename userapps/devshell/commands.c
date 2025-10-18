@@ -46,8 +46,8 @@ int cmd_selftest(int argc, char **argv)
       return 1;
    }
 
-   rc = sysenter_call3(TILCK_CMD_SYSCALL,
-                       TILCK_CMD_RUN_SELFTEST,
+   rc = sysenter_call3(usax_CMD_SYSCALL,
+                       usax_CMD_RUN_SELFTEST,
                        argv[0], /* self test name */
                        NULL);
 
@@ -176,12 +176,12 @@ void dump_list_of_commands_and_exit(void)
 void show_common_help_intro(void)
 {
    printf("\n");
-   printf(COLOR_RED "Tilck development shell\n" RESET_ATTRS);
+   printf(COLOR_RED "usax development shell\n" RESET_ATTRS);
 
    printf("This application is a small dev-only utility originally written ");
    printf("in order to \nallow running simple programs, while proper shells ");
-   printf("like ASH couldn't run on \nTilck yet. Today, " COLOR_YELLOW);
-   printf("ASH works on Tilck" RESET_ATTRS " and this ");
+   printf("like ASH couldn't run on \nusax yet. Today, " COLOR_YELLOW);
+   printf("ASH works on usax" RESET_ATTRS " and this ");
    printf(COLOR_YELLOW "devshell" RESET_ATTRS " is used as a runner \n");
    printf("for system tests (often called 'shellcmds' for this reason).\n\n");
 }

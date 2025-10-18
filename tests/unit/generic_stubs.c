@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/datetime.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/datetime.h>
 
 void hw_read_clock(struct datetime *out)
 {

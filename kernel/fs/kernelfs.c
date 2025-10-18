@@ -1,13 +1,13 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/fs/kernelfs.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/sys_types.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/fs/kernelfs.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/sys_types.h>
 
 /*
  * KernelFS is a special, unmounted, file-system designed for special kernel

@@ -1,11 +1,11 @@
 # -----------------------------------------------------------------------------
 # IMPORTANT NOTE: this clang-format YML config file does NOT define precisely
-# Tilck's coding style, but makes the tool to format any C file using a coding
-# style as close as possible to the one used in Tilck's source. Maybe one day
+# usax's coding style, but makes the tool to format any C file using a coding
+# style as close as possible to the one used in usax's source. Maybe one day
 # the tool will be powerful enough to support every style. In the meanwhile,
 # the rules in this file can be used as a rough guideline.
 #
-# One of the fundamental differences between Tilck's coding style and the best
+# One of the fundamental differences between usax's coding style and the best
 # clang-format can offer is that in reality much more exceptions (and penalties)
 # exist. For example, while its good to have space around binary operators like
 # '+', '-', '*', ',' etc., it makes sense to strip that space when that can

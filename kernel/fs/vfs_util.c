@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/string_util.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/errno.h>
+#include <usax/common/string_util.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/errno.h>
 
 static void drop_last_component(char **d_ref, char *const dest)
 {

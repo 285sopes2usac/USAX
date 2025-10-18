@@ -6,7 +6,7 @@ set(EFI_BUILD_BASE_FLAGS_LIST "")
 list(
    APPEND EFI_BUILD_BASE_FLAGS_LIST
 
-   -D__TILCK_EFI_BOOTLOADER__
+   -D__usax_EFI_BOOTLOADER__
 
    -fno-stack-protector
    -fshort-wchar

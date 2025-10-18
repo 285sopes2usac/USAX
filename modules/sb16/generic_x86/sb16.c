@@ -1,20 +1,20 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/tilck_sound.h>
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/usax_sound.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/timer.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/timer.h>
 
 #include "sb16.h"
 
@@ -41,7 +41,7 @@ static volatile bool sb16_playing;
 static volatile u8 sb16_slot;
 
 /* DSP config */
-static struct tilck_sound_params dsp_params;
+static struct usax_sound_params dsp_params;
 static u32 curr_buf_sz;
 
 /* The task currently owning the sound device */
@@ -179,7 +179,7 @@ sb16_write(fs_handle h, char *user_buf, size_t size, offt *pos)
    }
 
    if (!dsp_params.bits) {
-      /* Audio hasn't been configured with TILCK_IOCTL_SOUND_SETUP yet */
+      /* Audio hasn't been configured with usax_IOCTL_SOUND_SETUP yet */
       return -EINVAL;
    }
 
@@ -254,7 +254,7 @@ sb16_write(fs_handle h, char *user_buf, size_t size, offt *pos)
 }
 
 static int
-sb16_ioctl_sound_setup(struct tilck_sound_params *user_params)
+sb16_ioctl_sound_setup(struct usax_sound_params *user_params)
 {
    if (get_curr_task() != owner) {
       /* The current task, does not own the resource */
@@ -340,9 +340,9 @@ sb16_ioctl_release(void)
 }
 
 static int
-sb16_ioctl_get_info(struct tilck_sound_card_info *user_info)
+sb16_ioctl_get_info(struct usax_sound_card_info *user_info)
 {
-   static const struct tilck_sound_card_info info = {
+   static const struct usax_sound_card_info info = {
       .name = "sb16",
       .max_sample_rate = 44100,
       .max_bits = 16,
@@ -383,19 +383,19 @@ sb16_ioctl(fs_handle h, ulong request, void *user_argp)
 {
    switch (request) {
 
-      case TILCK_IOCTL_SOUND_ACQUIRE:
+      case usax_IOCTL_SOUND_ACQUIRE:
          return sb16_ioctl_acquire();
 
-      case TILCK_IOCTL_SOUND_RELEASE:
+      case usax_IOCTL_SOUND_RELEASE:
          return sb16_ioctl_release();
 
-      case TILCK_IOCTL_SOUND_SETUP:
+      case usax_IOCTL_SOUND_SETUP:
          return sb16_ioctl_sound_setup(user_argp);
 
-      case TILCK_IOCTL_SOUND_GET_INFO:
+      case usax_IOCTL_SOUND_GET_INFO:
          return sb16_ioctl_get_info(user_argp);
 
-      case TILCK_IOCTL_SOUND_WAIT_COMPLETION:
+      case usax_IOCTL_SOUND_WAIT_COMPLETION:
          return sb16_ioctl_wait_for_completion();
 
       default:

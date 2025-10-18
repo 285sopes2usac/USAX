@@ -7,7 +7,7 @@ set(
    assert_failed
    not_reached
    not_implemented
-   tilck_vprintk
+   usax_vprintk
    kmutex_lock
    kmutex_unlock
    fat_ramdisk_prepare_for_mmap

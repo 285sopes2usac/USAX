@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
 #pragma once
-#include <tilck/kernel/kb.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/fs/vfs_base.h>
+#include <usax/kernel/kb.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/fs/vfs_base.h>
 
 #define DP_W   76
 #define DP_H   23

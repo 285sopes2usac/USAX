@@ -7,7 +7,7 @@ function download_treecmd {
    local tarname="treecmd-$ver.tgz"
    local url="https://github.com/vvaltchev/tree-command.git"
 
-   download_git_repo_in_cache "$url" tilck $tarname $ver
+   download_git_repo_in_cache "$url" usax $tarname $ver
    extract_cachefile_tar_gz $tarname $ver $ver
 }
 

@@ -1,17 +1,17 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_sysfs.h>
+#include <usax_gen_headers/mod_sysfs.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/unaligned.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/string_util.h>
+#include <usax/common/unaligned.h>
 
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/mods/acpi.h>
-#include <tilck/mods/sysfs.h>
-#include <tilck/mods/sysfs_utils.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/mods/acpi.h>
+#include <usax/mods/sysfs.h>
+#include <usax/mods/sysfs_utils.h>
 
 #include "acpi_int.h"
 #include <3rd_party/acpi/acpi.h>
@@ -278,14 +278,14 @@ acpi_generic_data_load(struct sysobj *s_obj,
       if (child[4] == '/') {
 
          const char *endptr;
-         pidx = (int)tilck_strtoul(child + 5, &endptr, 10, NULL);
+         pidx = (int)usax_strtoul(child + 5, &endptr, 10, NULL);
 
          if (*endptr) {
 
             /* There are non-numeric characters after the prop. index */
 
             if (*endptr == ':') /* bitfield */
-               bitx = (int)tilck_strtoul(endptr + 1, NULL, 10, NULL);
+               bitx = (int)usax_strtoul(endptr + 1, NULL, 10, NULL);
             else
                fmt = *endptr; /* any other format char */
          }

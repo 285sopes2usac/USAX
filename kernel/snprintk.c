@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
 /* Check for the 'j' length modifier (intmax_t) */
 STATIC_ASSERT(sizeof(intmax_t) == sizeof(long long));
@@ -329,7 +329,7 @@ process_next_char_in_seq:
    case '7':
    case '8':
    case '9':
-      ctx->lpad = (int)tilck_strtol(ctx->fmt, &ctx->fmt, 10, NULL);
+      ctx->lpad = (int)usax_strtol(ctx->fmt, &ctx->fmt, 10, NULL);
       goto process_next_char_in_seq;
 
    case '*':
@@ -345,7 +345,7 @@ process_next_char_in_seq:
 
    case '-':
       if (ctx->fmt[1] != '*') {
-         ctx->rpad = (int)tilck_strtol(ctx->fmt + 1, &ctx->fmt, 10, NULL);
+         ctx->rpad = (int)usax_strtol(ctx->fmt + 1, &ctx->fmt, 10, NULL);
       } else {
          ctx->rpad = (int)va_arg(ctx->args, long);
          if (ctx->rpad < 0)
@@ -357,7 +357,7 @@ process_next_char_in_seq:
    case '.':
 
       if (ctx->fmt[1] != '*') {
-         ctx->precision = (int)tilck_strtol(ctx->fmt + 1, &ctx->fmt, 10, NULL);
+         ctx->precision = (int)usax_strtol(ctx->fmt + 1, &ctx->fmt, 10, NULL);
       } else {
          ctx->precision = MAX(0, (int)va_arg(ctx->args, long));
          ctx->fmt += 2;

@@ -44,8 +44,8 @@ TestParamsType = namedtuple(
 # Other constants
 INIT_PATH = '/initrd/bin/init'
 DEVSHELL_PATH = '/initrd/usr/bin/devshell'
-KERNEL_HELLO_MSG = 'Hello from Tilck!'
-TILCK_SHELL_STR = 'root@tilck'
+KERNEL_HELLO_MSG = 'Hello from usax!'
+usax_SHELL_STR = 'root@usax'
 
 # Global variables
 
@@ -105,7 +105,7 @@ def handle_hello_msg(line: str):
    set_once_fail_reason(Fail.reboot)
    g_process.send_signal(signal.SIGINT)
 
-def handle_tilck_shell_str():
+def handle_usax_shell_str():
 
    global g_shell_cmdline_found
 
@@ -158,8 +158,8 @@ def process_line(line: str):
          return
 
    if not g_shell_cmdline_found:
-      if stripped.find(TILCK_SHELL_STR) != -1:
-         handle_tilck_shell_str()
+      if stripped.find(usax_SHELL_STR) != -1:
+         handle_usax_shell_str()
          return
 
    if not g_dumping_gcda_files:
@@ -324,9 +324,9 @@ def run_the_vm():
             continue
 
          if not g_shell_cmdline_found:
-            if incomplete_line.find(TILCK_SHELL_STR) != -1:
+            if incomplete_line.find(usax_SHELL_STR) != -1:
                if incomplete_line.endswith(':/# '):
-                  handle_tilck_shell_str()
+                  handle_usax_shell_str()
 
          curr_time = time.time()
          e = curr_time - checkpoint_time

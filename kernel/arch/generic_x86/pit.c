@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/datetime.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/datetime.h>
 
 #define PIT_FREQ           1193182
 

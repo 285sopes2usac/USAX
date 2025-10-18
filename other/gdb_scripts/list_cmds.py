@@ -115,13 +115,13 @@ class cmd_list_procs(gdb.Command):
             )
          )
 
-class cmd_list_tilck_cmds(gdb.Command):
+class cmd_list_usax_cmds(gdb.Command):
 
-   cmd_name = "list-tilck-cmds"
+   cmd_name = "list-usax-cmds"
 
    def __init__(self):
-      super(cmd_list_tilck_cmds, self).__init__(
-         cmd_list_tilck_cmds.cmd_name,
+      super(cmd_list_usax_cmds, self).__init__(
+         cmd_list_usax_cmds.cmd_name,
          gdb.COMMAND_USER
       )
 
@@ -132,4 +132,4 @@ class cmd_list_tilck_cmds(gdb.Command):
 # -------------------------------------------------
 bu.register_new_custom_gdb_cmd(cmd_list_tasks)
 bu.register_new_custom_gdb_cmd(cmd_list_procs)
-bu.register_new_custom_gdb_cmd(cmd_list_tilck_cmds)
+bu.register_new_custom_gdb_cmd(cmd_list_usax_cmds)

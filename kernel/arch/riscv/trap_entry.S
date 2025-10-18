@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: BSD-2-Clause
 
 #define ASM_FILE 1
-#include <tilck_gen_headers/config_global.h>
-#include <tilck/kernel/arch/riscv/asm_defs.h>
+#include <usax_gen_headers/config_global.h>
+#include <usax/kernel/arch/riscv/asm_defs.h>
 
 .section .text
 .global asm_trap_entry

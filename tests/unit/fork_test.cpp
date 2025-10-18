@@ -7,8 +7,8 @@
 using namespace testing;
 
 extern "C" {
-   #include <tilck/kernel/process.h>
-   #include <tilck/kernel/test/fork.h>
+   #include <usax/kernel/process.h>
+   #include <usax/kernel/test/fork.h>
 }
 
 class vfs_mock : public KernelSingleton {

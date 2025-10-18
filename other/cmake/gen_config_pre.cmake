@@ -19,19 +19,19 @@ foreach(config_path ${config_glob})
 
    smart_config_file(
       ${config_path}
-      ${CMAKE_BINARY_DIR}/tilck_gen_headers/${config_name}.h
+      ${CMAKE_BINARY_DIR}/usax_gen_headers/${config_name}.h
    )
 
 endforeach()
 
 smart_config_file(
    ${CMAKE_SOURCE_DIR}/config/modules_list.h
-   ${CMAKE_BINARY_DIR}/tilck_gen_headers/modules_list.h
+   ${CMAKE_BINARY_DIR}/usax_gen_headers/modules_list.h
 )
 
 smart_config_file(
    ${CMAKE_SOURCE_DIR}/config/config_init.h
-   ${CMAKE_BINARY_DIR}/tilck_gen_headers/config_init.h
+   ${CMAKE_BINARY_DIR}/usax_gen_headers/config_init.h
 )
 
 smart_config_file(
@@ -65,8 +65,8 @@ smart_config_file(
 )
 
 smart_config_file(
-   ${CMAKE_SOURCE_DIR}/other/tilck_unstripped-gdb.py
-   ${CMAKE_BINARY_DIR}/tilck_unstripped-gdb.py
+   ${CMAKE_SOURCE_DIR}/other/usax_unstripped-gdb.py
+   ${CMAKE_BINARY_DIR}/usax_unstripped-gdb.py
 )
 
 smart_config_file(

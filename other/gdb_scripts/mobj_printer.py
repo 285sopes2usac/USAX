@@ -2,7 +2,7 @@
 
 import gdb # pylint: disable=import-error
 from . import base_utils as bu
-from . import tilck_types as tt
+from . import usax_types as tt
 
 WOBJ_NONE = gdb.parse_and_eval("WOBJ_NONE")
 WOBJ_TASK = gdb.parse_and_eval("WOBJ_TASK")
@@ -94,14 +94,14 @@ class printer_wait_obj:
    def to_string(self):
       return bu.fmt_type("struct wait_obj", self.val)
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'wait_obj', '^wait_obj$', printer_wait_obj
 )
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'multi_obj_waiter', '^multi_obj_waiter$', printer_multi_obj_waiter
 )
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'mwobj_elem', '^mwobj_elem$', printer_mwobj_elem
 )

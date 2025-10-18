@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/paging_hw.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/paging_hw.h>
 
 struct user_mapping *
 process_add_user_mapping(fs_handle h,

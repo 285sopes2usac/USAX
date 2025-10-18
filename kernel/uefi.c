@@ -1,14 +1,14 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/boot.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/boot.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/process.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/process.h>
 
 void (*hw_read_clock)(struct datetime *) = &hw_read_clock_cmos;
 ulong uefi_rt_addr;
@@ -64,8 +64,8 @@ void setup_uefi_runtime_services(void)
 
       get_mem_region(i, &ma);
 
-      if (ma.type == TILCK_BOOT_EFI_RUNTIME_RO ||
-          ma.type == TILCK_BOOT_EFI_RUNTIME_RW)
+      if (ma.type == usax_BOOT_EFI_RUNTIME_RO ||
+          ma.type == usax_BOOT_EFI_RUNTIME_RW)
       {
          num_entries++;
       }
@@ -80,8 +80,8 @@ void setup_uefi_runtime_services(void)
 
       get_mem_region(i, &ma);
 
-      if (ma.type != TILCK_BOOT_EFI_RUNTIME_RO &&
-          ma.type != TILCK_BOOT_EFI_RUNTIME_RW)
+      if (ma.type != usax_BOOT_EFI_RUNTIME_RO &&
+          ma.type != usax_BOOT_EFI_RUNTIME_RW)
       {
          continue;
       }
@@ -92,7 +92,7 @@ void setup_uefi_runtime_services(void)
          (ulong)LINEAR_MAPPING_SIZE
       );
       const size_t page_count = (pend - pbegin) >> PAGE_SHIFT;
-      const bool rw = (ma.type == TILCK_BOOT_EFI_RUNTIME_RW);
+      const bool rw = (ma.type == usax_BOOT_EFI_RUNTIME_RW);
 
       const size_t count =
          map_pages(get_kernel_pdir(),
@@ -115,8 +115,8 @@ void setup_uefi_runtime_services(void)
       EFI_MEMORY_DESCRIPTOR desc;
       get_mem_region(i, &ma);
 
-      if (ma.type != TILCK_BOOT_EFI_RUNTIME_RO &&
-          ma.type != TILCK_BOOT_EFI_RUNTIME_RW)
+      if (ma.type != usax_BOOT_EFI_RUNTIME_RO &&
+          ma.type != usax_BOOT_EFI_RUNTIME_RW)
       {
          continue;
       }
@@ -127,7 +127,7 @@ void setup_uefi_runtime_services(void)
        * and the rest as Runtime Data regions.
        */
       desc.Type =
-         ma.type == TILCK_BOOT_EFI_RUNTIME_RO
+         ma.type == usax_BOOT_EFI_RUNTIME_RO
             ? EfiRuntimeServicesCode
             : EfiRuntimeServicesData;
 
@@ -160,8 +160,8 @@ void setup_uefi_runtime_services(void)
 
       get_mem_region(i, &ma);
 
-      if (ma.type != TILCK_BOOT_EFI_RUNTIME_RO &&
-          ma.type != TILCK_BOOT_EFI_RUNTIME_RW)
+      if (ma.type != usax_BOOT_EFI_RUNTIME_RO &&
+          ma.type != usax_BOOT_EFI_RUNTIME_RW)
       {
          continue;
       }

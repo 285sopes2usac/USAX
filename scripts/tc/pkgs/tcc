@@ -15,18 +15,18 @@ function download_tcc {
 }
 
 # XXX: disable TCC for now as it doesn't completely work with newer musl
-# toolchains (>= GCC 10.3.0). With GCC >= 10.3, TinyCC on Tilck generates
+# toolchains (>= GCC 10.3.0). With GCC >= 10.3, TinyCC on usax generates
 # binaries that just crash, even on Linux.
 #
-# Fixing this might require quite some extra work, while TCC on Tilck it's
+# Fixing this might require quite some extra work, while TCC on usax it's
 # not actually used by anyone or anything.
 #
 # The core of the problem is that we need to cross-build TinyCC for a cross
 # target. In other words we need:
 #
 #     Build host: x86-64-linux
-#     TinyCC will run on: i386-linux (Tilck)
-#     TinyCC binaries target: i386-linux (Tilck)
+#     TinyCC will run on: i386-linux (usax)
+#     TinyCC binaries target: i386-linux (usax)
 #
 # And TinyCC's build system does not support that. It worked until now with
 # a series of hacks that are harder and harder to maintain. The code below
@@ -67,13 +67,13 @@ function build_tcc {
       download_tcc
       cd tcc
 
-      # Variables for making the compiler to work on Tilck
+      # Variables for making the compiler to work on usax
       # Note: these vars are used by --crtprefix and --libpaths
       # and do not affect the compiler in case just -c is used to
       # compile a single C file, without linking.
 
       local p="/"
-      local lib="/lib/$ARCH_GCC_TC-tilck-musl"
+      local lib="/lib/$ARCH_GCC_TC-usax-musl"
 
       # To test it on the Linux build machine
       # local tc=$TC/host_${HOST_ARCH}/${GCC_NAME_PFX}_musl
@@ -94,7 +94,7 @@ function build_tcc {
 
       sed -i -e 's/$S$(CC) -DC2STR/gcc -DC2STR/g' Makefile
 
-      # Hack: make __udivmoddi4() non static, since on Tilck we fail to link
+      # Hack: make __udivmoddi4() non static, since on usax we fail to link
       # binaries due to this symbol not being found. However, while with that
       # the link succeeds, the binary crashes.
       local decl="UDWtype __udivmoddi4"

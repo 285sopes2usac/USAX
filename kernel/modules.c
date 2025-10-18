@@ -1,10 +1,10 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/sort.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/sort.h>
 
 static int mods_count;
 static struct module *modules[32];

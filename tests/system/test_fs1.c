@@ -162,8 +162,8 @@ int cmd_fs3(int argc, char **argv)
    int fd, rc, off = 0;
    DIR *d;
 
-   if (!running_on_tilck()) {
-      not_on_tilck_message();
+   if (!running_on_usax()) {
+      not_on_usax_message();
       return 0;
    }
 
@@ -191,7 +191,7 @@ int cmd_fs3(int argc, char **argv)
    printf("last entry: '%s' (%d)\n", de->d_name, last_n);
 
    /*
-    * The next elem, at least on Tilck's ramfs, will be "test_${last_n+1}"
+    * The next elem, at least on usax's ramfs, will be "test_${last_n+1}"
     * because the getdents64 keep the creation order. Remove that elem.
     */
 
@@ -208,10 +208,10 @@ int cmd_fs3(int argc, char **argv)
 
    printf("getdents64: %d\n", rc);
 
-   if (getenv("TILCK")) {
+   if (getenv("usax")) {
 
       /*
-       * Tilck's RAMFS keep the creation order: that's why we can reason about
+       * usax's RAMFS keep the creation order: that's why we can reason about
        * which dentry will the next one. In general, that's not possible.
        */
 
@@ -355,8 +355,8 @@ int cmd_fs4(int argc, char **argv)
    int rc;
    DIR *d;
 
-   if (!running_on_tilck()) {
-      not_on_tilck_message();
+   if (!running_on_usax()) {
+      not_on_usax_message();
       return 0;
    }
 
@@ -395,8 +395,8 @@ int cmd_fs5(int argc, char **argv)
    DIR *d;
    int rc;
 
-   if (!running_on_tilck()) {
-      not_on_tilck_message();
+   if (!running_on_usax()) {
+      not_on_usax_message();
       return 0;
    }
 
@@ -423,8 +423,8 @@ int cmd_fs6(int argc, char **argv)
    DIR *d;
    int rc;
 
-   if (!running_on_tilck()) {
-      not_on_tilck_message();
+   if (!running_on_usax()) {
+      not_on_usax_message();
       return 0;
    }
 

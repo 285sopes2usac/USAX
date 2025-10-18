@@ -18,14 +18,14 @@
 #include "devshell.h"
 #include "sysenter.h"
 
-bool running_on_tilck(void)
+bool running_on_usax(void)
 {
-   return getenv("TILCK") != NULL;
+   return getenv("usax") != NULL;
 }
 
-void not_on_tilck_message(void)
+void not_on_usax_message(void)
 {
-   fprintf(stderr, "[SKIP]: Test designed to run exclusively on Tilck\n");
+   fprintf(stderr, "[SKIP]: Test designed to run exclusively on usax\n");
 }
 
 
@@ -278,7 +278,7 @@ int cmd_cloexec(int argc, char **argv)
    return WEXITSTATUS(wstatus);
 }
 
-/* Test scripts testing EXTRA components running on Tilck */
+/* Test scripts testing EXTRA components running on usax */
 
 static const char *extra_test_scripts[] = {
    "tcc",
@@ -316,8 +316,8 @@ int cmd_extra(int argc, char **argv)
    int rc = 0;
    struct stat statbuf;
 
-   if (!getenv("TILCK")) {
-      printf(PFX "[SKIP] because we're not running on Tilck\n");
+   if (!getenv("usax")) {
+      printf(PFX "[SKIP] because we're not running on usax\n");
       return 0;
    }
 
@@ -358,8 +358,8 @@ int cmd_exit_cb(int argc, char **argv)
    long after_cb;
    int rc;
 
-   rc = sysenter_call3(TILCK_CMD_SYSCALL,
-                       TILCK_CMD_GET_VAR_LONG,
+   rc = sysenter_call3(usax_CMD_SYSCALL,
+                       usax_CMD_GET_VAR_LONG,
                        "test_on_exit_cb_counter",
                        &before_cb);
 
@@ -378,8 +378,8 @@ int cmd_exit_cb(int argc, char **argv)
 
    if (!child_pid) {
 
-      int ret = sysenter_call2(TILCK_CMD_SYSCALL,
-                               TILCK_CMD_CALL_FUNC_0,
+      int ret = sysenter_call2(usax_CMD_SYSCALL,
+                               usax_CMD_CALL_FUNC_0,
                                "register_test_on_exit_callback");
 
       exit(ret == -ENOENT ? 99 : ret);
@@ -388,13 +388,13 @@ int cmd_exit_cb(int argc, char **argv)
    waitpid(child_pid, &wstatus, 0);
    DEVSHELL_CMD_ASSERT(WEXITSTATUS(wstatus) == 0);
 
-   sysenter_call3(TILCK_CMD_SYSCALL,
-                  TILCK_CMD_GET_VAR_LONG,
+   sysenter_call3(usax_CMD_SYSCALL,
+                  usax_CMD_GET_VAR_LONG,
                   "test_on_exit_cb_counter",
                   &after_cb);
 
-   sysenter_call2(TILCK_CMD_SYSCALL,
-                  TILCK_CMD_CALL_FUNC_0,
+   sysenter_call2(usax_CMD_SYSCALL,
+                  usax_CMD_CALL_FUNC_0,
                   "unregister_test_on_exit_callback");
 
    DEVSHELL_CMD_ASSERT(after_cb == before_cb + 1);
@@ -420,8 +420,8 @@ static void busy_wait(void)
 
 static void busy_wait_kernel(void)
 {
-   int rc = syscall(TILCK_CMD_SYSCALL, TILCK_CMD_BUSY_WAIT, 10000);
-   DEVSHELL_CMD_ASSERT(!rc); /* TILCK_CMD_BUSY_WAIT must never fail */
+   int rc = syscall(usax_CMD_SYSCALL, usax_CMD_BUSY_WAIT, 10000);
+   DEVSHELL_CMD_ASSERT(!rc); /* usax_CMD_BUSY_WAIT must never fail */
 }
 
 int cmd_getrusage(int argc, char **argv)

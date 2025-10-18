@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/rwlock.h>
-#include <tilck/kernel/sched.h>
+#include <usax/kernel/rwlock.h>
+#include <usax/kernel/sched.h>
 
 void rwlock_rp_init(struct rwlock_rp *r)
 {

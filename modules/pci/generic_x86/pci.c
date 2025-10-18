@@ -1,18 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_pci.h>
+#include <usax_gen_headers/mod_pci.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/modules.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/modules.h>
 
-#include <tilck/mods/pci.h>
-#include <tilck/mods/acpi.h>
+#include <usax/mods/pci.h>
+#include <usax/mods/acpi.h>
 
 #include <3rd_party/acpi/acpi.h>
 #include <3rd_party/acpi/accommon.h>

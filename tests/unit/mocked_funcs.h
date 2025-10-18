@@ -3,7 +3,7 @@
 DEF_3(wrap, assert_failed, void, const char *, const char *, int)
 DEF_2(wrap, not_reached, void, const char *, int)
 DEF_2(wrap, not_implemented, void, const char *, int)
-DEF_3(wrap, tilck_vprintk, void, u32, const char *, va_list)
+DEF_3(wrap, usax_vprintk, void, u32, const char *, va_list)
 DEF_1(wrap, kmutex_lock, void, struct kmutex *)
 DEF_1(wrap, kmutex_unlock, void, struct kmutex *)
 DEF_2(wrap, fat_ramdisk_prepare_for_mmap, int, void *, size_t)

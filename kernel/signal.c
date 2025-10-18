@@ -1,20 +1,20 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/signal.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/sys_types.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/interrupts.h>
-#include <tilck/kernel/process_int.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/signal.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/sys_types.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/interrupts.h>
+#include <usax/kernel/process_int.h>
 
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 typedef void (*action_type)(struct task *, int signum, int fl);
 
@@ -174,7 +174,7 @@ bool process_signals(void *__ti, enum sig_state sig_state, void *regs)
 
    if (ti->nested_sig_handlers > 0 && sig_state != sig_in_return) {
       /*
-       * For the moment, in Tilck only signal handlers (even of different types)
+       * For the moment, in usax only signal handlers (even of different types)
        * will not be able to interrupt each other. This is the equivalent of
        * having each sigaction's sa_mask = 0xffffffff[...].
        */
@@ -565,7 +565,7 @@ sigaction_int(int signum, const struct k_sigaction *user_act)
    if (act.sa_flags & SA_NODEFER) {
 
       /*
-       * Just ignore this. For the moment, Tilck will block the delivery of
+       * Just ignore this. For the moment, usax will block the delivery of
        * signals with custom handlers, if ANY signal handler is running.
        */
    }

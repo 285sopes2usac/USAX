@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/string_util.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/interrupts.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/interrupts.h>
 
 void kcond_init(struct kcond *c)
 {

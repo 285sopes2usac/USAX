@@ -13,25 +13,25 @@
       * [get-handle](#get-handle-handle)
       * [get-curr](#get-curr)
       * [get-currp](#get-currp)
-  * [Tilck's debug panel](#tilcks-debug-panel)
-  * [Debugging Tilck's bootloader](#debugging-tilcks-bootloader)
+  * [usax's debug panel](#usaxs-debug-panel)
+  * [Debugging usax's bootloader](#debugging-usaxs-bootloader)
     - [Debugging the legacy bootloader](#debugging-the-legacy-bootloader)
     - [Debugging the UEFI bootloader](#debugging-the-uefi-bootloader)
       * [Details about BaseAddr](#details-about-baseAddr)
 
 ## Debugging the kernel with GDB
-As explained in the README.md file, it's easy to debug Tilck's kernel while it's
+As explained in the README.md file, it's easy to debug usax's kernel while it's
 running inside a QEMU virtual machine. By default, the `run_qemu` script
 runs `QEMU` with the `-s` option, a shorthand for `-gdb tcp::1234`. Therefore,
-once Tilck has booted we can connect with GDB as if we'd do for any other process
+once usax has booted we can connect with GDB as if we'd do for any other process
 debugged remotely:
 
 ```
-$ gdb ./build/tilck_unstripped
-Reading symbols from ./build/tilck_unstripped...
+$ gdb ./build/usax_unstripped
+Reading symbols from ./build/usax_unstripped...
 (gdb) target remote :1234
 Remote debugging using :1234
-need_reschedule () at /home/vlad/dev/tilck/include/tilck/kernel/sched.h:154
+need_reschedule () at /home/vlad/dev/usax/include/usax/kernel/sched.h:154
 154	   return atomic_load_explicit(&__need_resched, mo_relaxed);
 (gdb)
 ```
@@ -56,10 +56,10 @@ a warning about the auto-loading of GDB scripts found in *unsafe* locations
 like:
 
 ```
-Reading symbols from ./build/tilck_unstripped...
-warning: File "/home/vlad/dev/tilck/build/tilck_unstripped-gdb.py" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load".
+Reading symbols from ./build/usax_unstripped...
+warning: File "/home/vlad/dev/usax/build/usax_unstripped-gdb.py" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load".
 To enable execution of this file add
-        add-auto-load-safe-path /home/vlad/dev/tilck/build/tilck_unstripped-gdb.py
+        add-auto-load-safe-path /home/vlad/dev/usax/build/usax_unstripped-gdb.py
 line to your configuration file "/home/vlad/.gdbinit".
 To completely disable this security protection add
         set auto-load safe-path /
@@ -73,7 +73,7 @@ To allow GDB to load our custom script, add the following line in your `~/.gdbin
 file:
 
 ```
-add-auto-load-safe-path <ABSOLUTE-PATH-OF-TILCK-BUILD-DIRECTORY>
+add-auto-load-safe-path <ABSOLUTE-PATH-OF-usax-BUILD-DIRECTORY>
 ```
 
 Also, for a better debug experience add also:
@@ -82,20 +82,20 @@ Also, for a better debug experience add also:
 set print pretty on
 ```
 
-After that, GDB won't complain anymore and it will load Tilck's custom GDB script,
-as expected and the `tilck_unstripped-gdb.py` GDB script will import other scripts
+After that, GDB won't complain anymore and it will load usax's custom GDB script,
+as expected and the `usax_unstripped-gdb.py` GDB script will import other scripts
 from the `other/gdb_scripts` directory.
 
 The scripts will add both custom pretty printers and custom commands. Plus,
-there's a special command called `list-tilck-cmds` to list all the custom
+there's a special command called `list-usax-cmds` to list all the custom
 commands:
 
 ```
-Reading symbols from ./build/tilck_unstripped...
-(gdb) list-tilck-cmds
+Reading symbols from ./build/usax_unstripped...
+(gdb) list-usax-cmds
 list-tasks
 list-procs
-list-tilck-cmds
+list-usax-cmds
 get-task
 get-proc
 get-handle2
@@ -357,24 +357,24 @@ $38 = *(struct process *) 0xc0212290 = {
 }
 ```
 
-## Tilck's debug panel
-As mentioned in the README.md file, Tilck has a nice developer-only feature called
+## usax's debug panel
+As mentioned in the README.md file, usax has a nice developer-only feature called
 **debug panel** or **dp**. To open it, just run the `dp` *wrapper* program.
 
-![Tilck's debug panel](http://vvaltchev.github.io/tilck_imgs/v2/screenshots/dp01.png)
+![usax's debug panel](http://vvaltchev.github.io/usax_imgs/v2/screenshots/dp01.png)
 
 Using it is trivial: just switch tabs using the digits and scroll up and down their
 content using the `PAGE_UP` and `PAGE_DOWN` keys. Its most interesting feature is
 probably its embedded **syscall tracer**. To use it, first go to the `tasks` tab.
 
-![Tilck's debug panel](http://vvaltchev.github.io/tilck_imgs/v2/screenshots/dp04.png)
+![usax's debug panel](http://vvaltchev.github.io/usax_imgs/v2/screenshots/dp04.png)
 
 Then, enter in *select mode* by pressing ENTER and select a user process. After that,
 mark it as *traced* by pressing `t`. Finally, enter in *tracing mode* by pressing `Ctrl+T`.
 In alternative, it's possible to enter in tracing mode directly by running `tracer`. Once
 there, press `h` for the help menu.
 
-![Tilck's debug panel](http://vvaltchev.github.io/tilck_imgs/v2/screenshots/tracing01.png)
+![usax's debug panel](http://vvaltchev.github.io/usax_imgs/v2/screenshots/tracing01.png)
 
 Once there, press `ENTER` to start/stop the syscall tracing.
 
@@ -392,17 +392,17 @@ Open another virtual terminal, install `screen` if you don't have it, and run:
 
     screen /dev/pts/4
 
-You'll just connect to a Tilck serial console. Just press ENTER there and run
+You'll just connect to a usax serial console. Just press ENTER there and run
 `dp` as previously explained.
 
-![Tilck's debug panel](http://vvaltchev.github.io/tilck_imgs/v2/screenshots/tracing02.png)
+![usax's debug panel](http://vvaltchev.github.io/usax_imgs/v2/screenshots/tracing02.png)
 
 Note: recent versions of QEMU (>= 4.0) have a built-in serial console that can be
 opened by using its GUI, without special command-line options and without using the
 `screen` application.
 
-## Debugging Tilck's bootloader
-While Tilck's bootloader looks and behaves the same way no matter if we did a
+## Debugging usax's bootloader
+While usax's bootloader looks and behaves the same way no matter if we did a
 classic BIOS boot or a UEFI boot, internally there are two bootloaders with
 fundamentally different implementations, compiled in a completely different way
 which just share the main logic (see `common_bootloader_logic()`) using a
@@ -424,7 +424,7 @@ of memory. After that, we jump to the 2nd stage. In the 2nd stage, we enter in
 With GDB we cannot really debug code running in [real mode], but the good thing is
 that the 1st and the 2nd stages are small part of the legacy bootloader and should
 never really need to be touched. Therefore, we'll talk only about debugging the 3rd
-stage, which runs in 32-bit [protected mode] like the whole Tilck kernel and it's
+stage, which runs in 32-bit [protected mode] like the whole usax kernel and it's
 also mostly written in C. Steps:
 
   * Run: `./build/run_qemu -S`. The `-S` option will force QEMU to stop

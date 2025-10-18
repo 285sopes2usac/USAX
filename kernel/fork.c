@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_mm.h>
-#include <tilck/common/basic_defs.h>
+#include <usax_gen_headers/config_mm.h>
+#include <usax/common/basic_defs.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/process_int.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/test/fork.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/process_int.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/test/fork.h>
 
 STATIC int fork_dup_all_handles(struct process *pi)
 {

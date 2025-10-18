@@ -1,39 +1,39 @@
 
-# Building & configuring Tilck
+# Building & configuring usax
 
 ## Contents
 
   * [Introduction](#introduction)
-  * [Building Tilck's toolchain](#building-tilcks-toolchain)
+  * [Building usax's toolchain](#building-usaxs-toolchain)
     - [Extra packages](#extra-packages)
-  * [Building Tilck](#building-tilck)
-  * [Configuring Tilck](#configuring-tilck)
+  * [Building usax](#building-usax)
+  * [Configuring usax](#configuring-usax)
   * [Build types](#build-types)
   * [Running the UEFI bootloader on QEMU](#running-the-uefi-bootloader-on-qemu)
-  * [Building Tilck's unit tests](#building-tilcks-unit-tests)
-  * [Building Tilck with Clang (advanced)](#building-tilck-with-clang-advanced)
+  * [Building usax's unit tests](#building-usaxs-unit-tests)
+  * [Building usax with Clang (advanced)](#building-usax-with-clang-advanced)
   * [Special build configurations (advanced)](#special-build-configurations-advanced)
 
 ## Introduction
 
-Tilck has a CMake-based build system relying on a local toolchain, built by the
-`build_toolchain` Bash script. The first time Tilck's repo is cloned, it is
-necessary to build Tilck's local toolchain by running that script. After that,
-it will be possible to prepare Tilck's build by running CMake in any chosen
+usax has a CMake-based build system relying on a local toolchain, built by the
+`build_toolchain` Bash script. The first time usax's repo is cloned, it is
+necessary to build usax's local toolchain by running that script. After that,
+it will be possible to prepare usax's build by running CMake in any chosen
 build directory. While running `cmake` directly it is possible, the strongly
-recommended practice in Tilck is to run the wrapper script `cmake_run` instead.
+recommended practice in usax is to run the wrapper script `cmake_run` instead.
 That script checks the version of the GCC compiler on the machine, offers handy
 shortcuts, allows us to use a CMake binary from the local toolchain, and other
 things.
 
-## Building Tilck's toolchain
+## Building usax's toolchain
 
 When run without any options, the `build_toolchain` script installs a minimal
 set of packages (e.g. cross GCC toolchain, busybox, etc.) in the local toolchain.
-While it's part of Tilck's philosophy to have as fewer dependencies as possible,
+While it's part of usax's philosophy to have as fewer dependencies as possible,
 there still are some packages required to be installed at *system level*
 (e.g. gcc, git, wget, tar, grep, make, etc.) simply because they're needed to
-build Tilck's toolchain itself. Once run, the `build_toolchain` script will take
+build usax's toolchain itself. Once run, the `build_toolchain` script will take
 care of detecting which packages need to be installed and it will also run the
 right command for your Linux distribution to install them (e.g.
 `sudo apt install gcc g++ git [...]`). Most of the mainstream Linux distributions
@@ -42,7 +42,7 @@ just dump a list of programs that need to be installed manually on the system
 before the script could continue further.
 
 ### Extra packages
-After the first run of `build_toolchain` finishes, it's possible to build Tilck
+After the first run of `build_toolchain` finishes, it's possible to build usax
 but, that doesn't mean the script becomes useless. Actually, most of the
 packages that it can install are not installed by default. The idea behind that
 is to perform the first setup as quickly as possible. To see all the packages
@@ -51,27 +51,27 @@ the `-s` option. To be more precise, the script calls them *functions* because
 in some cases (e.g. config_busybx) they are meant to just (re)configure a
 package.
 
-## Building Tilck
+## Building usax
 
-To build Tilck, it's necessary to run first `<TILCK_DIR>/scripts/cmake_run` in
-the chosen build directory (e.g. `~john/builds/tilck01`) and then just run
+To build usax, it's necessary to run first `<usax_DIR>/scripts/cmake_run` in
+the chosen build directory (e.g. `~john/builds/usax01`) and then just run
 `make` there. That means that **out-of-tree builds** are supported
 effortlessly.
 
 But, because 99% of the time it's just fine to have a `build` directory inside
-our project's main directory (e.g. `~john/devel/tilck`), we can simple run
+our project's main directory (e.g. `~john/devel/usax`), we can simple run
 `./scripts/cmake_run` there. It will detect that's our main directory and it
 will create the `build` subdir. After that, we'll still have to enter the
 `build` directory and run `make` there, because that's where CMake placed its
 generated makefiles. In reality, there's a more convenient **shortcut**: just
 run `make` in project's main directory, using the trivial wrapper Makefile
-included in Tilck's source: it will simply run `$(MAKE) -C build`. In case the
+included in usax's source: it will simply run `$(MAKE) -C build`. In case the
 `build/` directory does not exist yet, it will also run the `cmake_run` wrapper
 script first.
 
 #### Build performance notes
 
-To speed up Tilck's build, it's possible to increase the level of parallelism
+To speed up usax's build, it's possible to increase the level of parallelism
 with GNU make's option `-j<N>`. For example, `make -j4` means that at most
 4 instances of the compiler will be run in parallel. **WARNING**: increasing
 the level of parallelism requires significantly more memory in the host system
@@ -79,19 +79,19 @@ It's hard to estimate in general how much memory each instance of GCC or Clang
 will use for compiling a C or C++ file, but it makes sense to be conservative
 and to account for ~1 GB of RAM per GCC/Clang instance. Therefore, `make -j4`
 would require at least 4 GB of available memory in the host system used for
-building Tilck. Still, it's possible to increase the level of parallelism at
+building usax. Still, it's possible to increase the level of parallelism at
 your own discretion, keeping in mind that in case the Linux host system runs
 out of memory while building this project (or anything else!), the OOM killer
 will run and **that will make the system potentially unstable/unusable**.
 
 **See:**
-   * Issue https://github.com/vvaltchev/tilck/issues/101
+   * Issue https://github.com/vvaltchev/usax/issues/101
    * https://unix.stackexchange.com/questions/316644/
    * https://unix.stackexchange.com/questions/208568/
    * https://unix.stackexchange.com/questions/153585/
    * https://lwn.net/Articles/317814/
 
-## Configuring Tilck
+## Configuring usax
 
 When `cmake_run` is run, all configuration options are dumped on the screen as
 CMake info messages. Therefore, changing one of them is easy as running:
@@ -99,12 +99,12 @@ CMake info messages. Therefore, changing one of them is easy as running:
     ./scripts/cmake_run -DDEBUG_CHECKS=0
 
 (Note: `cmake_run` forwards its arguments to CMake.) But, that's certainly not
-the best way to (re)configure Tilck. A more convenient way is to use CMake's
+the best way to (re)configure usax. A more convenient way is to use CMake's
 console tool called `ccmake`, part of `cmake-curses-gui` package (at least on
 Debian systems). Its main advantage is that all the options are visible and
 editable in an interactive way and that for each option there is a description.
 It's not visually cool and fancy like Linux's Kconfig, but it's fully integrated
-with CMake and does a good job, overall. (Maybe in the future Tilck will switch
+with CMake and does a good job, overall. (Maybe in the future usax will switch
 to Kconfig or some custom tool for a better user experience even in this case.)
 
 Running `ccmake` is simple as:
@@ -132,27 +132,27 @@ Or:
 
 They have both the same effect as running `run_config`. In summary, it's
 convenient to use `run_config` or `make config` instead of running `ccmake`
-directly because of its error-checking and because at some point Tilck will
+directly because of its error-checking and because at some point usax will
 have something with a better UI than `ccmake` that will be run by the wrapper
 scripts.
 
 ## Build types
 
-Tilck's build types differ only by the optimization flags used. Three build
+usax's build types differ only by the optimization flags used. Three build
 types are currently supported:
 
    * Debug: `-O0 -fno-inline-functions`
    * Release: `-O3`
    * MinSizeRel: `-Os`
 
-Tilck's default build type is: Debug. It's worth noting that very few projects
+usax's default build type is: Debug. It's worth noting that very few projects
 are built by default with `-O0 -fno-inline-functions` because the code produced
-is very inefficient. Fortunately, Tilck still performs very well in this case.
+is very inefficient. Fortunately, usax still performs very well in this case.
 Therefore, it's convenient to use this build type in particular when debugging
-Tilck because the value of all local variables will be visible in GDB
+usax because the value of all local variables will be visible in GDB
 (no optimizations, no inlining).
 
-Changing Tilck's build type is simple as running:
+Changing usax's build type is simple as running:
 
     ./scripts/cmake_run -DCMAKE_BUILD_TYPE=Release
 
@@ -167,8 +167,8 @@ matter the build type. To compile them out, it's necessary to turn off the
 
 ## Running the UEFI bootloader on QEMU
 
-While Tilck's image is bootable on a UEFI machine, QEMU doesn't by default get
-installed with a UEFI firmware. Therefore, typically we boot Tilck using only
+While usax's image is bootable on a UEFI machine, QEMU doesn't by default get
+installed with a UEFI firmware. Therefore, typically we boot usax using only
 its legacy bootloader. But, when some work has to be done on the UEFI bootloader,
 it's very convenient (and quicker) to test it on a VM, before running it on real
 hardware. To do that, it's necessary to first to ask the `build_toolchain` script
@@ -176,18 +176,18 @@ to download the Open Virtual Machine Firmware ([OVMF]) with:
 
     ./scripts/build_toolchain -s ovmf
 
-After that, it will be possible to boot Tilck by running:
+After that, it will be possible to boot usax by running:
 
     ./build/run_efi_qemu32
 
 Note: there's a `run_efi_qemu64` script as well. Its purpose is to test the
-very realistic case where modern x86_64 machines run Tilck and the UEFI
+very realistic case where modern x86_64 machines run usax and the UEFI
 bootloader has to switch from `long mode` to `protected mode 32` before jumping
 to the kernel.
 
-## Building Tilck's unit tests
+## Building usax's unit tests
 
-Tilck uses the [googletest] framework for unit tests and that's not downloaded
+usax uses the [googletest] framework for unit tests and that's not downloaded
 by `build_toolchain` when it's run without arguments. In order to install that
 framework in the toolchain, just run:
 
@@ -212,7 +212,7 @@ To run them, execute:
 **Note**: there's more about the unit tests, including special build configurations.
 For all of that, see the [testing] document.
 
-## Building Tilck with system's compiler (advanced)
+## Building usax with system's compiler (advanced)
 This use case is not supported anymore and setting USE_SYSCC=1 now triggers
 an error. Thanks to the custom pre-built toolchains from [musl-cross-make],
 which are statically linked, include libmusl debug info and support all the
@@ -224,8 +224,8 @@ simplification for this project.
 [musl-cross-make]: https://github.com/vvaltchev/musl-cross-make
 
 
-## Building Tilck with Clang (advanced)
-The Tilck project **cannot** be entirely built with a Clang toolchain, at the
+## Building usax with Clang (advanced)
+The usax project **cannot** be entirely built with a Clang toolchain, at the
 moment. But, it still has partial support for Clang because:
 
    * Supporting more than compiler (in general) improves the code
@@ -237,7 +237,7 @@ moment. But, it still has partial support for Clang because:
 
    * Clang's [Static Analyzer] is great
 
-   * Tilck has a custom plug-in for the Clang's [Static Analyzer] (but currently
+   * usax has a custom plug-in for the Clang's [Static Analyzer] (but currently
      it's not open source)
 
 #### How to build with Clang
@@ -270,7 +270,7 @@ supported and has no tricky limitations.
 
 
 ## Special build configurations (advanced)
-Tilck has a predefined list of supported configurations which must always build
+usax has a predefined list of supported configurations which must always build
 and pass all the tests. Most of them are built & run each time a branch is pushed
 by the [Azure Pipelines] CI but some of them are left out because of the limited
 resources available there. Anyway, independently of the amount of resources available
@@ -282,7 +282,7 @@ there is shell script which creates a different configuration by calling
 its unit tests for each configuration, and finally, there's (in the same directory)
 the `test_all_other_builds` script which *runs* all the tests (except the interactive
 ones) for each configuration. **Note**: these scripts expect a variety of additional
-packages to be installed both on the host machine and in Tilck's toolchain. Before
+packages to be installed both on the host machine and in usax's toolchain. Before
 running them for the first time, check (following the sections above) that the
 whole project can build with the system's compiler (GCC) and that the kernel and
 the unit tests can build with Clang as well because both of those build

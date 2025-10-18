@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/color_defs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/color_defs.h>
 
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/term.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/term.h>
 
 #define VIDEO_ADDR ((u16 *) PA_TO_LIN_VA(0xB8000))
 #define VIDEO_COLS 80

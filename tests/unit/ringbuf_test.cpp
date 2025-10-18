@@ -8,7 +8,7 @@ using namespace std;
 using namespace testing;
 
 extern "C" {
-   #include <tilck/kernel/ringbuf.h>
+   #include <usax/kernel/ringbuf.h>
 }
 
 TEST(ringbuf, basicTest)

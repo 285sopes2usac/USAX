@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/irq.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/irq.h>
 
 bool kmutex_is_curr_task_holding_lock(struct kmutex *m)
 {

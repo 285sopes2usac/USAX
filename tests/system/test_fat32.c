@@ -32,8 +32,8 @@ int cmd_fatmm1(int argc, char **argv)
    const size_t mmap_size = page_size * 2;
    const size_t mmap_off = page_size * 4;
 
-   if (!getenv("TILCK")) {
-      printf(PFX "[SKIP] because we're not running on Tilck\n");
+   if (!getenv("usax")) {
+      printf(PFX "[SKIP] because we're not running on usax\n");
       return 0;
    }
 

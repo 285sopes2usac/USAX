@@ -1,17 +1,17 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/elf_loader.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/interrupts.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/elf_loader.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/interrupts.h>
 
 static const char *const default_env[] =
 {
@@ -20,7 +20,7 @@ static const char *const default_env[] =
    "LANG=C",
    "LC_ALL=C",
    "CONSOLE=/dev/console",
-   "TILCK=1",
+   "usax=1",
    "HOME=/",
    "PS1=\\[\\e[01;32m\\]\\u@\\h\\[\\e[00m\\]:$PWD# ",
    NULL,
@@ -279,10 +279,10 @@ handle_noexec(struct elf_program_info *pinfo, const char *path)
      /*
       * [BE_NICE]
       *
-      * Tilck has no problem to just return -ENOEXEC in this case, but
+      * usax has no problem to just return -ENOEXEC in this case, but
       * ASH's implementation in busybox does not behave as it should: it
       * tries to interpret ELF's content AS IF it were a shell script: that
-      * causes weird failures, not affecting Tilck's kernel but still, it
+      * causes weird failures, not affecting usax's kernel but still, it
       * makes harder to realize that the ELF had just the wrong arch (e.g.
       * compiled for x86_64 instead of i686).
       */
@@ -297,14 +297,14 @@ handle_noexec(struct elf_program_info *pinfo, const char *path)
      /*
       * [BE_NICE]
       *
-      * Since Tilck has no support for dynamic executables, in this case it
+      * Since usax has no support for dynamic executables, in this case it
       * will ignore the INTERP segment and it will jump directly to ELF's entry
       * point, instead of jumping to dynamic linker's entry point. Therefore,
       * at the first access to a symbol not in the ELF file itself we'll get a
       * SIGSEGV.
       *
       * In order to avoid wasting people's time debugging why a given program
-      * crashes on Tilck, but not on Linux, it's nice to fail early, and display
+      * crashes on usax, but not on Linux, it's nice to fail early, and display
       * a meaningful message.
       */
 

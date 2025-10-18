@@ -1,10 +1,10 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/ringbuf.h>
-#include <tilck/kernel/kmalloc.h>
+#include <usax/kernel/ringbuf.h>
+#include <usax/kernel/kmalloc.h>
 
 extern inline void ringbuf_reset(struct ringbuf *rb);
 extern inline bool ringbuf_write_elem1(struct ringbuf *rb, u8 val);

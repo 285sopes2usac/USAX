@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/color_defs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/color_defs.h>
 #include "dp_int.h"
 
 #define ERASE_DISPLAY            "\033[2J"

@@ -1,13 +1,13 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/fs/flock.h>
-#include <tilck/kernel/test/vfs.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/fs/flock.h>
+#include <usax/kernel/test/vfs.h>
 
 #include <sys/mman.h>      // system header
 
@@ -221,7 +221,7 @@ static int ramfs_chmod(struct mnt_fs *fs, vfs_inode_ptr_t inode, mode_t mode)
 
       } else {
 
-         /* Special bits (e.g. sticky bit etc.) are not supported by Tilck */
+         /* Special bits (e.g. sticky bit etc.) are not supported by usax */
          rc = -EPERM;
       }
    }

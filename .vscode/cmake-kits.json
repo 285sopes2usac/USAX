@@ -1,6 +1,6 @@
 [
    {
-      "name": "Tilck Clang",
+      "name": "usax Clang",
       "compilers": {
          "C": "clang",
          "CXX": "clang++"
@@ -13,7 +13,7 @@
    },
 
    {
-      "name": "Tilck GCC",
+      "name": "usax GCC",
       "compilers": {
          "CC": "gcc",
          "CXX": "g++"

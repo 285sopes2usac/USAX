@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/printk.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/mods/irqchip.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/utils.h>
+#include <usax/common/printk.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/mods/irqchip.h>
 #include <3rd_party/fdt_helper.h>
 #include <libfdt.h>
 

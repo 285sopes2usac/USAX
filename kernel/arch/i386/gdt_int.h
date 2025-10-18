@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
 #pragma once
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
 /* Limit is 20 bit */
 #define GDT_LIMIT_MAX (0x000FFFFF)

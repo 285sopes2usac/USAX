@@ -5,8 +5,8 @@
 	#address-cells = <2>;
 
 	images {
-		tilck {
-			description = "tilck";
+		usax {
+			description = "usax";
 			data = /incbin/("@KERNEL_FILE@");
 			type = "kernel";
 			arch = "riscv";
@@ -35,7 +35,7 @@
 
 		config-1 {
 			description = "qemu-riscv64";
-			kernel = "tilck";
+			kernel = "usax";
 			ramdisk = "ramdisk";
 		};
 	};

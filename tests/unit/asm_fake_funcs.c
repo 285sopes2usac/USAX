@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
 // Defining some necessary symbols just to make the linker happy.
 

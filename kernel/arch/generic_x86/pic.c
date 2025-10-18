@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/timer.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/timer.h>
 
 #include "pic.h"
 

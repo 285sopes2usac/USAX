@@ -1,25 +1,25 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_console.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/color_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/color_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/kb.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/test/tty_test.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/kb.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/test/tty_test.h>
 
-#include <tilck/mods/console.h>
+#include <usax/mods/console.h>
 
 #include <linux/major.h> // system header
 

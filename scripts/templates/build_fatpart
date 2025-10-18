@@ -87,7 +87,7 @@ function format_fatpart {
    fi
 
    $mformat -i $dest -d 1 $force_fat32 -c $spc -T @INITRD_SZ_SEC@ ::
-   $mlabel -i $dest ::TILCK
+   $mlabel -i $dest ::usax
 }
 
 function create_sysroot_skeleton {
@@ -207,7 +207,7 @@ function add_tcc {
    link_or_copy $arch_dir/tcc/@ARCH@-tcc bin/tcc
    cp -r $arch_dir/tcc/examples lib/tcc-examples
 
-   cp -r $musl lib/@ARCH_GCC_TC@-tilck-musl
+   cp -r $musl lib/@ARCH_GCC_TC@-usax-musl
 }
 
 function add_micropython {

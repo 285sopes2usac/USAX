@@ -11,7 +11,7 @@
 #include <termios.h>
 #include <assert.h>
 
-#include <tilck/common/basic_defs.h> /* for STATIC_ASSERT and ARRAY_SIZE */
+#include <usax/common/basic_defs.h> /* for STATIC_ASSERT and ARRAY_SIZE */
 
 #define HIST_SIZE 16
 

@@ -1,24 +1,24 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck_gen_headers/mod_debugpanel.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax_gen_headers/mod_debugpanel.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/unaligned.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/string_util.h>
+#include <usax/common/unaligned.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/process_int.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/process_int.h>
 
 #include <sys/prctl.h>        // system header
 
@@ -575,7 +575,7 @@ vforked_child_transfer_dispose_mi(struct process *pi)
 
       /*
       * Transfer the ownership of our mappings info, created after vfork(),
-      * back to our parent. We do this trick because in Tilck processes
+      * back to our parent. We do this trick because in usax processes
       * are so lightweight that they don't have even a mappings object.
       * Since a vforked-child is allowed to use mmap() and that must affect
       * parent's address space, because that's the *same* address space,

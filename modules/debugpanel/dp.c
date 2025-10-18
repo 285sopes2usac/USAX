@@ -1,28 +1,28 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_tracing.h>
+#include <usax_gen_headers/mod_tracing.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/syscalls.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/syscalls.h>
 
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/kb.h>
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/tty_struct.h>
-#include <tilck/kernel/fs/devfs.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/kb.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/tty_struct.h>
+#include <usax/kernel/fs/devfs.h>
 
-#include <tilck/mods/fb_console.h>
-#include <tilck/mods/tracing.h>
+#include <usax/mods/fb_console.h>
+#include <usax/mods/tracing.h>
 
 #include "termutil.h"
 #include "dp_int.h"
@@ -146,7 +146,7 @@ static void redraw_screen(void)
 
    dp_draw_rect_raw(dp_start_row, dp_start_col, DP_H, DP_W);
    dp_move_cursor(dp_start_row, dp_start_col + 2);
-   dp_write_raw(E_COLOR_YELLOW "[ TilckDebugPanel ]" RESET_ATTRS);
+   dp_write_raw(E_COLOR_YELLOW "[ usaxDebugPanel ]" RESET_ATTRS);
 
    rc = snprintk(buf, sizeof(buf),
                  "[rows %02d - %02d of %02d]",
@@ -367,12 +367,12 @@ dp_ps_tool()
 static void dp_init(void)
 {
    struct dp_screen *pos;
-   register_tilck_cmd(TILCK_CMD_DEBUG_PANEL, dp_default_entry);
-   register_tilck_cmd(TILCK_CMD_PS_TOOL, dp_ps_tool);
-   register_tilck_cmd(TILCK_CMD_DEBUGGER_TOOL, dp_mini_debugger_tool);
+   register_usax_cmd(usax_CMD_DEBUG_PANEL, dp_default_entry);
+   register_usax_cmd(usax_CMD_PS_TOOL, dp_ps_tool);
+   register_usax_cmd(usax_CMD_DEBUGGER_TOOL, dp_mini_debugger_tool);
 
    if (MOD_tracing)
-      register_tilck_cmd(TILCK_CMD_TRACING_TOOL, dp_direct_tracing_mode_entry);
+      register_usax_cmd(usax_CMD_TRACING_TOOL, dp_direct_tracing_mode_entry);
 
    list_for_each_ro(pos, &dp_screens_list, node) {
 

@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/sched.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/sched.h>
 
 ulong vdso_begin = 0; /* fake value */
 

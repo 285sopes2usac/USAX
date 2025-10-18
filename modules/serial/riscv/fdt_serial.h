@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/irq.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/irq.h>
 
 struct fdt_serial {
    struct list_node node;

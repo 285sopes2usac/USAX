@@ -2,16 +2,16 @@
 
 #define __EFI_MAIN__
 
-#include <tilck_gen_headers/config_boot.h>
-#include <tilck_gen_headers/config_kernel.h>
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/mod_serial.h>
-#include <tilck_gen_headers/mod_fb.h>
+#include <usax_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_kernel.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_serial.h>
+#include <usax_gen_headers/mod_fb.h>
 
 #include "defs.h"
 #include "utils.h"
 
-#include <tilck/boot/common.h>
+#include <usax/boot/common.h>
 
 /**
  * efi_main - The entry point for the EFI application

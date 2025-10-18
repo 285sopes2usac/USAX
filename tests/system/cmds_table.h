@@ -6,7 +6,7 @@
  * access the `cmds_table` array. Example: see userapps/devshell/commands.c.
  */
 
-#include <tilck_gen_headers/mod_null.h>
+#include <usax_gen_headers/mod_null.h>
 
 /*        name,         timeout,  enabled      */
 

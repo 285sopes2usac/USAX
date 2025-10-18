@@ -8,9 +8,9 @@ class InvalidSystemConfig(Exception):
    def __init__(self, msg):
       super(InvalidSystemConfig, self).__init__(msg)
 
-class NoTilckHelloMessage(Exception):
+class NousaxHelloMessage(Exception):
    def __init__(self, screen_text = None):
-      super(NoTilckHelloMessage, self).__init__("NoTilckHelloMessage")
+      super(NousaxHelloMessage, self).__init__("NousaxHelloMessage")
       self.screen_text = screen_text
 
 class KernelPanicFailure(Exception):

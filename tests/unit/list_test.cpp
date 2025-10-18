@@ -3,8 +3,8 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/list.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/list.h>
 
 using namespace std;
 

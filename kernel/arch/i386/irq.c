@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/irq.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/irq.h>
 
 #include "idt_int.h"
 #include "../generic_x86/pic.h"

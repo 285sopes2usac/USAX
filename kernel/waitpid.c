@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/datetime.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/datetime.h>
 
 #include <sys/prctl.h>        // system header
 #include <sys/wait.h>         // system header
@@ -29,7 +29,7 @@ waitpid_should_skip_child(struct task *waiting_task,
     *       0   meaning wait for any child process whose process
     *           group ID is equal to that of the calling process.
     *
-    * NOTE: Tilck's tid is called `pid` in the Linux kernel. What Tilck calls
+    * NOTE: usax's tid is called `pid` in the Linux kernel. What usax calls
     * `pid` is called in Linux `tgid` (thread ground id).
     */
 

@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/syscalls.h>
+#include <usax/kernel/syscalls.h>
 
 /* Actual implementation, not a stub: only the root user exists. */
 int sys_getuid()

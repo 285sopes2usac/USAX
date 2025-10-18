@@ -13,17 +13,17 @@
          "args": ["selftest", "kcond_short", "10000"]
       },
       {
-         "name": "(gdb) Tilck Kernel",
+         "name": "(gdb) usax Kernel",
          "type": "cppdbg",
          "request": "launch",
-         "program": "${workspaceFolder}/build/tilck_unstripped",
+         "program": "${workspaceFolder}/build/usax_unstripped",
          "MIMode": "gdb",
          "miDebuggerServerAddress": "localhost:1234",
          "cwd": "${workspaceRoot}",
          "stopAtEntry": true
       },
       {
-         "name": "(gdb) Tilck Unit Tests",
+         "name": "(gdb) usax Unit Tests",
          "type": "cppdbg",
          "request": "launch",
          "program": "${workspaceFolder}/build/gtests",
@@ -32,7 +32,7 @@
          "stopAtEntry": false
       },
       {
-         "name": "(gdb) Busybox on Tilck",
+         "name": "(gdb) Busybox on usax",
          "type": "cppdbg",
          "request": "launch",
          "program": "${workspaceFolder}/toolchain3/busybox/busybox_unstripped",

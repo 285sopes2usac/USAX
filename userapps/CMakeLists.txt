@@ -137,15 +137,15 @@ include_directories(${ZLIB_DIR}/install/include)
 
 # [extra]
 # This macro makes the integration with extra apps much easier.
-# It's enough for the external app to just add a call to tilck_add_extra_app()
+# It's enough for the external app to just add a call to usax_add_extra_app()
 # with the full-path of a binary in order to that deliverable to become a file
-# dependency of Tilck's main target (the image) and get that deliverable copied
-# in /usr/bin (in Tilck's fatpart).
+# dependency of usax's main target (the image) and get that deliverable copied
+# in /usr/bin (in usax's fatpart).
 # Example: https://github.com/vvaltchev/tfblib
 
    set(USERAPPS_extra ON CACHE BOOL "Build all apps in userapps/extra")
 
-   macro(tilck_add_extra_app)
+   macro(usax_add_extra_app)
       set(EXTRA_APPS_LIST_copy ${EXTRA_APPS_LIST})
       list(APPEND EXTRA_APPS_LIST_copy ${ARGV0})
       set(EXTRA_APPS_LIST ${EXTRA_APPS_LIST_copy})

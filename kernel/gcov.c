@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/fault_resumable.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/fault_resumable.h>
 
 typedef u64 gcov_type;
 typedef u32 gcov_unsigned_t;
@@ -340,12 +340,12 @@ static u32 compute_gcda_file_size(const struct gcov_info *info)
 // ----------------------------------------------------------------
 
 
-int tilck_sys_gcov_get_file_count(void)
+int usax_sys_gcov_get_file_count(void)
 {
    return files_count;
 }
 
-int tilck_sys_gcov_get_file_info(int fn,
+int usax_sys_gcov_get_file_info(int fn,
                                  char *user_fname_buf,
                                  u32 fname_buf_size,
                                  u32 *user_fsize)
@@ -454,7 +454,7 @@ static void gcov_dump_file_to_buf(const struct gcov_info *gi, void *buf)
    } // for (u32 i = 0; i < info->n_functions; i++)
 }
 
-int tilck_sys_gcov_get_file(int fn, char *user_buf)
+int usax_sys_gcov_get_file(int fn, char *user_buf)
 {
    if (fn < 0 || fn >= files_count)
       return -EINVAL;

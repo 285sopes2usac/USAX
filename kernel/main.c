@@ -1,45 +1,45 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/mod_fb.h>
-#include <tilck_gen_headers/mod_ramfb.h>
-#include <tilck_gen_headers/mod_acpi.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_fb.h>
+#include <usax_gen_headers/mod_ramfb.h>
+#include <usax_gen_headers/mod_acpi.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/boot.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/boot.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
 #include <multiboot.h>
 
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/elf_loader.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/fs/fat32.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/self_tests.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/fs/kernelfs.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/uefi.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/elf_loader.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/fs/fat32.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/self_tests.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/fs/kernelfs.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/uefi.h>
 
-#include <tilck/mods/console.h>
-#include <tilck/mods/fb_console.h>
-#include <tilck/mods/serial.h>
-#include <tilck/mods/acpi.h>
+#include <usax/mods/console.h>
+#include <usax/mods/fb_console.h>
+#include <usax/mods/serial.h>
+#include <usax/mods/acpi.h>
 
 #include <3rd_party/acpi/acpi.h>
 #include <3rd_party/acpi/acexcep.h>
@@ -196,7 +196,7 @@ read_multiboot_info(void)
       if (in_panic())
          goto out;        /* We're already in panic: just fail silently */
 
-      panic("The Tilck kernel requires a multiboot-compatible bootloader");
+      panic("The usax kernel requires a multiboot-compatible bootloader");
    }
 
    if (~mbi->flags & MULTIBOOT_INFO_MEM_MAP) {
@@ -211,11 +211,11 @@ read_multiboot_info(void)
 
       const char *name = TO_PTR(mbi->boot_loader_name);
 
-      if (!strcmp(name, "TILCK_EFI")) {
+      if (!strcmp(name, "usax_EFI")) {
 
-         struct tilck_extra_boot_info *extra_boot_info = TO_PTR(mbi->apm_table);
+         struct usax_extra_boot_info *extra_boot_info = TO_PTR(mbi->apm_table);
 
-         printk("Multiboot: detected the TILCK_EFI bootloader\n");
+         printk("Multiboot: detected the usax_EFI bootloader\n");
          printk("Multiboot: ACPI RSDP: %p\n", TO_PTR(extra_boot_info->RSDP));
          printk("Multiboot: UEFI RT:   %p\n", TO_PTR(extra_boot_info->RT));
          acpi_set_root_pointer(extra_boot_info->RSDP);

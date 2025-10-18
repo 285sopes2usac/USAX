@@ -13,7 +13,7 @@ source $MAIN_DIR/scripts/bash_includes/script_utils
 function show_help {
 
    echo ""
-   echo "This script will create the directory other_builds and build Tilck and"
+   echo "This script will create the directory other_builds and build usax and"
    echo "its tests in a variety of configurations, some of which them are not"
    echo "very common. In order to all the builds to succeed, additional "
    echo "packages are expected to be installed in the host system, other than"
@@ -46,10 +46,10 @@ function show_help {
    done
 
    echo ""
-   echo -ne "${RED}WARNING${RATTRS}: if you're new to Tilck, that's probably "
+   echo -ne "${RED}WARNING${RATTRS}: if you're new to usax, that's probably "
    echo -ne "${RED}not${RATTRS} the script you're looking\nfor. "
    echo -ne "${BROWN}Check out${RATTRS} the docs/building.md file for info "
-   echo -ne "about how to build Tilck and\nthe docs/testing.md file for info "
+   echo -ne "about how to build usax and\nthe docs/testing.md file for info "
    echo -ne "about how to run its tests.\n"
    echo ""
 }

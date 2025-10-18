@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/paging.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/paging.h>
 
 /*
  * PTE format:

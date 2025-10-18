@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
 static inline int
 do_sysenter_call0(int sysno)

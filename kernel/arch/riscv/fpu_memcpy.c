@@ -18,15 +18,15 @@
    #pragma GCC optimize "-fomit-frame-pointer"
 #endif
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/arch/riscv/fpu_memcpy.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/arch/riscv/fpu_memcpy.h>
 
 void
 memcpy256_failsafe(void *dest, const void *src, u32 n)

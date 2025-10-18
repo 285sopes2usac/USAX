@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_boot.h>
-#include <tilck_gen_headers/config_kernel.h>
+#include <usax_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_kernel.h>
 
 #if ARCH_BITS == 32
    #define USE_ELF32
@@ -9,10 +9,10 @@
    #define USE_ELF64
 #endif
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/assert.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/elf_types.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/assert.h>
+#include <usax/common/string_util.h>
+#include <usax/common/elf_types.h>
 #include <elf.h>
 
 /*

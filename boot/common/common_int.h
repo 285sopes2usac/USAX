@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
 #pragma once
-#include <tilck/common/basic_defs.h>
-#include <tilck/boot/common.h>
+#include <usax/common/basic_defs.h>
+#include <usax/boot/common.h>
 
 extern const struct bootloader_intf *intf;
 extern video_mode_t g_defmode;

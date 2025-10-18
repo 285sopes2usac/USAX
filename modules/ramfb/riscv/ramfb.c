@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/modules.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/modules.h>
 
 #include <3rd_party/fdt_helper.h>
 #include <libfdt.h>

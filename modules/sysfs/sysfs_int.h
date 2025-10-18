@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/mods/sysfs.h>
-#include <tilck/mods/sysfs_utils.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/mods/sysfs.h>
+#include <usax/mods/sysfs_utils.h>
 
 struct sysfs_inode;
 
@@ -30,7 +30,7 @@ struct sysfs_inode {
    REF_COUNTED_OBJECT;
 
    enum vfs_entry_type type;
-   tilck_ino_t ino;
+   usax_ino_t ino;
 
    union {
 
@@ -65,7 +65,7 @@ struct sysfs_data {
    struct sysfs_inode *root;
 
    struct rwlock_wp rwlock;
-   tilck_ino_t next_inode;
+   usax_ino_t next_inode;
    time_t wrt_time;
    struct list dirty_handles;
 };

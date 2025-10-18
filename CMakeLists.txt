@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.22)
 # Note: the version here is the one currently *under development*. For released
 # versions, checkout GIT tags like "release-0.1.1".
 #
-project(tilck VERSION 0.1.4 LANGUAGES C CXX ASM)
+project(usax VERSION 0.1.10 LANGUAGES C CXX ASM)
 
 include(CheckCCompilerFlag)
 include(other/cmake/utils.cmake)
@@ -243,12 +243,12 @@ set(FB_CONSOLE_BANNER ON CACHE BOOL
 set(FB_CONSOLE_CURSOR_BLINK ON CACHE BOOL
     "Support cursor blinking in the fb_console")
 
-if ($ENV{TILCK_NO_LOGO})
+if ($ENV{usax_NO_LOGO})
    set(KERNEL_SHOW_LOGO OFF CACHE BOOL
-      "Show Tilck's logo after boot")
+      "Show usax's logo after boot")
 else()
    set(KERNEL_SHOW_LOGO ON CACHE BOOL
-      "Show Tilck's logo after boot")
+      "Show usax's logo after boot")
 endif()
 
 set(KERNEL_SYMBOLS ON CACHE BOOL
@@ -272,7 +272,7 @@ set(KRN_PRINTK_ON_CURR_TTY ON CACHE BOOL
     "Make printk() always flush on the current TTY")
 
 set(TYPICAL_DEVEL_USERAPPS ON CACHE BOOL
-    "Include in Tilck's ramdisk some apps for testing the kernel")
+    "Include in usax's ramdisk some apps for testing the kernel")
 
 set(BOOT_INTERACTIVE ON CACHE BOOL
     "Have user-interactive commands in the bootloaders")
@@ -361,7 +361,7 @@ set(KRN_MINIMAL_TIME_SLICE OFF CACHE BOOL
     "Make the time slice to be 1 tick in order to trigger more race conditions")
 
 set(TINY_KERNEL OFF CACHE BOOL "\
-Advanced option, use carefully. Forces the Tilck kernel \
+Advanced option, use carefully. Forces the usax kernel \
 to be as small as possible. Incompatibile with many modules \
 like console, fb, tracing and several kernel options like \
 KERNEL_SELFTESTS")
@@ -750,13 +750,13 @@ set(BOOTLOADER_BIN_FILE    ${CMAKE_BINARY_DIR}/boot/legacy/bootloader.bin)
 
 set(EFI_x86_64_FILE        ${CMAKE_BINARY_DIR}/boot/efi/BOOTX64.EFI)
 set(EFI_ia32_FILE          ${CMAKE_BINARY_DIR}/boot/efi/BOOTIA32.EFI)
-set(KERNEL_UNSTRIPPED      ${CMAKE_BINARY_DIR}/tilck_unstripped)
-set(KERNEL_FILE            ${CMAKE_BINARY_DIR}/tilck)
-set(IMG_FILE               ${CMAKE_BINARY_DIR}/tilck.img)
-set(TILCK_DEVSHELL_PATH    "/initrd/usr/bin/devshell")
+set(KERNEL_UNSTRIPPED      ${CMAKE_BINARY_DIR}/usax_unstripped)
+set(KERNEL_FILE            ${CMAKE_BINARY_DIR}/usax)
+set(IMG_FILE               ${CMAKE_BINARY_DIR}/usax.img)
+set(usax_DEVSHELL_PATH    "/initrd/usr/bin/devshell")
 
 if ("${BOOTLOADER_LEGACY}" OR "${BOOTLOADER_EFI}")
-   set(KERNEL_BOOTPART_PATH    "tilck")
+   set(KERNEL_BOOTPART_PATH    "usax")
 endif()
 
 if (${BOOTLOADER_U_BOOT})
@@ -777,9 +777,9 @@ set(CHS_SPT                   63)  # CHS sectors per track.  Do *not* touch!
 set(BL_ST2_DATA_SEG       0x2000)  # Better not touch!
 set(EARLY_BOOT_SZ           4096)  # Better not touch!
 set(STAGE3_ENTRY_OFF        4096)  # Better not touch!
-set(DISK_UUID         0x4906062b)  # UUID of Tilck's disk image ${IMG_FILE}
+set(DISK_UUID         0x4906062b)  # UUID of usax's disk image ${IMG_FILE}
 set(MAX_BOOTLOADER_BIN_SZ_KB  64)  # Max size of bootloader.bin (keep updated!)
-set(IMG_SZ_MB                 36)  # Total size of tilck.img
+set(IMG_SZ_MB                 36)  # Total size of usax.img
 
 if (KERNEL_UBSAN)
    set(INITRD_SZ_MB              30)  # Size of the initrd RAMDISK in MB
@@ -922,7 +922,7 @@ if (BOOTLOADER_EFI)
    if (${HOST_ARCH} STREQUAL "i386")
 
       if (NOT ${ARCH} STREQUAL "i386")
-         message(FATAL_ERROR "On i386, we can only build i386 Tilck")
+         message(FATAL_ERROR "On i386, we can only build i386 usax")
       endif()
 
       list(APPEND mbr_img_deps efi_bootloader ${EFI_ia32_FILE})
@@ -1072,7 +1072,7 @@ endif()
 
 add_custom_target(
 
-    tilck_image ALL
+    usax_image ALL
 
     DEPENDS
         ${IMG_FILE}

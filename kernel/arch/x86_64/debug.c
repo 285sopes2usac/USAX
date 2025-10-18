@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/errno.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/errno.h>
 
 #include <elf.h>
 #include <multiboot.h>

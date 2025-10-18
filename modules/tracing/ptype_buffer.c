@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/user.h>
-#include <tilck/mods/tracing.h>
+#include <usax/kernel/user.h>
+#include <usax/mods/tracing.h>
 
 STATIC bool
 save_param_buffer(void *data, long data_sz, char *dest_buf, size_t dest_bs)

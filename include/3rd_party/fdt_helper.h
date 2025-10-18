@@ -11,7 +11,7 @@
 #ifndef __FDT_HELPER_H__
 #define __FDT_HELPER_H__
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
 struct fdt_match {
    const char *compatible;

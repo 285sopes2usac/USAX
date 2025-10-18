@@ -9,10 +9,10 @@
 #include "kernel_init_funcs.h"
 
 extern "C" {
-   #include <tilck/kernel/fs/fat32.h>
-   #include <tilck/kernel/fs/vfs.h>
-   #include <tilck/common/utils.h>
-   #include <tilck/kernel/test/fat32.h>
+   #include <usax/kernel/fs/fat32.h>
+   #include <usax/kernel/fs/vfs.h>
+   #include <usax/common/utils.h>
+   #include <usax/kernel/test/fat32.h>
    #include <3rd_party/crc32.h>
 }
 

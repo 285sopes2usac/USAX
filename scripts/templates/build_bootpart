@@ -51,7 +51,7 @@ if [ -n "@IMAGE_FIT@" ]; then
    fi
 
    $mformat -i $dest -d 1 $force_fat32 -c $spc -T @INITRD_SZ_SEC@ ::
-   $mlabel -i $dest ::TILCK
+   $mlabel -i $dest ::usax
    $mcopy -i @CMAKE_BINARY_DIR@/fatpart @IMAGE_FIT@ ::/
 
 fi

@@ -1,17 +1,17 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/debug/termios_debug.c.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/debug/termios_debug.c.h>
 
-#include <tilck/kernel/fs/vfs_base.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/sys_types.h>
+#include <usax/kernel/fs/vfs_base.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/sys_types.h>
 
 #include "tty_int.h"
 
@@ -256,7 +256,7 @@ static int tty_ioctl_TIOCSCTTY(struct tty *t, void *argp)
        * arg equals 1, the terminal is stolen, and all processes that had it as
        * controlling terminal lose it.
        *
-       * On Tilck, at least for the moment, that won't be supported.
+       * On usax, at least for the moment, that won't be supported.
        */
 
       return -EPERM;

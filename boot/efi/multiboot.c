@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/page_size.h>
+#include <usax/common/page_size.h>
 
 #include "defs.h"
 #include "utils.h"
 
-#include <tilck/common/boot.h>
+#include <usax/common/boot.h>
 
 static multiboot_memory_map_t *multiboot_mmap;
 static UINT32 mmap_elems_count;
-static struct tilck_extra_boot_info extra_boot_info;
+static struct usax_extra_boot_info extra_boot_info;
 
 static EFI_STATUS
 AllocateMbi(void)
@@ -84,8 +84,8 @@ EfiToMultibootMemType(UINT32 type, UINT64 attribute)
           * and the rest as Runtime Data regions.
           */
          return (attribute & EFI_MEMORY_WP)
-            ? TILCK_BOOT_EFI_RUNTIME_RO
-            : TILCK_BOOT_EFI_RUNTIME_RW;
+            ? usax_BOOT_EFI_RUNTIME_RO
+            : usax_BOOT_EFI_RUNTIME_RW;
 
       case EfiLoaderCode:
       case EfiLoaderData:
@@ -233,7 +233,7 @@ end:
 static EFI_STATUS
 MbiSetBootloaderName(void)
 {
-   static char BootloaderName[] = "TILCK_EFI";
+   static char BootloaderName[] = "usax_EFI";
 
    EFI_STATUS status = EFI_SUCCESS;
    EFI_PHYSICAL_ADDRESS paddr = EFI_MBI_MAX_ADDR;
@@ -321,38 +321,38 @@ MbiSetExtraBootInfo(void)
     * this hack will be used. Note: the "hack" is not an unsafe or dirty
     * hack simply because:
     *
-    *       - We're booting ONLY the Tilck kernel
+    *       - We're booting ONLY the usax kernel
     *       - We didn't set MULTIBOOT_INFO_APM_TABLE in gMbi->flags
-    *       - We set the gMbi->boot_load_name to "TILCK_EFI" which allows the
+    *       - We set the gMbi->boot_load_name to "usax_EFI" which allows the
     *         kernel to recognize this particular bootloader.
     *
-    * Of course, if Tilck is booted by GRUB in EFI mode, it won't get this
+    * Of course, if usax is booted by GRUB in EFI mode, it won't get this
     * precious pointer and it will have to resort searching the root pointer
     * with AcpiFindRootPointer() which is unreliable on UEFI systems.
     * As a result, ACPI might be unable to find its root pointer and the whole
-    * ACPICA won't be usable. This limitation will be removed when Tilck gets
+    * ACPICA won't be usable. This limitation will be removed when usax gets
     * support for multiboot 2.0 as well.
     *
     * History notes
     * -----------------
     *
-    *    Q: Why Tilck does not support multiboot 2.0 from the beginning?
+    *    Q: Why usax does not support multiboot 2.0 from the beginning?
     *
     *    A: Because QEMU doesn't and it was so simply to just support only
     *       multiboot 1.0 everywhere. Supporting only multiboot 2.0 was not an
-    *       option because would require always booting Tilck with its
+    *       option because would require always booting usax with its
     *       bootloader under QEMU: that's slower for tests and limiting for
     *       debugging purposes.
     *
     * Update
     * -----------------
-    * We set struct tilck_extra_boot_info to the `apm_table` field
+    * We set struct usax_extra_boot_info to the `apm_table` field
     * instead of RSDP as mentioned earlier.
     *
-    * Struct tilck_extra_boot_info stores RSDP and
+    * Struct usax_extra_boot_info stores RSDP and
     * RT (UEFI Runtime Services pointer).
     */
-   
+
    gMbi->apm_table = (u32)paddr;
 
 end:

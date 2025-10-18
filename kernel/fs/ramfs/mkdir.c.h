@@ -52,7 +52,7 @@ static int ramfs_rmdir(struct vfs_path *p)
       /*
        * For the moment, we won't support deleting a directory opened somewhere
        * as this is allowed by POSIX. Linux typically allowed that, both for
-       * files and for directories. On Tilck let's try to keep that allowed only
+       * files and for directories. On usax let's try to keep that allowed only
        * for files. TODO: consider supporting removal of in-use directories.
        */
       return -EBUSY;

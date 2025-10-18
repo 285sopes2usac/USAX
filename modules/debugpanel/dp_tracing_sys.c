@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_tracing.h>
+#include <usax_gen_headers/mod_tracing.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/mods/tracing.h>
+#include <usax/common/basic_defs.h>
+#include <usax/mods/tracing.h>
 
 #include "termutil.h"
 #include "dp_tracing_int.h"

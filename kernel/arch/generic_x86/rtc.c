@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/datetime.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/datetime.h>
 
 #define CMOS_CONTROL_PORT                 0x70
 #define CMOS_DATA_PORT                    0x71

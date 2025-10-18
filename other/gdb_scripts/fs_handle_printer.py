@@ -39,7 +39,7 @@ class printer_fs_handle_base:
          ("pos       ", h['pos']),
       ]
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'fs_handle_base', '^fs_handle_base$', printer_fs_handle_base
 )
 

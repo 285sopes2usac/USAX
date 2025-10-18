@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/atomics.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/atomics.h>
 
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/pipe.h>
-#include <tilck/kernel/fs/kernelfs.h>
-#include <tilck/kernel/ringbuf.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/pipe.h>
+#include <usax/kernel/fs/kernelfs.h>
+#include <usax/kernel/ringbuf.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/sched.h>
 
 struct pipe {
 

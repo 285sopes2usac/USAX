@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/tty_struct.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/tty_struct.h>
 
 term *__curr_term;
 const struct term_interface *__curr_term_intf;

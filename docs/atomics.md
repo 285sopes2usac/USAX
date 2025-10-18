@@ -1,8 +1,8 @@
 
-Use of atomics in Tilck
+Use of atomics in usax
 ---------------------------
 
-Being Tilck a non-SMP kernel, apparently, it should never need to use atomics.
+Being usax a non-SMP kernel, apparently, it should never need to use atomics.
 Actually, that's not true. While it is true that there no need for any type
 of *sequential consistency* in a non-SMP kernel, the need for simple atomicity
 remains in order to the kernel to be portable. While on i386 and on x86_64

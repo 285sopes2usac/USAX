@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
 #pragma once
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 static bool kmalloc_debug_log;
 

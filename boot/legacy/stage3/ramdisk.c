@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_boot.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/fat32_base.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/color_defs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/fat32_base.h>
+#include <usax/common/printk.h>
+#include <usax/common/color_defs.h>
 
 #include <multiboot.h>
 
@@ -123,7 +123,7 @@ check_fat_header(struct fat_hdr *hdr)
             {
                /*
                * The FAT specification does not require BS_FilSysType to be set,
-               * but the Tilck tools and most of the FAT tools in general do set
+               * but the usax tools and most of the FAT tools in general do set
                * this field to a reasonable value like FAT16 or FAT32. If it
                * does not start with "FAT", something is wrong.
                */

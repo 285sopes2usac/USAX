@@ -17,7 +17,7 @@ How to measure the code coverage
 
 ## Typical case
 
-By following the steps below, you'll measure Tilck's cumulative test coverage
+By following the steps below, you'll measure usax's cumulative test coverage
 for the unit tests, for the kernel self-tests and the system tests as well.
 That's what is needed most of the time. For the full coverage, the interactive
 tests need to be run as well. They have more prerequisites (see above) and
@@ -25,9 +25,9 @@ require a special build configuration as well (see below).
 
 1. Setup the build configuration by running:
 
-        TEST_GCOV=1 KERNEL_GCOV=1 <TILCK>/scripts/cmake_run
+        TEST_GCOV=1 KERNEL_GCOV=1 <usax>/scripts/cmake_run
 
-2. Build Tilck and its unit tests:
+2. Build usax and its unit tests:
 
         make && make gtests
 
@@ -65,9 +65,9 @@ require a special build configuration as well (see below).
 
 ## Advanced case
 
-In order to get the *full* test coverage, it is necessary to run also Tilck's
+In order to get the *full* test coverage, it is necessary to run also usax's
 interactive tests as well. (The *interactive* tests simulate real user
-input (keystrokes on a virtual PS/2 keyboard) and check Tilck's fb console's
+input (keystrokes on a virtual PS/2 keyboard) and check usax's fb console's
 output by parsing screenshots.) To run them and get the full test coverage
 it's necessary to:
 
@@ -77,7 +77,7 @@ it's necessary to:
 
  * Replace the **step 1** above with:
 
-        TEST_GCOV=1 KERNEL_GCOV=1 <TILCK>/scripts/cmake_run --intr
+        TEST_GCOV=1 KERNEL_GCOV=1 <usax>/scripts/cmake_run --intr
 
  * Run the following command **between step 6 and step 7**:
 

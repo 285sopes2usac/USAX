@@ -1,18 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/atomics.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/atomics.h>
 
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/sched.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/sched.h>
 
-#include <tilck/mods/serial.h>
+#include <usax/mods/serial.h>
 
 /* NOTE: hw-specific stuff in generic code. TODO: fix that. */
 

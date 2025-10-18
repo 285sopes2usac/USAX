@@ -1,17 +1,17 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_boot.h>
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/mod_fb.h>
+#include <usax_gen_headers/config_boot.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_fb.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/fat32_base.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/arch/generic_x86/x86_utils.h>
-#include <tilck/common/arch/generic_x86/cpu_features.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/color_defs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/fat32_base.h>
+#include <usax/common/utils.h>
+#include <usax/common/arch/generic_x86/x86_utils.h>
+#include <usax/common/arch/generic_x86/cpu_features.h>
+#include <usax/common/printk.h>
+#include <usax/common/color_defs.h>
 
 #include <multiboot.h>
 

@@ -1,22 +1,22 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_kb8042.h>
+#include <usax_gen_headers/mod_kb8042.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/kb.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/safe_ringbuf.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/kb.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/safe_ringbuf.h>
 
-#include <tilck/mods/acpi.h>
+#include <usax/mods/acpi.h>
 
 #include "i8042.h"
 #include "kb_layouts.c.h"

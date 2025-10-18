@@ -25,7 +25,7 @@ gen_includes(ostream &out, const gen_data &data)
    out << "\n";
 
    for (const string &mod: data.modules) {
-      out << "#include <tilck_gen_headers/mod_" << mod << ".h>\n";
+      out << "#include <usax_gen_headers/mod_" << mod << ".h>\n";
    }
 
    out << "\n";
@@ -120,7 +120,7 @@ get_all_options(gen_data &data)
 
    /*
     * Parse the modules/sysfs/ro_config_vars.h file in order to find all the
-    * sysfs conf objects, one for each Tilck option.
+    * sysfs conf objects, one for each usax option.
     */
    ifstream configFile(data.ro_config_vars_file);
 
@@ -150,7 +150,7 @@ get_all_options(gen_data &data)
 int main(int argc, char **argv)
 {
    if (argc < 3) {
-      cerr << "Syntax: " << argv[0] << " <Tilck source dir> <Output file>\n";
+      cerr << "Syntax: " << argv[0] << " <usax source dir> <Output file>\n";
       return 1;
    }
 

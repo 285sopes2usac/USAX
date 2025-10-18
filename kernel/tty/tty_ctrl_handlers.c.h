@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/signal.h>
-#include <tilck/kernel/process.h>
+#include <usax/kernel/signal.h>
+#include <usax/kernel/process.h>
 
 static bool tty_ctrl_stop(struct tty *t, bool block)
 {
@@ -121,7 +121,7 @@ static bool tty_ctrl_discard(struct tty *t, bool block)
     *     IEXTEN is set, and then not passed as input.
     *
     * Since it is not supported under Linux, it won't be supported under
-    * Tilck either.
+    * usax either.
     */
 
    return false;

@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_kernel.h>
+#include <usax_gen_headers/config_kernel.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/self_tests.h>
-#include <tilck/kernel/sched.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/self_tests.h>
+#include <usax/kernel/sched.h>
 
 extern u32 __tick_duration;
 extern int __tick_adj_ticks_rem;

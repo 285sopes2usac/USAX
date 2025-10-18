@@ -12,7 +12,7 @@ send_to_vm_and_find_text(r"{ret}", True, [])
 
 # Enter in the debug panel
 send_to_vm_and_find_text(r"dp{ret}", True, [
-   "TilckDebugPanel",
+   "usaxDebugPanel",
    "TERM_ROWS",
    "DEBUG_CHECKS",
 ])

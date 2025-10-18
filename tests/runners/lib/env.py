@@ -10,7 +10,7 @@ def env_bool(x):
 def env_int(x, val):
    return Const(int(os.environ.get(x, str(val))))
 
-VM_MEMORY_SIZE_IN_MB = env_int('TILCK_VM_MEM', 128)
+VM_MEMORY_SIZE_IN_MB = env_int('usax_VM_MEM', 128)
 GEN_TEST_DATA = env_bool('GEN_TEST_DATA')
 IN_TRAVIS = env_bool('TRAVIS')
 IN_CIRCLECI = env_bool('CIRCLECI')

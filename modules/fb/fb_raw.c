@@ -9,22 +9,22 @@
    #pragma GCC optimize "-O3"
 #endif
 
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck_gen_headers/mod_fb.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax_gen_headers/mod_fb.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/color_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/unaligned.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/utils.h>
+#include <usax/common/color_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/unaligned.h>
 
-#include <tilck/mods/fb_console.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/system_mmap_int.h>
-#include <tilck/kernel/errno.h>
+#include <usax/mods/fb_console.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/system_mmap_int.h>
+#include <usax/kernel/errno.h>
 
 #include "fb_int.h"
 
@@ -267,7 +267,7 @@ void fb_raw_color_lines(u32 iy, u32 h, u32 color)
 
       /*
        * Generic (but slower version)
-       * NOTE: Optimizing for bpp != 32 is completely out of Tilck's goals.
+       * NOTE: Optimizing for bpp != 32 is completely out of usax's goals.
        */
 
       for (u32 y = iy; y < (iy + h); y++)
@@ -293,7 +293,7 @@ void fb_draw_cursor_raw(u32 ix, u32 iy, u32 color)
 
       /*
        * Generic (but slower version)
-       * NOTE: Optimizing for bpp != 32 is completely out of Tilck's goals.
+       * NOTE: Optimizing for bpp != 32 is completely out of usax's goals.
        */
 
       for (u32 y = iy; y < (iy + font_h); y++)
@@ -315,7 +315,7 @@ void fb_copy_from_screen(u32 ix, u32 iy, u32 w, u32 h, u32 *buf)
 
       /*
        * Generic (but slower version)
-       * NOTE: Optimizing for bpp != 32 is completely out of Tilck's goals.
+       * NOTE: Optimizing for bpp != 32 is completely out of usax's goals.
        */
 
       for (u32 y = 0; y < h; y++, vaddr += fb_pitch)
@@ -338,7 +338,7 @@ void fb_copy_to_screen(u32 ix, u32 iy, u32 w, u32 h, u32 *buf)
 
       /*
        * Generic (but slower version)
-       * NOTE: Optimizing for bpp != 32 is completely out of Tilck's goals.
+       * NOTE: Optimizing for bpp != 32 is completely out of usax's goals.
        */
 
       for (u32 y = 0; y < h; y++, vaddr += fb_pitch)

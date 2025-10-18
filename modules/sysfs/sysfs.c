@@ -1,20 +1,20 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/rwlock.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/sort.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/rwlock.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/sort.h>
 
 #include "sysfs_int.h"
 #include "dents.c.h"

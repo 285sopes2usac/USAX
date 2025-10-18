@@ -10,7 +10,7 @@ using namespace std;
 using namespace testing;
 
 extern "C" {
-   #include <tilck/kernel/sort.h>
+   #include <usax/kernel/sort.h>
 }
 
 static long less_than_cmp_int(const void *a, const void *b)

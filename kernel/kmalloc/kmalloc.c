@@ -2,21 +2,21 @@
 
 #define _KMALLOC_C_
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/kmalloc_debug.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/sort.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/worker_thread.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/kmalloc_debug.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/sort.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/worker_thread.h>
 
-#include <tilck_gen_headers/config_kmalloc.h>
+#include <usax_gen_headers/config_kmalloc.h>
 
 #include "kmalloc_debug.h"
 #include "kmalloc_heap_struct.h"

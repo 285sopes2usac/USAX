@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_boot.h>
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/assert.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax_gen_headers/config_boot.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/assert.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
 #include "common_int.h"
 
-#define TILCK_MIN_RES_X                               640
-#define TILCK_MIN_RES_Y                               480
+#define usax_MIN_RES_X                               640
+#define usax_MIN_RES_Y                               480
 
 struct ok_mode {
 
@@ -44,7 +44,7 @@ init_common_bootloader_code(const struct bootloader_intf *i)
 static bool
 is_usable_video_mode(struct generic_video_mode_info *gi)
 {
-   return gi->xres >= TILCK_MIN_RES_X && gi->yres >= TILCK_MIN_RES_Y;
+   return gi->xres >= usax_MIN_RES_X && gi->yres >= usax_MIN_RES_Y;
 }
 
 static bool
@@ -151,7 +151,7 @@ filter_modes_int(video_mode_t *all_modes, int all_modes_cnt, int bpp)
 
    if (max_mode != INVALID_VIDEO_MODE) {
 
-      /* Display the max mode, even if might not be optimal for Tilck */
+      /* Display the max mode, even if might not be optimal for usax */
       if (!is_mode_in_ok_list(max_mode)) {
 
          if (!intf->get_mode_info(max_mode, &gi))
@@ -217,7 +217,7 @@ get_user_video_mode_choice(void)
          return g_defmode;
       }
 
-      s = tilck_strtol(buf, NULL, 10, &err);
+      s = usax_strtol(buf, NULL, 10, &err);
 
       if (err || s < 0 || s > ok_modes_cnt - 1) {
          printk("Invalid selection.\n");

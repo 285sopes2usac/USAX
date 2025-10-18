@@ -1,13 +1,13 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/mods/acpi.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/mods/acpi.h>
 
 #include <3rd_party/acpi/acpi.h>
 #include <3rd_party/acpi/accommon.h>

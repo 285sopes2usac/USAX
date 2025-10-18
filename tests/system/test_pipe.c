@@ -388,7 +388,7 @@ pipe_random_test(int readers, int writers)
       return 1;
    }
 
-   if (!getenv("TILCK")) {
+   if (!getenv("usax")) {
       fcntl(pipefd[0], F_SETPIPE_SZ, 4096);
       fcntl(pipefd[1], F_SETPIPE_SZ, 4096);
    }

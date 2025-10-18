@@ -63,9 +63,9 @@ TEST_F(vfs_fat32, fseek)
    default_random_engine engine(seed);
    lognormal_distribution<> dist(4.0, 3);
    off_t linux_lseek;
-   off_t tilck_fseek;
+   off_t usax_fseek;
    off_t linux_pos;
-   off_t tilck_pos;
+   off_t usax_pos;
 
    cout << "[ INFO     ] random seed: " << seed << endl;
 
@@ -82,18 +82,18 @@ TEST_F(vfs_fat32, fseek)
    ASSERT_TRUE(r == 0);
    ASSERT_TRUE(h != NULL);
 
-   char buf_tilck[64];
+   char buf_usax[64];
    char buf_linux[64];
 
    linux_lseek = lseek(fd, file_size / 2, SEEK_SET);
-   tilck_fseek = vfs_seek(h, file_size / 2, SEEK_SET);
-   ASSERT_EQ(linux_lseek, tilck_fseek);
+   usax_fseek = vfs_seek(h, file_size / 2, SEEK_SET);
+   ASSERT_EQ(linux_lseek, usax_fseek);
 
    off_t last_pos = lseek(fd, 0, SEEK_CUR);
 
    linux_pos = last_pos;
-   tilck_pos = vfs_seek(h, 0, SEEK_CUR);
-   ASSERT_EQ(linux_pos, tilck_pos);
+   usax_pos = vfs_seek(h, 0, SEEK_CUR);
+   ASSERT_EQ(linux_pos, usax_pos);
 
    (void)last_pos;
 
@@ -111,43 +111,43 @@ TEST_F(vfs_fat32, fseek)
       if (linux_lseek < 0)
          saved_errno = errno;
 
-      tilck_fseek = vfs_seek(h, offset, SEEK_CUR);
+      usax_fseek = vfs_seek(h, offset, SEEK_CUR);
 
       linux_pos = lseek(fd, 0, SEEK_CUR);
-      tilck_pos = vfs_seek(h, 0, SEEK_CUR);
+      usax_pos = vfs_seek(h, 0, SEEK_CUR);
 
       if (linux_lseek < 0) {
 
          /*
           * Linux syscalls return -ERRNO_VALUE in case something goes wrong,
           * while the glibc wrappers return -1 and set errno. Since we're
-          * testing the value returned by the syscall in Tilck, we need to
+          * testing the value returned by the syscall in usax, we need to
           * revert that.
           */
          linux_lseek = -saved_errno;
       }
 
-      ASSERT_EQ(tilck_fseek, linux_lseek)
+      ASSERT_EQ(usax_fseek, linux_lseek)
          << "Offset: " << offset << endl
          << "Curr pos (glibc): " << linux_pos << endl
-         << "Curr pos (tilck):  " << tilck_pos << endl;
+         << "Curr pos (usax):  " << usax_pos << endl;
 
-      ASSERT_EQ(tilck_pos, linux_pos);
+      ASSERT_EQ(usax_pos, linux_pos);
 
       memset(buf_linux, 0, sizeof(buf_linux));
-      memset(buf_tilck, 0, sizeof(buf_tilck));
+      memset(buf_usax, 0, sizeof(buf_usax));
 
       ssize_t linux_read = read(fd, buf_linux, sizeof(buf_linux));
-      ssize_t tilck_read = vfs_read(h, buf_tilck, sizeof(buf_tilck));
+      ssize_t usax_read = vfs_read(h, buf_usax, sizeof(buf_usax));
 
-      ASSERT_EQ(tilck_read, linux_read);
+      ASSERT_EQ(usax_read, linux_read);
 
       linux_pos = lseek(fd, 0, SEEK_CUR);
-      tilck_pos = vfs_seek(h, 0, SEEK_CUR);
+      usax_pos = vfs_seek(h, 0, SEEK_CUR);
 
-      ASSERT_EQ(tilck_pos, linux_pos);
+      ASSERT_EQ(usax_pos, linux_pos);
 
-      if (memcmp(buf_tilck, buf_linux, sizeof(buf_linux)) != 0) {
+      if (memcmp(buf_usax, buf_linux, sizeof(buf_linux)) != 0) {
 
          cout << "Buffers differ. " << endl;
          cout << "Last offset: " << offset << endl;
@@ -155,7 +155,7 @@ TEST_F(vfs_fat32, fseek)
          cout << "read ret: " << linux_read << endl;
 
          test_dump_buf(buf_linux, "Linux buf:  ", 0, sizeof(buf_linux));
-         test_dump_buf(buf_linux, "Tilck buf:  ", 0, sizeof(buf_linux));
+         test_dump_buf(buf_linux, "usax buf:  ", 0, sizeof(buf_linux));
          FAIL() << "memcmp failed";
       }
 

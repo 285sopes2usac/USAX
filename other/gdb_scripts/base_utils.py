@@ -2,7 +2,7 @@
 
 import gdb # pylint: disable=import-error
 from collections import namedtuple
-from . import tilck_types as tt
+from . import usax_types as tt
 
 BuildConfig = namedtuple(
    "BuildConfig", [
@@ -15,7 +15,7 @@ BuildConfig = namedtuple(
 gdb_custom_cmds = []
 gdb_custom_cmds_objects = []
 
-regex_pretty_printers = gdb.printing.RegexpCollectionPrettyPrinter("Tilck")
+regex_pretty_printers = gdb.printing.RegexpCollectionPrettyPrinter("usax")
 
 config = None
 
@@ -35,7 +35,7 @@ def init_all_custom_cmds():
    for cmd in gdb_custom_cmds:
       gdb_custom_cmds_objects.append(cmd())
 
-def register_tilck_regex_pp(name, regex, class_name):
+def register_usax_regex_pp(name, regex, class_name):
    regex_pretty_printers.add_printer(name, regex, class_name)
 
 def offset_of(gdb_type_obj, field):

@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/color_defs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/color_defs.h>
 
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/tty_struct.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/tty_struct.h>
 #include "termutil.h"
 
 static bool rev_colors;

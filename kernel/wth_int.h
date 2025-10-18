@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
 #pragma once
-#include <tilck/kernel/safe_ringbuf.h>
-#include <tilck/kernel/sync.h>
+#include <usax/kernel/safe_ringbuf.h>
+#include <usax/kernel/sync.h>
 
 struct wjob {
    void (*func)(void *);

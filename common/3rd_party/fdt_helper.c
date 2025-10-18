@@ -5,16 +5,16 @@
  *
  * Copyright (C) 2020 Bin Meng <bmeng.cn@gmail.com>
  *
- * Tilck changes & notes
+ * usax changes & notes
  * -----------------------
  *
  * There are a lot of deletions compared to the original text.
  */
 
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/kernel/errno.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/kernel/errno.h>
 
 #include <3rd_party/fdt_helper.h>
 #include <libfdt.h>

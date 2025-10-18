@@ -1,30 +1,30 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_mm.h>
-#include <tilck_gen_headers/mod_fb.h>
+#include <usax_gen_headers/config_mm.h>
+#include <usax_gen_headers/mod_fb.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/signal.h>
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/vdso.h>
-#include <tilck/kernel/cmdline.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/signal.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/vdso.h>
+#include <usax/kernel/cmdline.h>
 
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 #include "paging_int.h"
 #include "../generic_x86/paging_generic_x86.h"
@@ -153,7 +153,7 @@ void handle_page_fault_int(regs_t *r)
 
    if (!us) {
       /*
-       * Tilck does not support kernel-space page faults caused by the kernel,
+       * usax does not support kernel-space page faults caused by the kernel,
        * while it allows user-space page faults caused by kernel (CoW pages).
        * Therefore, such a fault is necessary caused by a bug.
        * We have to panic.

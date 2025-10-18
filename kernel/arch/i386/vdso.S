@@ -3,8 +3,8 @@
 .intel_syntax noprefix
 
 #define ASM_FILE 1
-#include <tilck_gen_headers/config_mm.h>
-#include <tilck/kernel/arch/i386/asm_defs.h>
+#include <usax_gen_headers/config_mm.h>
+#include <usax/kernel/arch/i386/asm_defs.h>
 
 .code32
 .text

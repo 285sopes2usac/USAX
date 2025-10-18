@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
 #include <cstdio>
 #include <cstdint>
@@ -19,9 +19,9 @@ using namespace std;
 using namespace testing;
 
 extern "C" {
-   #include <tilck/kernel/system_mmap.h>
-   #include <tilck/kernel/system_mmap_int.h>
-   #include <tilck/kernel/test/mem_regions.h>
+   #include <usax/kernel/system_mmap.h>
+   #include <usax/kernel/system_mmap_int.h>
+   #include <usax/kernel/test/mem_regions.h>
 }
 
 struct test_mem_reg {

@@ -1,23 +1,23 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/debug_utils.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/debug_utils.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/self_tests.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/errno.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/self_tests.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/errno.h>
 
 static struct list se_list = STATIC_LIST_INIT(se_list);
 static volatile bool se_stop_requested;

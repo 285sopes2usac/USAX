@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/arch/generic_x86/x86_utils.h>
-#include <tilck/common/color_defs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/arch/generic_x86/x86_utils.h>
+#include <usax/common/color_defs.h>
 
 #define VIDEO_ADDR ((u16*)(0xB8000))
 

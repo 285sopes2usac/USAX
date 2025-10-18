@@ -8,7 +8,7 @@ set(TOOL_WS ${CMAKE_BINARY_DIR}/scripts/weaken_syms)
 
 set(
    GENERATED_CONFIG_FILE
-   ${CMAKE_BINARY_DIR}/tilck_gen_headers/generated_config.h
+   ${CMAKE_BINARY_DIR}/usax_gen_headers/generated_config.h
 )
 
 set(
@@ -18,7 +18,7 @@ set(
 
 set(
    ALL_MODULES_LIST_HEADER
-   ${CMAKE_BINARY_DIR}/tilck_gen_headers/all_modules_list.h
+   ${CMAKE_BINARY_DIR}/usax_gen_headers/all_modules_list.h
 )
 
 add_custom_command(

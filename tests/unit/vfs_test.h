@@ -5,11 +5,11 @@
 
 extern "C" {
 
-   #include <tilck/kernel/fs/vfs.h>
-   #include <tilck/kernel/sched.h>
-   #include <tilck/kernel/process.h>
-   #include <tilck/kernel/fs/fat32.h>
-   #include <tilck/kernel/test/vfs.h>
+   #include <usax/kernel/fs/vfs.h>
+   #include <usax/kernel/sched.h>
+   #include <usax/kernel/process.h>
+   #include <usax/kernel/fs/fat32.h>
+   #include <usax/kernel/test/vfs.h>
    #include "kernel/fs/fs_int.h"
 }
 

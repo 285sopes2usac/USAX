@@ -1,18 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_tracing.h>
+#include <usax_gen_headers/mod_tracing.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/datetime.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/datetime.h>
 
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 #include "termutil.h"
 #define MAX_EXEC_PATH_LEN     34

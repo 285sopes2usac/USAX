@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/assert.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/fat32_base.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/assert.h>
+#include <usax/common/string_util.h>
+#include <usax/common/fat32_base.h>
 
 
 /*
@@ -551,7 +551,7 @@ int fat_search_entry_cb(struct fat_hdr *hdr,
    /*
     * NOTE: the following is NOT fully FAT32 compliant: for long names this
     * code compares file names using a CASE SENSITIVE comparison!
-    * This HACK allows a UNIX system like Tilck to use FAT32 [case sensitivity
+    * This HACK allows a UNIX system like usax to use FAT32 [case sensitivity
     * is a MUST in UNIX] by just forcing each file to have a long name, even
     * when that is not necessary.
     */

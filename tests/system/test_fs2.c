@@ -149,7 +149,7 @@ int cmd_fmmap1(int argc, char **argv)
 
    /*
     * At least on ext4 on Linux, the past-EOF contents are kept. That's the
-    * simplest behavior to implement for Tilck as well.
+    * simplest behavior to implement for usax as well.
     */
    printf("vaddr[file_size +  0]: %c\n", vaddr[file_size +  0]);
    printf("vaddr[file_size + 10]: %c\n", vaddr[file_size + 10]);

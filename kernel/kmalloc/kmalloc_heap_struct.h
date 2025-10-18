@@ -5,8 +5,8 @@
 #define STACK_VAR (h->alloc_stack)
 #define KMALLOC_ALLOC_STACK_SIZE 32
 
-#include <tilck/common/norec.h>
-#include <tilck/common/atomics.h>
+#include <usax/common/norec.h>
+#include <usax/common/atomics.h>
 
 struct kmalloc_heap {
 

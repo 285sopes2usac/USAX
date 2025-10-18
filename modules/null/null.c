@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/string_util.h>
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/fs/vfs.h>
+#include <usax/common/string_util.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/fs/vfs.h>
 #include <linux/major.h>
 
 #define DEV_MINOR_NULL 3

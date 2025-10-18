@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/fs/flock.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/bintree.h>
+#include <usax/kernel/fs/flock.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/bintree.h>
 
 struct locked_file {
 

@@ -1,20 +1,20 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
 #pragma once
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/rwlock.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/bintree.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/process_mm.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/rwlock.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/bintree.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/process_mm.h>
 
 #include <dirent.h> // system header
 
@@ -30,7 +30,7 @@ struct ramfs_block {
 /*
  * Ramfs entries do not *necessarily* need to have a fixed size, as they are
  * allocated dynamically on the heap. Said that, a fixed-size entry struct is
- * simpler to manage and faster to alloc/free, in particular with Tilck's
+ * simpler to manage and faster to alloc/free, in particular with usax's
  * current kmalloc implementation.
  */
 #define RAMFS_ENTRY_SIZE 256
@@ -61,7 +61,7 @@ struct ramfs_inode {
     */
    REF_COUNTED_OBJECT;
 
-   tilck_ino_t ino;
+   usax_ino_t ino;
    enum vfs_entry_type type;
    struct rwlock_wp rwlock;
    nlink_t nlink;
@@ -119,7 +119,7 @@ struct ramfs_data {
 
    struct rwlock_wp rwlock;
 
-   tilck_ino_t next_inode_num;
+   usax_ino_t next_inode_num;
    struct ramfs_inode *root;
 };
 

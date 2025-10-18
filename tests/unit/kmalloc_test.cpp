@@ -18,11 +18,11 @@
 
 extern "C" {
 
-   #include <tilck/common/utils.h>
+   #include <usax/common/utils.h>
 
-   #include <tilck/kernel/kmalloc.h>
-   #include <tilck/kernel/paging.h>
-   #include <tilck/kernel/self_tests.h>
+   #include <usax/kernel/kmalloc.h>
+   #include <usax/kernel/paging.h>
+   #include <usax/kernel/self_tests.h>
 
    #include <kernel/kmalloc/kmalloc_heap_struct.h> // kmalloc private header
    #include <kernel/kmalloc/kmalloc_block_node.h>  // kmalloc private header

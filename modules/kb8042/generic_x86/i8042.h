@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/hal.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/hal.h>
 
 /* i8042's I/O ports */
 

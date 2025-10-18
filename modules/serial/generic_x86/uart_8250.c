@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/mods/serial.h>
-#include <tilck/kernel/hal.h>
+#include <usax/common/basic_defs.h>
+#include <usax/mods/serial.h>
+#include <usax/kernel/hal.h>
 
 /*
  * Definitions from:

@@ -1,21 +1,21 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_tracing.h>
+#include <usax_gen_headers/mod_tracing.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/syscalls.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/signal.h>
-#include <tilck/mods/tracing.h>
+#include <usax/kernel/syscalls.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/signal.h>
+#include <usax/mods/tracing.h>
 
 void syscall_int80_entry(void);
 void sysenter_entry(void);
@@ -65,7 +65,7 @@ static void __unknown_syscall(void)
  */
 static struct syscall syscalls[MAX_SYSCALLS] =
 {
-   [TILCK_CMD_SYSCALL] = DECL_SYS(sys_tilck_cmd, 0),
+   [usax_CMD_SYSCALL] = DECL_SYS(sys_usax_cmd, 0),
 };
 
 void *get_syscall_func_ptr(u32 n)

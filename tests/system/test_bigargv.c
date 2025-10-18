@@ -74,8 +74,8 @@ int cmd_bigargv(int argc, char **argv)
    size_t a0;
    size_t argv_len = 0, env_len = 0;
 
-   if (!running_on_tilck()) {
-      not_on_tilck_message();
+   if (!running_on_usax()) {
+      not_on_usax_message();
       return 0;
    }
 

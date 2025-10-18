@@ -1,14 +1,14 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/fs/fat32.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/user.h>
+#include <usax/kernel/fs/fat32.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/user.h>
 
 #include <dirent.h> // system header
 
@@ -294,10 +294,10 @@ fat_datetime_to_regular_datetime(u16 date, u16 time, u8 timetenth)
    return d;
 }
 
-static inline tilck_ino_t
+static inline usax_ino_t
 fat_entry_to_inode(struct fat_hdr *hdr, struct fat_entry *e)
 {
-   return (tilck_ino_t)((long)e - (long)hdr);
+   return (usax_ino_t)((long)e - (long)hdr);
 }
 
 STATIC int fat_stat(struct mnt_fs *fs,

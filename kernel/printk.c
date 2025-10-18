@@ -1,20 +1,20 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_console.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/color_defs.h>
-#include <tilck/common/atomics.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/color_defs.h>
+#include <usax/common/atomics.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/interrupts.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/datetime.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/interrupts.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/datetime.h>
 
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 #define PRINTK_BUF_SZ                         224
 #define PRINTK_PREFIXBUF_SZ                   32
@@ -363,7 +363,7 @@ vsnprintk_with_truc_suffix(char *buf, u32 bufsz, const char *fmt, va_list args)
 }
 
 static void
-__tilck_vprintk(char *prefixbuf,
+__usax_vprintk(char *prefixbuf,
                 char *buf,
                 u32 bufsz,
                 u32 flags,
@@ -472,37 +472,37 @@ __tilck_vprintk(char *prefixbuf,
 }
 
 static void
-__regular_tilck_vprintk(u32 flags, const char *fmt, va_list args)
+__regular_usax_vprintk(u32 flags, const char *fmt, va_list args)
 {
    char prefixbuf[PRINTK_PREFIXBUF_SZ];
    char buf[PRINTK_BUF_SZ];
 
-   __tilck_vprintk(prefixbuf, buf, sizeof(buf), flags, fmt, args);
+   __usax_vprintk(prefixbuf, buf, sizeof(buf), flags, fmt, args);
 }
 
 static void
-__low_ssp_tilck_vprintk(u32 flags, const char *fmt, va_list args)
+__low_ssp_usax_vprintk(u32 flags, const char *fmt, va_list args)
 {
    char prefixbuf[PRINTK_PREFIXBUF_SZ];
    char buf[64];
 
-   __tilck_vprintk(prefixbuf, buf, sizeof(buf), flags, fmt, args);
+   __usax_vprintk(prefixbuf, buf, sizeof(buf), flags, fmt, args);
 }
 
 void
-tilck_vprintk(u32 flags, const char *fmt, va_list args)
+usax_vprintk(u32 flags, const char *fmt, va_list args)
 {
    static char p_prefixbuf[PRINTK_PREFIXBUF_SZ];
    static char p_buf[PRINTK_BUF_SZ];
 
    if (in_panic())
-      __tilck_vprintk(p_prefixbuf, p_buf, sizeof(p_buf), flags, fmt, args);
+      __usax_vprintk(p_prefixbuf, p_buf, sizeof(p_buf), flags, fmt, args);
    else if (get_rem_stack() < PRINTK_SAFE_STACK_SPACE)
       panic("No stack space for vprintk(\"%s\")", fmt);
    else if (get_rem_stack() < PRINTK_SAFE_STACK_SPACE + 512)
-      __low_ssp_tilck_vprintk(flags, fmt, args);
+      __low_ssp_usax_vprintk(flags, fmt, args);
    else
-      __regular_tilck_vprintk(flags, fmt, args);
+      __regular_usax_vprintk(flags, fmt, args);
 }
 
 void printk(const char *fmt, ...)

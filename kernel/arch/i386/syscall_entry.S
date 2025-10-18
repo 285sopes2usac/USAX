@@ -4,11 +4,11 @@
 
 #define ASM_FILE 1
 
-#include <tilck_gen_headers/config_global.h>
-#include <tilck_gen_headers/config_kernel.h>
-#include <tilck_gen_headers/config_mm.h>
+#include <usax_gen_headers/config_global.h>
+#include <usax_gen_headers/config_kernel.h>
+#include <usax_gen_headers/config_mm.h>
 
-#include <tilck/kernel/arch/i386/asm_defs.h>
+#include <usax/kernel/arch/i386/asm_defs.h>
 
 .code32
 
@@ -35,7 +35,7 @@ FUNC(sysenter_entry):
     * 8. sysenter
     *
     * Note: in Linux sysenter is used by the libc through VDSO, when it is
-    * available. Tilck does not have a feature like VDSO therefore, applications
+    * available. usax does not have a feature like VDSO therefore, applications
     * have to explicitly use this convention in order to sysenter to work.
     */
 

@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_boot.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/page_size.h>
-#include <tilck/common/assert.h>
-#include <tilck/common/fat32_base.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/page_size.h>
+#include <usax/common/assert.h>
+#include <usax/common/fat32_base.h>
+#include <usax/common/utils.h>
 
 #include "defs.h"
 #include "utils.h"
@@ -132,9 +132,9 @@ LoadRamdisk_AllocMem(struct load_ramdisk_ctx *ctx)
    EFI_PHYSICAL_ADDRESS paddr;
 
    /*
-    * Because Tilck is 32-bit and it maps the first LINEAR_MAPPING_SIZE of
+    * Because usax is 32-bit and it maps the first LINEAR_MAPPING_SIZE of
     * physical memory at BASE_VA, we really cannot accept ANY address
-    * in the 64-bit space, because from Tilck we won't be able to read from
+    * in the 64-bit space, because from usax we won't be able to read from
     * there. The address of the ramdisk we actually be at most:
     *
     *    LINEAR_MAPPING_SIZE - "size of ramdisk"
@@ -150,7 +150,7 @@ LoadRamdisk_AllocMem(struct load_ramdisk_ctx *ctx)
     * --------------------------
     * Note the `(ctx.rounded_tot_used_bytes / PAGE_SIZE) + 1` expression below.
     *
-    *    +1 page is allocated to allow, evenutally, the Tilck kernel
+    *    +1 page is allocated to allow, evenutally, the usax kernel
     *    to align it's data clusters at page boundary.
     */
 
@@ -278,7 +278,7 @@ LoadRamdisk(EFI_HANDLE image,
     * Pass via multiboot 'used bytes' as RAMDISK size instead of the real
     * RAMDISK size. This is useful if the kernel uses the RAMDISK read-only.
     *
-    * Note[1]: we've increased the value by 1 page in order to allow Tilck's
+    * Note[1]: we've increased the value by 1 page in order to allow usax's
     * kernel to align the first data sector, if necessary.
     *
     * Note[2]: previously we allocated one additional page.

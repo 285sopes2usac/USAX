@@ -7,8 +7,8 @@
 #include <gtest/gtest.h>
 
 extern "C" {
-   #include <tilck/common/basic_defs.h>
-   #include <tilck/common/datetime.h>
+   #include <usax/common/basic_defs.h>
+   #include <usax/common/datetime.h>
 }
 
 using namespace std;

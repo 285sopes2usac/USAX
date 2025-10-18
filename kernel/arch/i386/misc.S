@@ -4,9 +4,9 @@
 
 #define ASM_FILE 1
 
-#include <tilck_gen_headers/config_global.h>
-#include <tilck_gen_headers/config_sched.h>
-#include <tilck/kernel/arch/i386/asm_defs.h>
+#include <usax_gen_headers/config_global.h>
+#include <usax_gen_headers/config_sched.h>
+#include <usax/kernel/arch/i386/asm_defs.h>
 #include <multiboot.h>
 
 .code32
@@ -35,7 +35,7 @@ FUNC(asm_nop_loop):
 
 END_FUNC(asm_nop_loop)
 
-# Function used to measure Tilck's bogoMIPS, a "bogus" way to measure time which
+# Function used to measure usax's bogoMIPS, a "bogus" way to measure time which
 # stands for "millions of iterations per second". See do_bogomips_loop().
 #
 # How it works

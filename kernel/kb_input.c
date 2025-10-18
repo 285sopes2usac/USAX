@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/kb.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/kb.h>
 
 struct list kb_devices_list = STATIC_LIST_INIT(kb_devices_list);
 

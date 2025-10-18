@@ -25,11 +25,11 @@
 
 extern "C" {
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/fs/vfs_base.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/fs/vfs_base.h>
 
 #define DEF_0(x, n, ret) DECL_FUNCS_0(n, ret)
 #define DEF_1(x, n, ret, t1) DECL_FUNCS_1(n, ret, t1)

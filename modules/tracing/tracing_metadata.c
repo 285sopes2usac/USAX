@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/syscalls.h>
-#include <tilck/mods/tracing.h>
+#include <usax/common/syscalls.h>
+#include <usax/mods/tracing.h>
 
 #include "syscall_types.h"
 
@@ -390,7 +390,7 @@ static const struct syscall_info __tracing_metadata[] =
    },
 
    {
-      .sys_n = TILCK_CMD_SYSCALL,
+      .sys_n = usax_CMD_SYSCALL,
       .n_params = 1,
       .exp_block = false,
       .ret_type = &ptype_errno_or_val,

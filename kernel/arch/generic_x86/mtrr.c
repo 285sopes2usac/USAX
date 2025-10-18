@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/utils.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/arch/generic_x86/cpu_features.h>
+#include <usax/common/utils.h>
+#include <usax/common/printk.h>
+#include <usax/common/arch/generic_x86/cpu_features.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/paging.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/paging.h>
 
 #define MTRR_DEF_TYPE_MTRR_ENABLED (1u << 11)
 #define MTRR_PHYS_MASK_VALID       (1u << 11)

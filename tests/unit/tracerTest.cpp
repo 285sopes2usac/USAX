@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "mocking.h"
@@ -8,13 +8,13 @@
 using namespace testing;
 
 extern "C" {
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/user.h>
-#include <tilck/mods/tracing.h>
+#include <usax/kernel/user.h>
+#include <usax/mods/tracing.h>
 
-#include <tilck/kernel/test/tracing.h>
+#include <usax/kernel/test/tracing.h>
 }
 
 class MockingTracer : public KernelSingleton {

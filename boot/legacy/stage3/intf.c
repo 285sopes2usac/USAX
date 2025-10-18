@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_boot.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/string_util.h>
-#include <tilck/boot/common.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/string_util.h>
+#include <usax/boot/common.h>
 
 #include "basic_term.h"
 #include "vbe.h"
@@ -191,7 +191,7 @@ legacy_boot_load_initrd(void)
    initrd_size = rd_compact_clusters((void *)initrd_paddr, initrd_size);
 
    /*
-    * Increase initrd_size by 1 page in order to allow Tilck's kernel to
+    * Increase initrd_size by 1 page in order to allow usax's kernel to
     * align the first data sector, if necessary.
     */
    initrd_size += 4 * KB;

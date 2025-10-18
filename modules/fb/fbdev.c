@@ -1,20 +1,20 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
+#include <usax/common/basic_defs.h>
 
-#include <tilck/kernel/modules.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/user.h>
-#include <tilck/mods/fb_console.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/process_mm.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/fs/vfs.h>
+#include <usax/kernel/modules.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/user.h>
+#include <usax/mods/fb_console.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/process_mm.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/fs/vfs.h>
 
 #include <linux/fb.h>     // system header
 #include <linux/major.h>  // system header
@@ -166,7 +166,7 @@ static int fbdev_munmap(struct user_mapping *um, void *vaddr, size_t len)
     * the framebuffer mapped, then make sure that the current TTY is restored
     * back in KD_TEXT mode, in order to give back to the user the control.
     *
-    * NOTE: that's a special Tilck-only behavior: on Linux, TTY won't be
+    * NOTE: that's a special usax-only behavior: on Linux, TTY won't be
     * restored in KD_TEXT mode and, therefore, the system won't be usable by
     * a user physically near the machine. Not even switching to a Xorg instance
     * with ALT+F1, ALT+F2, etc. works. It's required to use Magic SysRq

@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/system_mmap_int.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/system_mmap_int.h>
 
 #include "paging_int.h"
 

@@ -1,9 +1,9 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/color_defs.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/color_defs.h>
 
-#include <tilck/kernel/term.h>
+#include <usax/kernel/term.h>
 #include "gfx_chars.h"
 
 #pragma GCC diagnostic push

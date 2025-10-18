@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
 #pragma once
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/page_size.h>
-#include <tilck/boot/common.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/page_size.h>
+#include <usax/boot/common.h>
 
 #undef ASSERT
 #include <efi.h>
 #include <efilib.h>
 #include <efierr.h>
-#include <tilck/common/assert.h>
+#include <usax/common/assert.h>
 
 #include <multiboot.h>
 

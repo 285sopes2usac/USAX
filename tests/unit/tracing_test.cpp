@@ -7,7 +7,7 @@
 using namespace testing;
 
 extern "C" {
-   #include <tilck/kernel/test/tracing.h>
+   #include <usax/kernel/test/tracing.h>
 }
 
 

@@ -1,16 +1,16 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/timer.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/timer.h>
 
 #include "pic.h"
 

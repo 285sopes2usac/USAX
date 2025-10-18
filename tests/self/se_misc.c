@@ -1,13 +1,13 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/self_tests.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/timer.h>
+#include <usax/kernel/self_tests.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/timer.h>
 
 void simple_test_kthread(void *arg)
 {

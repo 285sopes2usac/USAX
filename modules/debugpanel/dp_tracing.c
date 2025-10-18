@@ -1,17 +1,17 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/mod_tracing.h>
+#include <usax_gen_headers/mod_tracing.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/datetime.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/fs/vfs.h>
+#include <usax/kernel/datetime.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/fs/vfs.h>
 
-#include <tilck/mods/tracing.h>
+#include <usax/mods/tracing.h>
 
 #include "termutil.h"
 #include "dp_tracing_int.h"
@@ -127,7 +127,7 @@ tracing_ui_msg(void)
 {
    dp_write_raw(
       E_COLOR_YELLOW
-      "Tilck syscall tracing (h: help)\r\n"
+      "usax syscall tracing (h: help)\r\n"
       RESET_ATTRS
    );
 
@@ -431,7 +431,7 @@ dp_edit_trace_printk_level(void)
    dp_set_input_blocking(false);
 
    int err = 0;
-   long val = tilck_strtol(line_buf, NULL, 10, &err);
+   long val = usax_strtol(line_buf, NULL, 10, &err);
 
    if (err || val < 0 || val > 100) {
       dp_write_raw("\r\n");
@@ -475,7 +475,7 @@ dp_tracing_get_traced_list_str_cb(void *obj, void *arg)
 static int
 dp_set_task_as_traced(const char *tidstr, int *traced_cnt)
 {
-   long tid = tilck_strtol(tidstr, NULL, 10, NULL);
+   long tid = usax_strtol(tidstr, NULL, 10, NULL);
 
    if (tid <= 0)
       return -1;

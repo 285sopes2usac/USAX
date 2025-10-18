@@ -4,7 +4,7 @@
  *
  * This software may be distributed under the terms of the BSD license.
  *
- * Tilck changes & notes
+ * usax changes & notes
  * -----------------------
  *
  * Minimal changes (os_* macros below) added by Vladislav K. Valtchev.

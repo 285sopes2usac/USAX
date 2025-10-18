@@ -19,7 +19,7 @@ set(STAGE3_BUILD_FLAGS_LIST "")
 list(
    APPEND STAGE3_BUILD_FLAGS_LIST
 
-   -D__TILCK_BOOTLOADER__
+   -D__usax_BOOTLOADER__
    -static
    -fno-pic
    -mno-red-zone

@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/string_util.h>
-#include <tilck/kernel/bintree.h>
+#include <usax/common/string_util.h>
+#include <usax/kernel/bintree.h>
 
 #define ALLOWED_IMBALANCE      1
 
@@ -286,7 +286,7 @@ bintree_find_ptr_cmp(const void *obj, const void *val, long field_off)
 #include "avl_remove.c.h"
 #undef BINTREE_PTR_FUNCS
 
-#include <tilck/common/norec.h>
+#include <usax/common/norec.h>
 
 int
 bintree_in_order_visit_internal(void *obj,
@@ -331,7 +331,7 @@ bintree_in_order_visit_internal(void *obj,
 #undef   STACK_SIZE_VAR
 #define  STACK_VAR       ctx->stack
 #define  STACK_SIZE_VAR  ctx->stack_size
-#include <tilck/common/norec.h>
+#include <usax/common/norec.h>
 
 void
 bintree_in_order_visit_start_internal(struct bintree_walk_ctx *ctx,

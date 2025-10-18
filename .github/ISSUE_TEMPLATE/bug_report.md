@@ -18,16 +18,16 @@ A clear and concise description of what the bug is.
 **Toolchain configuration**
 - How was the `build_toolchain` script run? (e.g. environment variables)
 
-**Tilck build configuration**
+**usax build configuration**
 - How did `cmake` was run? Did you use the `run_cmake` wrapper?
   For build errors, please attach the full build log of a *clean* build.
-- Tilck commit: please indicate the exact commit used to reproduce the problem
+- usax commit: please indicate the exact commit used to reproduce the problem
 
 **Type of issue (select one)**
 - Toolchain build problem
-- Tilck build problem
-- Tilck boot problem
-- Tilck test failure
+- usax build problem
+- usax boot problem
+- usax test failure
 - Incorrect behavior
 - Panic
 - Other
@@ -35,7 +35,7 @@ A clear and concise description of what the bug is.
 **Reproduction details**
 - Is the issue reproducible in a deterministic way?
 - Is the issue reproducible both on real hardware and QEMU or just on real HW?
-- If applicable, describe the hardware machine used to run Tilck.
+- If applicable, describe the hardware machine used to run usax.
 - Indicate the exact steps to reproduce the problem
 
 **Expected behavior**

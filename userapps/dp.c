@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/syscalls.h>
+#include <usax/common/syscalls.h>
 
 #define _GNU_SOURCE
 #include <stdio.h>
@@ -16,7 +16,7 @@ static int tracer_tool(int argc, char **argv)
       return 1;
    }
 
-   int rc = syscall(TILCK_CMD_SYSCALL, TILCK_CMD_TRACING_TOOL);
+   int rc = syscall(usax_CMD_SYSCALL, usax_CMD_TRACING_TOOL);
 
    if (rc < 0)
       printf("ERROR: tracing not compiled-in\n");
@@ -31,7 +31,7 @@ static int ps_tool(int argc, char **argv)
       return 1;
    }
 
-   int rc = syscall(TILCK_CMD_SYSCALL, TILCK_CMD_PS_TOOL);
+   int rc = syscall(usax_CMD_SYSCALL, usax_CMD_PS_TOOL);
 
    if (rc < 0)
       printf("ERROR: the ps tool is not compiled-in\n");
@@ -50,7 +50,7 @@ static int debug_panel(int argc, char **argv)
       return 1;
    }
 
-   int rc = syscall(TILCK_CMD_SYSCALL, TILCK_CMD_DEBUG_PANEL);
+   int rc = syscall(usax_CMD_SYSCALL, usax_CMD_DEBUG_PANEL);
 
    if (rc < 0)
       printf("ERROR: debug panel not compiled-in\n");
@@ -68,9 +68,9 @@ int main(int argc, char **argv)
       return 1;
    }
 
-   if (!getenv("TILCK")) {
+   if (!getenv("usax")) {
 
-      printf("ERROR: the debug panel exists only on Tilck!\n");
+      printf("ERROR: the debug panel exists only on usax!\n");
       return 1;
    }
 

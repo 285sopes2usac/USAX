@@ -13,9 +13,9 @@
 
 #endif
 
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/test/kmalloc.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/test/kmalloc.h>
 
 STATIC struct kmalloc_heap first_heap_struct;
 STATIC struct kmalloc_heap *heaps[KMALLOC_HEAPS_COUNT];

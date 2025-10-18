@@ -2,8 +2,8 @@
 
 .intel_syntax noprefix
 
-#include <tilck_gen_headers/config_global.h>
-#include <tilck_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_global.h>
+#include <usax_gen_headers/config_boot.h>
 
 # Usable (un)real mode functions
 

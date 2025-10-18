@@ -1,13 +1,13 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/arch/riscv/sbi.h>
-#include <tilck/kernel/debug_utils.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/arch/riscv/sbi.h>
+#include <usax/kernel/debug_utils.h>
 
 void init_textmode_console(void)
 {

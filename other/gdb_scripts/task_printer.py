@@ -50,6 +50,6 @@ class printer_struct_task:
    def to_string(self):
       return bu.fmt_type("struct task", self.val)
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'task', '^task$', printer_struct_task
 )

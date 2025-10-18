@@ -22,7 +22,7 @@ jobs:
     variables:
       RUNNING_IN_CI: 1
       GTEST_SHUFFLE: 0
-      TILCK_NO_LOGO: 1
+      usax_NO_LOGO: 1
       ARCH: i386
     steps:
       - script: printenv

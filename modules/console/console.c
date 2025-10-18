@@ -1,17 +1,17 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/color_defs.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/color_defs.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/fs/vfs_base.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/term.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/tty_struct.h>
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/kmalloc.h>
+#include <usax/kernel/fs/vfs_base.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/term.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/tty_struct.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/kmalloc.h>
 
 #include "console_int.h"
 #include "console_def_state.c.h"
@@ -644,7 +644,7 @@ tty_filter_end_csi_seq(u8 c,
       }
 
       do {
-         params[pc++] = (u32) tilck_strtol(endptr + 1, &endptr, 10, NULL);
+         params[pc++] = (u32) usax_strtol(endptr + 1, &endptr, 10, NULL);
       } while (*endptr);
    }
 

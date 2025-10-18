@@ -2,10 +2,10 @@
 
 #define ASM_FILE 1
 
-#include <tilck_gen_headers/config_global.h>
-#include <tilck_gen_headers/config_kernel.h>
-#include <tilck_gen_headers/config_debug.h>
-#include <tilck/kernel/arch/riscv/asm_defs.h>
+#include <usax_gen_headers/config_global.h>
+#include <usax_gen_headers/config_kernel.h>
+#include <usax_gen_headers/config_debug.h>
+#include <usax/kernel/arch/riscv/asm_defs.h>
 
 .section .text
 

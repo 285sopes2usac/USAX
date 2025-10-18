@@ -21,7 +21,7 @@ import argparse
 RUNNERS_DIR = "@CMAKE_SOURCE_DIR@/tests/runners"
 INTERACTIVE_TESTS = "@CMAKE_SOURCE_DIR@/tests/interactive"
 INTERACTIVE_EXP = "@CMAKE_SOURCE_DIR@/tests/interactive/expected"
-TILCK_IMAGE = "@IMG_FILE@"
+usax_IMAGE = "@IMG_FILE@"
 TMP_DIR = "@CMAKE_BINARY_DIR@/tmp"
 PNM2TEXT = "@CMAKE_BINARY_DIR@/scripts/build_apps/pnm2text"
 FONT_FILE = "@CMAKE_SOURCE_DIR@/modules/fb/font8x16.psf"
@@ -347,7 +347,7 @@ def false_positive_handler_vim(t, exp_t):
    # --------
    #
    # Q: Why localization might be different? We're not running on Linux
-   #    but on Tilck, where we control everything.
+   #    but on usax, where we control everything.
    #
    # A: Well, yeah, but we also support different toolchains and versions of
    #    libmusl. Also, different versions of vim might be used too. Instead of
@@ -456,7 +456,7 @@ def send_to_vm_and_find_text(cmd, dump, patterns):
 #
 # What does: runs vim and quits from it.
 #
-# Reason: vim and its runtime is compressed (tgz) in Tilck's ramdisk.
+# Reason: vim and its runtime is compressed (tgz) in usax's ramdisk.
 # The first time it's run, the `vim` wrapper script unpacks vim and its
 # runtime and that takes time. In CI runs, tests like `vim1` and `vim2`
 # could fail without this warm-up because the unpack operation is CPU-bound
@@ -488,10 +488,10 @@ def run_handle_boot():
    # Wait for the bootloader to load everything
    time.sleep(3)
 
-   # Wait a little for Tilck to boot
+   # Wait a little for usax to boot
    time.sleep(1)
 
-   # Take a screenshot for Tilck's initial screen
+   # Take a screenshot for usax's initial screen
    s = vm_take_stable_screenshot()
 
    # Convert (using our pnm2text tool) the image to text
@@ -502,8 +502,8 @@ def run_handle_boot():
    raw_stdout_write(text)
    send_to_qemu_monitor("\n")
 
-   if text.find("Hello from Tilck") == -1:
-      raise NoTilckHelloMessage()
+   if text.find("Hello from usax") == -1:
+      raise NousaxHelloMessage()
 
    if text.find("KERNEL PANIC") != -1:
       raise KernelPanicFailure()
@@ -530,7 +530,7 @@ def run_main_body():
 
    try:
 
-      # Boot Tilck and make sure everything is alright
+      # Boot usax and make sure everything is alright
       run_handle_boot()
 
       # Call the test func
@@ -540,7 +540,7 @@ def run_main_body():
       msg_print("Exception: " + str(e))
       set_once_fail_reason(Fail.timeout)
 
-   except (NoTilckHelloMessage,
+   except (NousaxHelloMessage,
            KernelPanicFailure,
            IntTestScreenTextCheckFailure,
            IntTestScreenshotNoMatchFailure) as e:
@@ -563,7 +563,7 @@ def run_main_body():
                raw_stdout_write("First diff: {}\n".format(row))
                raw_stdout_write("Expected:   {}\n".format(exp_row))
 
-      if type(e) is NoTilckHelloMessage:
+      if type(e) is NousaxHelloMessage:
          set_once_fail_reason(Fail.no_hello_message)
       elif type(e) is KernelPanicFailure:
          set_once_fail_reason(Fail.panic)
@@ -723,7 +723,7 @@ def run():
       '-display', 'none',
       '-monitor', 'stdio',
       '-device', 'isa-debug-exit,iobase=0xf4,iosize=0x04',
-      '-drive', 'id=img1,format=raw,if=none,file=' + TILCK_IMAGE,
+      '-drive', 'id=img1,format=raw,if=none,file=' + usax_IMAGE,
       '-device', 'ide-hd,drive=img1,@QEMU_CHS_GEOM@',
       '-debugcon', 'file:{}'.format(QEMU_DEBUG_FILE),
       '-d', 'cpu_reset,guest_errors,trace:*monitor*',

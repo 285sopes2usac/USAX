@@ -34,7 +34,7 @@ list(
    "${ACPICA_COMPS}/utilities/*.c"
 )
 
-# Note: for the moment there's no support in Tilck for ACPI's debugger because
+# Note: for the moment there's no support in usax for ACPI's debugger because
 # some debugger functions are not implemented yet in the OS services layer.
 # Still, it makes sense to be prepared and check for ACPI_DEBUGGER_ENABLED.
 if (ACPI_DEBUGGER_ENABLED)
@@ -93,8 +93,8 @@ endif()
 set(
    ACPICA_FLAGS_LIST
 
-   -include tilck/common/basic_defs.h
-   -include tilck/common/string_util.h
+   -include usax/common/basic_defs.h
+   -include usax/common/string_util.h
 
    -Wno-unused-variable
    -fno-sanitize=all

@@ -17,7 +17,7 @@ static void scr_special_chars(void)
 {
    printw("Special characters:\n");
 
-   /* Expected to work on all linux terminals. Work on Tilck. */
+   /* Expected to work on all linux terminals. Work on usax. */
    printc(ACS_HLINE);
    printc(ACS_LLCORNER);
    printc(ACS_ULCORNER);
@@ -30,14 +30,14 @@ static void scr_special_chars(void)
    printc(ACS_TTEE);
    printc(ACS_PLUS);
 
-   /* Mostly work on all linux terminals. Work on Tilck. */
+   /* Mostly work on all linux terminals. Work on usax. */
    printc(ACS_DIAMOND);
    printc(ACS_CKBOARD);
    printc(ACS_DEGREE);
    printc(ACS_PLMINUS);
    printc(ACS_BULLET);
 
-   /* Not expected to work on all linux terminals. Work on Tilck. */
+   /* Not expected to work on all linux terminals. Work on usax. */
    printc(ACS_LARROW);
    printc(ACS_RARROW);
    printc(ACS_DARROW);

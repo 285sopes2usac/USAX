@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
 #pragma once
-#include <tilck/kernel/fs/vfs.h>
+#include <usax/kernel/fs/vfs.h>
 
 struct mountpoint {
 

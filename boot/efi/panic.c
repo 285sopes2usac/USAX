@@ -3,8 +3,8 @@
 #include "defs.h"
 #include "utils.h"
 
-#include <tilck/common/printk.h>
-#include <tilck/common/arch/generic_x86/x86_utils.h>
+#include <usax/common/printk.h>
+#include <usax/common/arch/generic_x86/x86_utils.h>
 
 NORETURN void panic(const char *fmt, ...)
 {

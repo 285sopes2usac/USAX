@@ -1,19 +1,19 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/syscalls.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/syscalls.h>
 
-#include <tilck/kernel/tty.h>
-#include <tilck/kernel/errno.h>
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/tty_struct.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/fs/devfs.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/paging_hw.h>
-#include <tilck/kernel/system_mmap.h>
+#include <usax/kernel/tty.h>
+#include <usax/kernel/errno.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/tty_struct.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/fs/devfs.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/paging_hw.h>
+#include <usax/kernel/system_mmap.h>
 
 #include "termutil.h"
 #include "dp_int.h"
@@ -143,7 +143,7 @@ static int cmd_print(int argc, char **argv)
       return 0;
    }
 
-   tmp = tilck_strtoul(argv[0], NULL, 10, &error);
+   tmp = usax_strtoul(argv[0], NULL, 10, &error);
 
    if (!error) {
       n = tmp;
@@ -159,7 +159,7 @@ static int cmd_print(int argc, char **argv)
 
    if (argv[0][1]) {
 
-      w = tilck_strtoul(argv[0]+1, NULL, 10, &error);
+      w = usax_strtoul(argv[0]+1, NULL, 10, &error);
 
       if (error || (w != 8 && w != 16 && w != 32 && w != 64)) {
          dp_write_raw("Invalid fmt: '%s'\n", argv[0]);
@@ -184,7 +184,7 @@ static int cmd_print(int argc, char **argv)
 
    if (argv[1][0] == '0' && argv[1][1] == 'x') {
 
-      vaddr = tilck_strtoul(argv[1] + 2, NULL, 16, &error);
+      vaddr = usax_strtoul(argv[1] + 2, NULL, 16, &error);
 
       if (error) {
          dp_write_raw("Invalid vaddr: %s\n", argv[1]);
@@ -243,7 +243,7 @@ static int cmd_va2pa(int argc, char **argv)
       return 0;
     }
 
-   vaddr = tilck_strtoul(argv[0] + 2, NULL, 16, &err);
+   vaddr = usax_strtoul(argv[0] + 2, NULL, 16, &err);
 
    if (err) {
       dp_write_raw("Expected vaddr\n");
@@ -317,7 +317,7 @@ dp_mini_debugger_tool()
       return -1;
    }
 
-   dp_write_raw("--- Tilck's panic debugger ---\n");
+   dp_write_raw("--- usax's panic debugger ---\n");
 
    /* drain the input buffer */
    handle_set_blocking(h, false);

@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/kernel/fs/vfs.h>
-#include <tilck/kernel/syscalls.h>
+#include <usax/kernel/fs/vfs.h>
+#include <usax/kernel/syscalls.h>
 
 #include "fs_int.h"
 

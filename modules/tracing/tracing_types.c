@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/user.h>
-#include <tilck/kernel/sys_types.h>
-#include <tilck/mods/tracing.h>
+#include <usax/kernel/user.h>
+#include <usax/kernel/sys_types.h>
+#include <usax/mods/tracing.h>
 
 static bool
 dump_param_int(ulong __val, long hlp, char *dest, size_t dest_buf_size)

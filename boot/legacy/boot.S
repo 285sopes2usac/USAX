@@ -2,8 +2,8 @@
 
 .intel_syntax noprefix
 
-#include <tilck_gen_headers/config_global.h>
-#include <tilck_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_global.h>
+#include <usax_gen_headers/config_boot.h>
 
 #define BASE_LOAD_SEG          0x07C0 /* x86 BIOS constant, do *not* touch */
 

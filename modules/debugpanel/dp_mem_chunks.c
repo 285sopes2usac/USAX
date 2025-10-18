@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_kmalloc.h>
+#include <usax_gen_headers/config_kmalloc.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/kmalloc_debug.h>
-#include <tilck/kernel/sort.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/kmalloc_debug.h>
+#include <usax/kernel/sort.h>
 
 #include "termutil.h"
 #include "dp_int.h"

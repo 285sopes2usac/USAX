@@ -2,7 +2,7 @@
 
 import gdb # pylint: disable=import-error
 from . import base_utils as bu
-from . import tilck_types as tt
+from . import usax_types as tt
 from . import tasks
 
 class printer_struct_process:
@@ -54,6 +54,6 @@ class printer_struct_process:
    def to_string(self):
       return bu.fmt_type("struct process", self.val)
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'process', '^process$', printer_struct_process
 )

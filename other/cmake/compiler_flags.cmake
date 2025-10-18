@@ -6,19 +6,19 @@ set(GENERAL_DEFS_LIST "")
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
 
    message(STATUS "Preparing a RELEASE build...")
-   list(APPEND GENERAL_DEFS_LIST "-DNDEBUG -DTILCK_RELEASE_BUILD")
+   list(APPEND GENERAL_DEFS_LIST "-DNDEBUG -Dusax_RELEASE_BUILD")
    set(OPT_FLAGS_LIST -O3)
 
 elseif (CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
 
    message(STATUS "Preparing a MinSizeRel build...")
-   list(APPEND GENERAL_DEFS_LIST "-DNDEBUG -DTILCK_RELEASE_BUILD")
+   list(APPEND GENERAL_DEFS_LIST "-DNDEBUG -Dusax_RELEASE_BUILD")
    set(OPT_FLAGS_LIST -Os)
 
 elseif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
    message(STATUS "Preparing a DEBUG build...")
-   list(APPEND GENERAL_DEFS_LIST "-DTILCK_DEBUG_BUILD")
+   list(APPEND GENERAL_DEFS_LIST "-Dusax_DEBUG_BUILD")
    set(OPT_FLAGS_LIST -O0 -fno-inline-functions)
 
 else()
@@ -107,7 +107,7 @@ set(GENERAL_KERNEL_FLAGS_LIST "")
 list(
    APPEND GENERAL_KERNEL_FLAGS_LIST
 
-   -D__TILCK_KERNEL__
+   -D__usax_KERNEL__
 
    ${FREESTANDING_FLAGS_LIST}
    ${SAFER_BEHAVIOR_FLAGS_LIST}
@@ -120,14 +120,14 @@ if (KERNEL_SYSCC)
       # Unfortunately, when FORTIFY_SOURCE is enabled, new GCC compilers like
       # 9.x require the libc to implement extra functions and, apparently, they
       # don't care about -ffreestanding, nor care to put those functions in
-      # libgcc, which Tilck links, statically.
+      # libgcc, which usax links, statically.
       #
       # Therefore, in SYSCC builds, we fail with:
       #
       #     select.c:126: undefined reference to `__fdelt_chk'
       #
       # For the moment, it's OK to just disable those extra checks.
-      # TODO: consider enabling _FORTIFY_SOURCE in Tilck.
+      # TODO: consider enabling _FORTIFY_SOURCE in usax.
       #
 
       list(

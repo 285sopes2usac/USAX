@@ -1,17 +1,17 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
-#include <tilck/common/string_util.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
+#include <usax/common/string_util.h>
 
-#include <tilck/kernel/process.h>
-#include <tilck/kernel/sync.h>
-#include <tilck/kernel/debug_utils.h>
-#include <tilck/kernel/self_tests.h>
-#include <tilck/kernel/timer.h>
+#include <usax/kernel/process.h>
+#include <usax/kernel/sync.h>
+#include <usax/kernel/debug_utils.h>
+#include <usax/kernel/self_tests.h>
+#include <usax/kernel/timer.h>
 
 #define KMUTEX_SEK_TH_ITERS 100000
 #define KMUTEX_TH_COUNT        128
@@ -234,7 +234,7 @@ static void kmutex_ord_th(void *arg)
    ord_th_states[local_id] = 1;
 
    /*
-    * Since in practice, currently on Tilck, threads are executed pretty much
+    * Since in practice, currently on usax, threads are executed pretty much
     * in the same order as they're created, we use the HACK below in order to
     * kind-of randomize the moment when they actually acquire the order_mutex,
     * simulating the general case where the `order_mutex` is strictly required.

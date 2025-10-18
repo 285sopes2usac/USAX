@@ -1,18 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_debug.h>
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/atomics.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/atomics.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/irq.h>
-#include <tilck/kernel/timer.h>
-#include <tilck/kernel/elf_utils.h>
-#include <tilck/kernel/worker_thread.h>
-#include <tilck/kernel/datetime.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/irq.h>
+#include <usax/kernel/timer.h>
+#include <usax/kernel/elf_utils.h>
+#include <usax/kernel/worker_thread.h>
+#include <usax/kernel/datetime.h>
 
 FASTCALL void asm_nop_loop(u32 iters);
 
@@ -33,7 +33,7 @@ volatile ATOMIC(u32) __bogo_loops;
 
 /* Static variables */
 static struct list timer_wakeup_list = STATIC_LIST_INIT(timer_wakeup_list);
-static u32 loops_per_tick;         /* Tilck bogoMips as loops/tick    */
+static u32 loops_per_tick;         /* usax bogoMips as loops/tick    */
 static u32 loops_per_ms = 5000000; /* loops/millisecond (initial val)  */
 static u32 loops_per_us = 5000;    /* loops/microsecond (initial val) */
 
@@ -144,7 +144,7 @@ static void tick_all_timers(void)
     *
     * Conclusion
     * ---------------------
-    * For the moment, given the very limited scale of Tilck (tens of tasks at
+    * For the moment, given the very limited scale of usax (tens of tasks at
     * most running on the whole system), the current solution is safe and
     * good-enough but, at some point, a smarter ad-hoc solution should be
     * devised. Probably solution 2 is the right candidate.
@@ -387,7 +387,7 @@ static void do_bogomips_loop(void *arg)
       asm_do_bogomips_loop();
    }
    enable_preemption();
-   printk("Tilck bogoMips: %u.%03u\n", loops_per_us, loops_per_ms % 1000);
+   printk("usax bogoMips: %u.%03u\n", loops_per_us, loops_per_ms % 1000);
 }
 
 void delay_us(u32 us)

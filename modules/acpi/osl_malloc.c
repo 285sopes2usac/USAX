@@ -1,15 +1,15 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/utils.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/interrupts.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/errno.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/interrupts.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/errno.h>
 
 #include <3rd_party/acpi/acpi.h>
 #include <3rd_party/acpi/accommon.h>

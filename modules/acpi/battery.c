@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/list.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/errno.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/list.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/errno.h>
 
 #include "acpi_int.h"
 
@@ -27,7 +27,7 @@ acpi_is_battery(ACPI_HANDLE obj)
     * Evalutating the _BIX method requires the installation of an additional
     * address space handler (see AcpiInstallAddressSpaceHandler() in ACPICA and
     * OperationRegion in the ACPI spec) for the embedded controller on some
-    * machines. Tilck has no support for that, yet.
+    * machines. usax has no support for that, yet.
     *
     * For the reasons above, force-setting `has_BIX` to false.
     */

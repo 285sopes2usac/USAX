@@ -57,17 +57,17 @@ void dump_coverage_files(void)
    void *buf, *zbuf;
    char fname[256];
    unsigned fsize;
-   const int fn = tilck_get_num_gcov_files(); // this syscall cannot fail
+   const int fn = usax_get_num_gcov_files(); // this syscall cannot fail
 
-   tilck_set_sched_alive_thread_enabled(false);
+   usax_set_sched_alive_thread_enabled(false);
    printf("** GCOV gcda files **\n");
 
    for (int i = 0; i < fn; i++) {
 
-      rc = tilck_get_gcov_file_info(i, fname, sizeof(fname), &fsize);
+      rc = usax_get_gcov_file_info(i, fname, sizeof(fname), &fsize);
 
       if (rc != 0) {
-         printf("[ERROR] tilck_get_gcov_file_info() failed with %d\n", rc);
+         printf("[ERROR] usax_get_gcov_file_info() failed with %d\n", rc);
          exit(1);
       }
 
@@ -83,10 +83,10 @@ void dump_coverage_files(void)
 
       printf("\nfile: %s\n", fname);
 
-      rc = tilck_get_gcov_file(i, buf);
+      rc = usax_get_gcov_file(i, buf);
 
       if (rc != 0) {
-         printf("[ERROR] tilck_get_gcov_file() failed with %d\n", rc);
+         printf("[ERROR] usax_get_gcov_file() failed with %d\n", rc);
          exit(1);
       }
 
@@ -98,5 +98,5 @@ void dump_coverage_files(void)
 
    printf("\n");
    printf("** GCOV gcda files END **\n\n");
-   tilck_set_sched_alive_thread_enabled(true);
+   usax_set_sched_alive_thread_enabled(true);
 }

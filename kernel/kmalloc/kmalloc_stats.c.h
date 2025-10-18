@@ -13,7 +13,7 @@
 
 #endif
 
-#include <tilck/kernel/bintree.h>
+#include <usax/kernel/bintree.h>
 
 struct kmalloc_acc_alloc {
 
@@ -51,7 +51,7 @@ static void kmalloc_account_alloc(size_t size)
        * While it won't be very complex to make `alloc_arr` to be dynamically
        * resizable (with re-allocation + copy), it seems unnecessary to add
        * such a feature for this debug utility. Reason: currently, there are
-       * just 42 distinct chunk sizes in Tilck, after running all of its system
+       * just 42 distinct chunk sizes in usax, after running all of its system
        * tests, while with the current pre-allocated buffer (16 KB), we have
        * than 800+ slots, for 32-bit systems. This 20-fold ratio seems enough
        * even for the medium-long term. In particular, it's enough for the

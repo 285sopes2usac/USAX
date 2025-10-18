@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/assert.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/assert.h>
 
-#include <tilck/common/printk.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/arch/generic_x86/x86_utils.h>
-#include <tilck/common/arch/generic_x86/cpu_features.h>
+#include <usax/common/printk.h>
+#include <usax/common/string_util.h>
+#include <usax/common/arch/generic_x86/x86_utils.h>
+#include <usax/common/arch/generic_x86/cpu_features.h>
 
 volatile struct x86_cpu_features x86_cpu_features;
 
@@ -65,7 +65,7 @@ ext_features:
    f->virt_addr_bits = (a >> 8) & 0xff;
 }
 
-#ifdef __TILCK_KERNEL__
+#ifdef __usax_KERNEL__
 
 static const char *edx1_features[] =
 {

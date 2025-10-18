@@ -10,5 +10,6 @@ qemu-system-@ARCH@                                     \
    @QEMU_COMMON_OPTS@                                  \
    -gdb tcp::$GDB_PORT                                 \
    @QEMU_RAM_OPT@                                      \
+   -nographic                                          \
    -drive id=img1,format=raw,if=none,file=@IMG_FILE@   \
    @QEMU_ARCH_OPTS@ $EXTRA_OPTS "$@"

@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/printk.h>
-#include <tilck/kernel/hal.h>
-#include <tilck/kernel/interrupts.h>
-#include <tilck/kernel/fault_resumable.h>
-#include <tilck/kernel/process.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/printk.h>
+#include <usax/kernel/hal.h>
+#include <usax/kernel/interrupts.h>
+#include <usax/kernel/fault_resumable.h>
+#include <usax/kernel/process.h>
 
 void asm_trap_entry(void);
 void handle_generic_fault_int(regs_t *r, const char *fault_name);
@@ -61,7 +61,7 @@ static void handle_breakpoint(regs_t *r)
     *
     * On Linux, the behavior of `int 3` is quite different, but that's fine.
     * This interrupt is anyway used only for debugging purposes. In the future,
-    * it is absolutely possible that Tilck will handle it in a different way.
+    * it is absolutely possible that usax will handle it in a different way.
     * For the moment, the kernel offers no debugging features of userspace
     * programs (= no such thing as ptrace).
     */

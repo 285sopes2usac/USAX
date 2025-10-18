@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-rawImg="tilck.img"
-vmdk="tilck.vmdk"
+rawImg="usax.img"
+vmdk="usax.vmdk"
 
 pushd ./build
 

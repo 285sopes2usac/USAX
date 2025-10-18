@@ -449,7 +449,7 @@ function install_packages {
          echo "  * Manjaro"
          echo "  * Artix"
          echo "  * openSUSE"
-         echo "In order to build Tilck on this distro, please make sure the "
+         echo "In order to build usax on this distro, please make sure the "
          echo "following programs are installed:"
 
          for x in ${to_install_list[@]}; do

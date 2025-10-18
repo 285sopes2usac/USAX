@@ -16,10 +16,10 @@
 #include "mocking.h"
 
 extern "C" {
-   #include <tilck/kernel/term.h>
-   #include <tilck/kernel/tty_struct.h>
-   #include <tilck/kernel/test/tty_test.h>
-   #include <tilck/common/color_defs.h>
+   #include <usax/kernel/term.h>
+   #include <usax/kernel/tty_struct.h>
+   #include <usax/kernel/test/tty_test.h>
+   #include <usax/common/color_defs.h>
 }
 
 using namespace std;

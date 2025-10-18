@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/kernel/errno.h>
+#include <usax/common/basic_defs.h>
+#include <usax/kernel/errno.h>
 
 static const char *errno_names[] = {
 

@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
 
-#include <tilck/kernel/sched.h>
-#include <tilck/kernel/cmdline.h>
-#include <tilck/kernel/self_tests.h>
+#include <usax/kernel/sched.h>
+#include <usax/kernel/cmdline.h>
+#include <usax/kernel/self_tests.h>
 
 static int no_deadlock_set_elems;
 static int no_deadlock_set[MAX_NO_DEADLOCK_SET_ELEMS];

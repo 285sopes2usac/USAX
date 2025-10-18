@@ -1,4 +1,4 @@
-How to build and test the ancient versions of Tilck
+How to build and test the ancient versions of usax
 -------------------------------------------------------------------------------------
 
 **Key-commits:**
@@ -11,7 +11,7 @@ How to build and test the ancient versions of Tilck
    * z-ancient-02-cygwin-03 "raising the term buf to 1024 lines and the scroll to 5 lines"
 
 **Notes:**
-   The earliest versions of Tilck (called exOS at the time), have been
+   The earliest versions of usax (called exOS at the time), have been
    developed under Windows using Cygwin and Cygwin's GCC 5.3, not MinGW.
    Therefore, compiling them is a bit tricky: the simplest setup requires
    an old 32-bit system (better if Ubuntu or Debian) and fair amount of patience.
@@ -27,7 +27,7 @@ How to build and test the ancient versions of Tilck
 2. Install the following packages:
    git, gcc, nasm, GNU make, gcc-mingw-w64-i686, qemu-system-i386
 
-3. Enter in the Tilck main directory and run (using Bash):
+3. Enter in the usax main directory and run (using Bash):
    ```
    w=/usr/bin/i686-w64-mingw32 && mkdir bin &&                     \
    $(cd $_ && for x in gcc ld objcopy; do ln -s $w-$x $x; done) && \
@@ -62,7 +62,7 @@ How to build and test the ancient versions of Tilck
 
 6. Run: `git config --global core.autocrlf false`
 
-7. Clone Tilck's repo with: `git clone https://github.com/vvaltchev/tilck`
+7. Clone usax's repo with: `git clone https://github.com/vvaltchev/usax`
 
 8. Checkout an ancient commit, before 4e8c99d6c8cc3dae5ef6faf52968c389939e5b74,
    like z-ancient-01.
@@ -239,7 +239,7 @@ How to build and test the ancient versions of Tilck
 **Notes:**
    The commits in this group finally have a minimal devshell with `ls` working.
    The musl library is used by default. The shell forwards the unknown commands
-   to busybox. Also, project's name changes from "experimentOS" to "Tilck".
+   to busybox. Also, project's name changes from "experimentOS" to "usax".
 
 **Instructions:**
    Exactly as above. Ubuntu 18.04 LTS is still required because of the QEMU scripts.
@@ -261,7 +261,7 @@ How to build and test the ancient versions of Tilck
 
 -------------------------------------------------------------------------------------
 
-Starting from the commit tagged as stable-001, it's possible to build and run Tilck
+Starting from the commit tagged as stable-001, it's possible to build and run usax
 on modern Linux distributions like Ubuntu 20.04 LTS. The devshell has the `runall`
 command and Busybox's version of `vi` works. Unfortunately, some scripts like
 `run_all_tests` still require Python 2.7.x. That has been fixed between stable-004

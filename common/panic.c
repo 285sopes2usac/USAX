@@ -7,8 +7,8 @@
  * meant for traditional usermode code.
  */
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/assert.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/assert.h>
 
 #ifndef USERMODE_APP
 
@@ -16,7 +16,7 @@
     * NOTE: this case exists ONLY to make the file to compile!
     * The bootloaders and the kernel MUST have their custom panic() function.
     */
-   #include <tilck/common/printk.h>
+   #include <usax/common/printk.h>
    #define abort() while (1)
    #define printf printk
    #define vprintf vprintk

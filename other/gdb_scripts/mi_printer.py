@@ -2,7 +2,7 @@
 
 import gdb # pylint: disable=import-error
 from . import base_utils as bu
-from . import tilck_types as tt
+from . import usax_types as tt
 from . import tasks
 
 class printer_user_mapping:
@@ -63,10 +63,10 @@ class printer_mappings_info:
 
       return res
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'mappings_info', '^mappings_info$', printer_mappings_info
 )
 
-bu.register_tilck_regex_pp(
+bu.register_usax_regex_pp(
    'user_mapping', '^user_mapping$', printer_user_mapping
 )

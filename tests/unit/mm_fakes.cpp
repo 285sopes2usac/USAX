@@ -14,16 +14,16 @@ using namespace std;
 
 extern "C" {
 
-#include <tilck/common/utils.h>
+#include <usax/common/utils.h>
 
-#include <tilck/kernel/system_mmap.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/paging.h>
-#include <tilck/kernel/kmalloc.h>
+#include <usax/kernel/system_mmap.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/paging.h>
+#include <usax/kernel/kmalloc.h>
 #include <kernel/kmalloc/kmalloc_heap_struct.h> // kmalloc private header
 #include <kernel/kmalloc/kmalloc_block_node.h>  // kmalloc private header
-#include <tilck/kernel/test/mem_regions.h>
-#include <tilck/kernel/test/kmalloc.h>
+#include <usax/kernel/test/mem_regions.h>
+#include <usax/kernel/test/kmalloc.h>
 
 extern bool suppress_printk;
 

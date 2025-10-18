@@ -1,10 +1,10 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 
-#include <tilck_gen_headers/config_boot.h>
-#include <tilck_gen_headers/config_kernel.h>
-#include <tilck_gen_headers/mod_console.h>
-#include <tilck_gen_headers/mod_kb8042.h>
-#include <tilck_gen_headers/config_debug.h>
+#include <usax_gen_headers/config_boot.h>
+#include <usax_gen_headers/config_kernel.h>
+#include <usax_gen_headers/mod_console.h>
+#include <usax_gen_headers/mod_kb8042.h>
+#include <usax_gen_headers/config_debug.h>
 
 #if ARCH_BITS == 32
    #define USE_ELF32
@@ -12,15 +12,15 @@
    #define USE_ELF64
 #endif
 
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/assert.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/printk.h>
-#include <tilck/common/color_defs.h>
-#include <tilck/common/elf_calc_mem_size.c.h>
-#include <tilck/common/elf_get_section.c.h>
-#include <tilck/common/build_info.h>
-#include <tilck/common/cmdline_types.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/assert.h>
+#include <usax/common/string_util.h>
+#include <usax/common/printk.h>
+#include <usax/common/color_defs.h>
+#include <usax/common/elf_calc_mem_size.c.h>
+#include <usax/common/elf_get_section.c.h>
+#include <usax/common/build_info.h>
+#include <usax/common/cmdline_types.h>
 
 #include "common_int.h"
 
@@ -51,7 +51,7 @@ write_bootloader_hello_msg(void)
 {
    intf->set_color(COLOR_BRIGHT_WHITE);
 
-   printk("----- Hello from Tilck's %s bootloader! -----\n\n",
+   printk("----- Hello from usax's %s bootloader! -----\n\n",
           intf->efi ? "UEFI" : "legacy");
 
    intf->set_color(DEFAULT_FG_COLOR);
@@ -156,7 +156,7 @@ parse_kernel_mods_list(void)
    }
 
    if (ARCH_BITS == 64) {
-      // Temporary hack: we don't support the framebuffer yet on Tilck 64, so
+      // Temporary hack: we don't support the framebuffer yet on usax 64, so
       // forcibly assume that we don't have the "fb" module, so that we'll
       // default to text mode.
       kmod_fb = false;
@@ -182,10 +182,10 @@ load_kernel_file(void)
    }
 
    header = kernel_elf_file_paddr;
-   section = elf_get_section(header, ".tilck_info");
+   section = elf_get_section(header, ".usax_info");
 
    if (!section) {
-      printk("Not a Tilck ELF kernel file\n");
+      printk("Not a usax ELF kernel file\n");
       write_fail_msg();
       return false;
    }
@@ -369,7 +369,7 @@ menu_print_video_mode(struct generic_video_mode_info *gi)
    { #name, #alias, KOPT_TYPE_##type, TO_PTR(default) },
 
 static const struct kopt all_kopts[] = {
-   #include <tilck/common/cmdline_opts.h>
+   #include <usax/common/cmdline_opts.h>
 };
 
 #undef DEFINE_KOPT
@@ -589,7 +589,7 @@ common_bootloader_logic(void)
    if (cmdline_buf_sz < CMDLINE_BUF_SZ)
       panic("Cmdline buffer too small");
 
-   strcpy(cmdline_buf, "tilck "); /* 1st argument, always ignored */
+   strcpy(cmdline_buf, "usax "); /* 1st argument, always ignored */
    cmdline_buf += 6;
    cmdline_buf_sz -= 6;
 
@@ -601,11 +601,11 @@ common_bootloader_logic(void)
    if (kmod_serial && !video_modes_cnt) {
       /*
        * There is not a single video mode available according to VBE: either
-       * we're running on a very old machine on which Tilck won't boot anyway
+       * we're running on a very old machine on which usax won't boot anyway
        * or QEMU was run with `-vga none` and there is no video card on the VM.
        * Since the former case does not matter much and we can reasonably
        * assume here we're always in the latter case, let's disable the
-       * interactive mode and append "-sercon" to Tilck's cmdline, so that it
+       * interactive mode and append "-sercon" to usax's cmdline, so that it
        * will use the serial port 0 for the primary console. This behavior
        * is very convenient for tests because it doesn't require rebuilding
        * the kernel with different configuration options. We can use the same

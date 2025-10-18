@@ -6,15 +6,15 @@
  */
 
 extern "C" {
-#include <tilck/common/basic_defs.h>
-#include <tilck/common/string_util.h>
-#include <tilck/common/atomics.h>
-#include <tilck/kernel/safe_ringbuf.h>
-#include <tilck/kernel/kmalloc.h>
-#include <tilck/kernel/hal.h>
+#include <usax/common/basic_defs.h>
+#include <usax/common/string_util.h>
+#include <usax/common/atomics.h>
+#include <usax/kernel/safe_ringbuf.h>
+#include <usax/kernel/kmalloc.h>
+#include <usax/kernel/hal.h>
 }
 
-#include <tilck/common/cpputils.h>
+#include <usax/common/cpputils.h>
 
 static ALWAYS_INLINE bool
 rb_stat_is_empty(struct generic_safe_ringbuf_stat *s)
@@ -211,7 +211,7 @@ safe_ringbuf_read_elem(struct safe_ringbuf *rb, void *elem_ptr /* out */)
    }
 
 
-// For the moment, the following instantiations are NOT needed in Tilck.
+// For the moment, the following instantiations are NOT needed in usax.
 // No point in adding code-bloat to the kernel. As a use-cases come out,
 // un-comment the individual functions.
 
