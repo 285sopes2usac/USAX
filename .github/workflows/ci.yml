@@ -27,8 +27,7 @@ jobs:
 
       - name: Run build generators (gcc)
         run: |
-          ls
-          ls ..
+          mv /work/toolchain3 ./toolchain3
           ./scripts/build_generators/gcc
 
 
