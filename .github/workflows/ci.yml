@@ -10,8 +10,8 @@ jobs:
   debug_build:
     runs-on: ubuntu-latest
     container:
-      image: stevengez/usax_builder:v1
-      options: --user root
+      image: vvaltchev/tilck-x86_64:v6
+      # options: --user root
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
@@ -19,6 +19,9 @@ jobs:
       REPORT_COV: '1'
       CMAKE_ARGS: -DEXTRA_TCC=1
     steps:
+      # - name: Change workspace ownership
+      #   run: chown -R builder:builder $GITHUB_WORKSPACE
+
       - name: Checkout
         uses: actions/checkout@v4
 
