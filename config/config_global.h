@@ -14,6 +14,7 @@
 #define VER_MAJOR              @usax_VERSION_MAJOR@
 #define VER_MINOR              @usax_VERSION_MINOR@
 #define VER_PATCH              @usax_VERSION_PATCH@
+#define VER_EXTRA              "@usax_VERSION_EXTRA@"
 
 #define VER_MAJOR_STR          "@usax_VERSION_MAJOR@"
 #define VER_MINOR_STR          "@usax_VERSION_MINOR@"

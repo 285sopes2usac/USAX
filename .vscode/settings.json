@@ -11,7 +11,7 @@
       "**/.DS_Store": true,
       "**/.d": true,
       "toolchain*/**": true,
-      "build/**": false,
+      "build/**": true,
       "other_builds/**": true,
       "*_build/**": true,
       "*_builds/**": true,

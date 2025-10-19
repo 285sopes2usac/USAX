@@ -1,0 +1,142 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  debug_build:
+    runs-on: ubuntu-latest
+    container:
+      image: vvaltchev/usax_build:v9
+    env:
+      TCROOT_PARENT: /tc
+      GTEST_SHUFFLE: '0'
+      DUMP_COV: '1'
+      REPORT_COV: '1'
+      CMAKE_ARGS: -DEXTRA_TCC=1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run build generators (gcc)
+        run: ./scripts/build_generators/gcc
+
+      - name: Build
+        run: make -j
+
+      - name: Build gtests
+        run: make -j gtests
+
+      - name: Run gtests
+        run: ./build/gtests
+
+      - name: Generate test coverage report
+        run: ./build/scripts/generate_test_coverage_report
+
+      - name: Run system tests
+        run: ./build/st/run_all_tests -c
+
+      - name: Generate kernel coverage report (codecov)
+        run: ./build/scripts/generate_kernel_coverage_report --codecov
+
+  release_build:
+    runs-on: ubuntu-latest
+    container:
+      image: vvaltchev/usax_build:v9
+    env:
+      TCROOT_PARENT: /tc
+      GTEST_SHUFFLE: '0'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run build generators (gcc_rel)
+        run: ./scripts/build_generators/gcc_rel
+
+      - name: Build
+        run: make -j
+
+      - name: Build gtests
+        run: make -j gtests
+
+      - name: Run gtests
+        run: ./build/gtests
+
+      - name: Run system tests
+        run: ./build/st/run_all_tests -c
+
+  debug_arch_gtests_build:
+    runs-on: ubuntu-latest
+    container:
+      image: vvaltchev/usax_build:v9
+    env:
+      TCROOT_PARENT: /tc
+      RELEASE: '0'
+      GTEST_SHUFFLE: '0'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run build generators (gcc_arch_gtests)
+        run: ./scripts/build_generators/gcc_arch_gtests
+
+      - name: Build gtests
+        run: make -j gtests
+
+      - name: Run gtests
+        run: ./build/gtests
+
+  debug_syscc_build:
+    runs-on: ubuntu-latest
+    container:
+      image: vvaltchev/usax_build:v9
+    env:
+      TCROOT_PARENT: /tc
+      GTEST_SHUFFLE: '0'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build libmusl toolchain
+        run: ./scripts/build_toolchain -s build_libmusl
+
+      - name: Run build generators (gcc_syscc)
+        run: ./scripts/build_generators/gcc_syscc
+
+      - name: Build
+        run: make -j
+
+      - name: Build gtests
+        run: make -j gtests
+
+      - name: Run system tests
+        run: ./build/st/run_all_tests -c
+
+  debug_clang_build:
+    runs-on: ubuntu-latest
+    container:
+      image: vvaltchev/usax_build:v9
+    env:
+      TCROOT_PARENT: /tc
+      GTEST_SHUFFLE: '0'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run build generators (clang_wconv)
+        run: ./scripts/build_generators/clang_wconv
+
+      - name: Build
+        run: make -j
+
+      - name: Build gtests
+        run: make -j gtests
+
+      - name: Run gtests
+        run: ./build/gtests
+
+      - name: Run system tests
+        run: ./build/st/run_all_tests -c

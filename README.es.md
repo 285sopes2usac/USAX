@@ -23,8 +23,9 @@ Contenido
 ----------------------------------------
 * [Resumen](#resumen)
   - [¿Qué es usax?](#qué-es-usax)
+    * [Planes futuros](#planes-futuros)
   - [¿Qué NO es usax?](#qué-no-es-usax)
-    * [Usax vs Linux](#usax-vs-linux)
+    * [usax vs Linux](#usax-vs-linux)
 * [Características](#características)
    - [Soporte i686](#soporte-i686)
    - [Soporte riscv64](#soporte-riscv64)
@@ -37,16 +38,20 @@ Contenido
   - [El cargador de arranque de usax](#el-cargador-de-arranque-de-usax)
   - [Cargadores de terceros](#cargadores-de-terceros)
     * [Soporte GRUB](#soporte-grub)
-* [Documentación](#documentación)
-  - [Compilar usax](#construir-usax)
+* [Documentación y HOWTOs](#documentación-y-howtos)
+  - [Construir usax](#construir-usax)
   - [Probar usax](#probar-usax)
   - [Depurar usax](#depurar-usax)
     * [Panel de depuración de usax](#panel-de-depuración-de-usax)
+* [Un comentario sobre la experiencia de usuario](#un-comentario-sobre-la-experiencia-de-usuario)
+* [FAQ](#faq)
 
 Resumen
 ----------------------------------------
 
-![alt text](Structure.png)
+<p align="center">
+    <img src="http://vvaltchev.github.io/usax_imgs/v2/overview.png" border="0">
+</p>
 
 ### ¿Qué es usax?
 `usax` es un kernel monolítico educativo diseñado para ser compatible con Linux a
@@ -64,7 +69,26 @@ con proyectos educativos que requieren un esfuerzo considerable para portar soft
 preexistente. Además, nada impide que usax implemente llamadas al sistema no-Linux que
 aplicaciones conscientes puedan aprovechar.
 
-### ¿Qué NO es USAX?
+#### Planes futuros
+A largo plazo, `usax` podría hacerse popular en sistemas embebidos que requieran un
+comportamiento totalmente determinista y latencias extremadamente bajas. Con algo de
+suerte, usax podría cubrir el hueco entre *Embedded Linux* y sistemas operativos de
+tiempo real como *FreeRTOS* o *Zephyr*. El kernel ya funciona en RISCV64 y en algún
+momento será portado a la familia `ARM`. También podría adaptarse para CPUs sin MMU.
+usax sería adecuado para estos casos porque consumir poca RAM ha sido siempre un
+objetivo clave en su diseño: hoy en día el kernel puede iniciarse en una máquina QEMU
+con solo 3 MB de memoria.
+
+Además, añadir soporte básico para red y almacenamiento forma parte de los planes, aunque
+no se han definido todos los detalles. El soporte de red podría limitarse inicialmente a
+UDP + IP y a un conjunto reducido de tarjetas de red. Lo mismo para el almacenamiento: no
+todas las clases de dispositivos de bloque serán soportadas y se implementarán pocos
+sistemas de archivos (quizá solo FAT32 y ext2). Se considerará soporte FUSE.
+
+Un hito importante será soportar red y almacenamiento para una SoC concreta como la
+Raspberry Pi 3 (o 4), pero eso podrá ocurrir solo después de portar usax a ARM64.
+
+### ¿Qué NO es usax?
  * Un intento de reescribir o reemplazar el kernel de Linux. usax es un kernel completamente
 diferente que tiene compatibilidad parcial con Linux únicamente para aprovechar sus programas
 y toolchains. Además, eso ayuda a validar su corrección: si un programa funciona en Linux,
@@ -74,7 +98,7 @@ su propio conjunto de características únicas.
 
 * Un kernel adecuado para un sistema operativo de escritorio. Ningún servidor X funciona en
 usax hoy, no solo por la gran cantidad de características extra necesarias, sino porque
-eso está fuera del objetivo del proyecto.
+eso está fuera del objetivo del proyecto. Véase también: https://github.com/vvaltchev/usax/discussions/81
 
 #### usax vs Linux
 usax es fundamentalmente distinto de Linux ya que no pretende dirigirse a máquinas servidoras
@@ -90,8 +114,8 @@ características a cambio de:
  - desarrollo y pruebas más sencillos
  - mayor robustez
 
-En conclusión, es un proyecto educativo, ha sido escrito con estos objetivos
-en mente pero cuenta con una infraestructura de pruebas que intenta ser casi de nivel empresarial
+En conclusión, aunque por ahora es un proyecto educativo, ha sido escrito con estos objetivos
+en mente y cuenta con una infraestructura de pruebas que intenta ser casi de nivel empresarial
 (ver [Testing](#probar-usax)).
 
 Características
@@ -189,7 +213,7 @@ Arrancar usax en x86
 `usax` incluye un cargador interactivo que funciona tanto en BIOS legado como en sistemas UEFI. Permite elegir el modo de
 vídeo, el fichero del kernel y editar la línea de comandos del kernel.
 
-![Legacy Bootloader](LegacyBootloader.png)
+![usax's bootloader](http://vvaltchev.github.io/usax_imgs/v2/bootloader.png)
 
 ### Cargadores de terceros (x86)
 `usax` puede ser cargado por cualquier cargador que soporte `multiboot 1.0`. Por ejemplo, el cargador integrado de QEMU
@@ -213,13 +237,13 @@ menuentry "usax" {
 ```
 Después ejecute `update-grub` como root y reinicie.
 
-Documentación
+Documentación y HOWTOs
 --------------------------
 
 La documentación principal está en `docs/`. La [wiki] contiene contenido adicional como capturas de pantalla. Aquí hay una
 guía rápida para empezar.
 
-### Compilar usax
+### Construir usax
 El proyecto soporta muchas configuraciones, pero construir con la configuración por defecto se resume en unos pocos pasos.
 El único requisito real es un host Linux x86_64 o WSL.
 
@@ -287,7 +311,9 @@ usax incluye scripts GDB en `other/gdb_scripts` para mejorar la experiencia (lis
 
 #### Panel de depuración de usax
 
-![alt text](GDB.png)
+<img align="right"
+src="http://vvaltchev.github.io/usax_imgs/v2/screenshots/dp04.png"
+alt="Panel de depuración de usax" width="50%" height="50%">
 
 Depurar con GDB dentro de una VM es conveniente, pero en hardware real no hay GDB. Además, incluso en VM hay casos donde
 no es práctico. Para esos casos se introdujo un panel de depuración dentro del kernel. Empezó como algo parecido a
@@ -309,3 +335,23 @@ asustar a estudiantes o desarrolladores junior: deberían poder compilar y ejecu
 contribuir. Aunque partes del proyecto sean complejas, al menos construir y ejecutar pruebas debe ser sencillo.
 
 [coverage]: docs/coverage.md
+
+FAQ
+---------------------
+
+Aquí hay una lista de preguntas frecuentes. No es exhaustiva y puede cambiar. La lista completa está en la página Q & A en
+las Discussions del repositorio.
+
+- [¿Por qué usax no tiene la característica/abstracción XYZ como otros kernels?](https://github.com/vvaltchev/usax/discussions/83)
+
+- [¿Puede usax usarse para construir otros proyectos encima?](https://github.com/vvaltchev/usax/discussions/185)
+
+- [¿Por qué soporte FAT32?](https://github.com/vvaltchev/usax/discussions/85)
+
+- [¿Por qué mantener montado el initrd?](https://github.com/vvaltchev/usax/discussions/86)
+
+- [¿Por qué usar 3 espacios para la indentación?](https://github.com/vvaltchev/usax/discussions/88)
+
+- [¿Por qué muchos mensajes de commit son tan cortos?](https://github.com/vvaltchev/usax/discussions/89)
+
+- [¿Puede TCC compilar usax y auto-hospedarse?](https://github.com/vvaltchev/usax/discussions/93)

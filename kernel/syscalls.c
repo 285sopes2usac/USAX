@@ -127,6 +127,7 @@ int sys_newuname(struct utsname *user_buf)
    strcpy(buf.nodename, "usax");
    strcpy(buf.version, comm.hash);
    strcpy(buf.release, usax_build_info.ver);
+   strcat(buf.release, usax_build_info.extra);
    strcpy(buf.machine, usax_build_info.arch);
 
    if (copy_to_user(user_buf, &buf, sizeof(struct utsname)) < 0)

@@ -177,5 +177,6 @@ const struct build_info usax_build_info ATTR_SECTION(".usax_info") = {
    .commit = {0}, /* It will get patched after the build */
    .ver = VER_MAJOR_STR "." VER_MINOR_STR "." VER_PATCH_STR,
    .arch = ARCH_GCC_TC,
+   .extra = VER_EXTRA,
    .modules_list = ENABLED_MODULES_LIST,
 };
