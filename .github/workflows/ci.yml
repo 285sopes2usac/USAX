@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: stevengez/usax_builder:v1
+      options: --user root
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
@@ -46,6 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: stevengez/usax_builder:v1
+      options: --user root
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
@@ -72,6 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: stevengez/usax_builder:v1
+      options: --user root
     env:
       TCROOT_PARENT: /tc
       RELEASE: '0'
@@ -93,6 +96,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: stevengez/usax_builder:v1
+      options: --user root
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
@@ -119,6 +123,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: stevengez/usax_builder:v1
+      options: --user root
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
