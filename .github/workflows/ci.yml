@@ -10,7 +10,7 @@ jobs:
   debug_build:
     runs-on: ubuntu-latest
     container:
-      image: vvaltchev/usax_build:v9
+      image: stevengez/usax_builder:v1
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
@@ -45,7 +45,7 @@ jobs:
   release_build:
     runs-on: ubuntu-latest
     container:
-      image: vvaltchev/usax_build:v9
+      image: stevengez/usax_builder:v1
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
@@ -71,7 +71,7 @@ jobs:
   debug_arch_gtests_build:
     runs-on: ubuntu-latest
     container:
-      image: vvaltchev/usax_build:v9
+      image: stevengez/usax_builder:v1
     env:
       TCROOT_PARENT: /tc
       RELEASE: '0'
@@ -92,7 +92,7 @@ jobs:
   debug_syscc_build:
     runs-on: ubuntu-latest
     container:
-      image: vvaltchev/usax_build:v9
+      image: stevengez/usax_builder:v1
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
@@ -118,7 +118,7 @@ jobs:
   debug_clang_build:
     runs-on: ubuntu-latest
     container:
-      image: vvaltchev/usax_build:v9
+      image: stevengez/usax_builder:v1
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
