@@ -26,9 +26,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run build generators (gcc)
-        run: ls
-        run: ls ..
-        run: ./scripts/build_generators/gcc
+        run: |
+          ls
+          ls ..
+          ./scripts/build_generators/gcc
+
 
       - name: Build
         run: make -j
