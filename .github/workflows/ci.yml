@@ -19,16 +19,21 @@ jobs:
       REPORT_COV: '1'
       CMAKE_ARGS: -DEXTRA_TCC=1
     steps:
-      - name: Change workspace ownership
-        run: chown -R builder:builder $GITHUB_WORKSPACE
 
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Run build generators (gcc)
+      - name: Change workspace ownership
+        run: chown -R builder:builder $GITHUB_WORKSPACE
+
+      - name: Debug Work
         run: |
+          ls -la /
+          ls -la /work || echo "/work does not exist"
           mv /work/toolchain3 ./toolchain3
-          ./scripts/build_generators/gcc
+
+      - name: Run build generators (gcc)
+        run: ./scripts/build_generators/gcc
 
 
       - name: Build

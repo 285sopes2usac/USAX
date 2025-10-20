@@ -91,7 +91,7 @@ RUN apt-get update \
 
 WORKDIR /work
 
-COPY --from=BuildBuilder /work/toolchain3 .
+COPY --from=BuildBuilder /work/toolchain3 ./toolchain3
 
 # Create an unprivileged user for builds
 RUN useradd -m builder \
