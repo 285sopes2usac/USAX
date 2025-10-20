@@ -92,13 +92,6 @@ RUN apt-get update \
 RUN mkdir /work
 COPY --from=BuildBuilder /work/toolchain3 /work/toolchain3
 
-# Create an unprivileged user for builds
-RUN useradd -m builder \
- && mkdir -p /work \
- && chown builder:builder /work
-
 ENV PATH=/home/builder/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
-USER builder
 
 CMD ["/bin/bash"]
