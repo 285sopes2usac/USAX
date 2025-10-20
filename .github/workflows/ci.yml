@@ -13,7 +13,6 @@ jobs:
       image: stevengez/usax_builder:v2
       options: --user root
     env:
-      TCROOT_PARENT: $GITHUB_WORKSPACE
       GTEST_SHUFFLE: '0'
       DUMP_COV: '1'
       REPORT_COV: '1'
