@@ -30,6 +30,7 @@ jobs:
         run: |
           ls -la /work || echo "/work does not exist"
           mv /work/toolchain3 ./toolchain3
+          ls -la .
 
       - name: Run build generators (gcc)
         run: ./scripts/build_generators/gcc
