@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: stevengez/usax_builder:v3
-    env:
-      GTEST_SHUFFLE: '0'
-      DUMP_COV: '1'
-      REPORT_COV: '1'
-      CMAKE_ARGS: -DEXTRA_TCC=1
+    # env:
+    #   GTEST_SHUFFLE: '0'
+    #   DUMP_COV: '1'
+    #   REPORT_COV: '1'
+    #   CMAKE_ARGS: -DEXTRA_TCC=1
     steps:
 
       - name: Checkout
