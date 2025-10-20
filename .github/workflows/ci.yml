@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: stevengez/usax_builder:v2
-      # options: --user root
+      options: --user root
     env:
       TCROOT_PARENT: /tc
       GTEST_SHUFFLE: '0'
@@ -23,8 +23,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Change workspace ownership
-        run: chown -R builder:builder $GITHUB_WORKSPACE
+      # - name: Change workspace ownership
+      #   run: chown -R builder:builder $GITHUB_WORKSPACE
 
       - name: Debug Work
         run: |
