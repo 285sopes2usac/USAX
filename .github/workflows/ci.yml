@@ -21,6 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Mark repository as safe
+        run: git config --global --add safe.directory $GITHUB_WORKSPACE
+
       # - name: Change workspace ownership
       #   run: chown -R builder:builder $GITHUB_WORKSPACE
 
