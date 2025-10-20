@@ -89,9 +89,8 @@ RUN apt-get update \
    gawk parted qemu-system-x86 qemu-system-gui \
  && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /work
-
-COPY --from=BuildBuilder /work/toolchain3 ./toolchain3
+RUN mkdir /work
+COPY --from=BuildBuilder /work/toolchain3 /work/toolchain3
 
 # Create an unprivileged user for builds
 RUN useradd -m builder \
