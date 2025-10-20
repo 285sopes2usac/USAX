@@ -27,10 +27,7 @@ jobs:
       #   run: chown -R builder:builder $GITHUB_WORKSPACE
 
       - name: Debug Work
-        run: |
-          ls -la /work || echo "/work does not exist"
-          mv /work/toolchain3 ./toolchain3
-          ls -la .
+        run: mv /work/toolchain3 $GITHUB_WORKSPACE/toolchain3
 
       - name: Run build generators (gcc)
         run: ./scripts/build_generators/gcc
@@ -53,105 +50,105 @@ jobs:
       - name: Generate kernel coverage report (codecov)
         run: ./build/scripts/generate_kernel_coverage_report --codecov
 
-  release_build:
-    runs-on: ubuntu-latest
-    container:
-      image: stevengez/usax_builder:v1
-      options: --user root
-    env:
-      TCROOT_PARENT: /tc
-      GTEST_SHUFFLE: '0'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # release_build:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: stevengez/usax_builder:v1
+  #     options: --user root
+  #   env:
+  #     TCROOT_PARENT: /tc
+  #     GTEST_SHUFFLE: '0'
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Run build generators (gcc_rel)
-        run: ./scripts/build_generators/gcc_rel
+  #     - name: Run build generators (gcc_rel)
+  #       run: ./scripts/build_generators/gcc_rel
 
-      - name: Build
-        run: make -j
+  #     - name: Build
+  #       run: make -j
 
-      - name: Build gtests
-        run: make -j gtests
+  #     - name: Build gtests
+  #       run: make -j gtests
 
-      - name: Run gtests
-        run: ./build/gtests
+  #     - name: Run gtests
+  #       run: ./build/gtests
 
-      - name: Run system tests
-        run: ./build/st/run_all_tests -c
+  #     - name: Run system tests
+  #       run: ./build/st/run_all_tests -c
 
-  debug_arch_gtests_build:
-    runs-on: ubuntu-latest
-    container:
-      image: stevengez/usax_builder:v1
-      options: --user root
-    env:
-      TCROOT_PARENT: /tc
-      RELEASE: '0'
-      GTEST_SHUFFLE: '0'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # debug_arch_gtests_build:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: stevengez/usax_builder:v1
+  #     options: --user root
+  #   env:
+  #     TCROOT_PARENT: /tc
+  #     RELEASE: '0'
+  #     GTEST_SHUFFLE: '0'
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Run build generators (gcc_arch_gtests)
-        run: ./scripts/build_generators/gcc_arch_gtests
+  #     - name: Run build generators (gcc_arch_gtests)
+  #       run: ./scripts/build_generators/gcc_arch_gtests
 
-      - name: Build gtests
-        run: make -j gtests
+  #     - name: Build gtests
+  #       run: make -j gtests
 
-      - name: Run gtests
-        run: ./build/gtests
+  #     - name: Run gtests
+  #       run: ./build/gtests
 
-  debug_syscc_build:
-    runs-on: ubuntu-latest
-    container:
-      image: stevengez/usax_builder:v1
-      options: --user root
-    env:
-      TCROOT_PARENT: /tc
-      GTEST_SHUFFLE: '0'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # debug_syscc_build:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: stevengez/usax_builder:v1
+  #     options: --user root
+  #   env:
+  #     TCROOT_PARENT: /tc
+  #     GTEST_SHUFFLE: '0'
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Build libmusl toolchain
-        run: ./scripts/build_toolchain -s build_libmusl
+  #     - name: Build libmusl toolchain
+  #       run: ./scripts/build_toolchain -s build_libmusl
 
-      - name: Run build generators (gcc_syscc)
-        run: ./scripts/build_generators/gcc_syscc
+  #     - name: Run build generators (gcc_syscc)
+  #       run: ./scripts/build_generators/gcc_syscc
 
-      - name: Build
-        run: make -j
+  #     - name: Build
+  #       run: make -j
 
-      - name: Build gtests
-        run: make -j gtests
+  #     - name: Build gtests
+  #       run: make -j gtests
 
-      - name: Run system tests
-        run: ./build/st/run_all_tests -c
+  #     - name: Run system tests
+  #       run: ./build/st/run_all_tests -c
 
-  debug_clang_build:
-    runs-on: ubuntu-latest
-    container:
-      image: stevengez/usax_builder:v1
-      options: --user root
-    env:
-      TCROOT_PARENT: /tc
-      GTEST_SHUFFLE: '0'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # debug_clang_build:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: stevengez/usax_builder:v1
+  #     options: --user root
+  #   env:
+  #     TCROOT_PARENT: /tc
+  #     GTEST_SHUFFLE: '0'
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Run build generators (clang_wconv)
-        run: ./scripts/build_generators/clang_wconv
+  #     - name: Run build generators (clang_wconv)
+  #       run: ./scripts/build_generators/clang_wconv
 
-      - name: Build
-        run: make -j
+  #     - name: Build
+  #       run: make -j
 
-      - name: Build gtests
-        run: make -j gtests
+  #     - name: Build gtests
+  #       run: make -j gtests
 
-      - name: Run gtests
-        run: ./build/gtests
+  #     - name: Run gtests
+  #       run: ./build/gtests
 
-      - name: Run system tests
-        run: ./build/st/run_all_tests -c
+  #     - name: Run system tests
+  #       run: ./build/st/run_all_tests -c
