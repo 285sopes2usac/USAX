@@ -10,7 +10,7 @@ jobs:
   debug_build:
     runs-on: ubuntu-latest
     container:
-      image: stevengez/usax_builder:v3
+      image: stevengez/usax_builder:v4
     # env:
     #   GTEST_SHUFFLE: '0'
     #   DUMP_COV: '1'
