@@ -505,6 +505,50 @@ usax_vprintk(u32 flags, const char *fmt, va_list args)
       __regular_usax_vprintk(flags, fmt, args);
 }
 
+/**
+ * read_printk_ringbuf - Read the contents of the printk ring buffer.
+ * @buf:       Destination buffer to copy the data into.
+ * @buf_size:  Size of the destination buffer.
+ *
+ * This function reads the entire contents of the kernel's log ring buffer
+ * into the provided buffer. It disables interrupts to ensure a consistent
+ * snapshot of the buffer is read.
+ *
+ * Returns: The number of bytes copied into @buf.
+ */
+int read_printk_ringbuf(char *buf, int buf_size)
+{
+   struct ringbuf_stat cs;
+   u32 used, to_read, part1_len, part2_len;
+   ulong var;
+
+   disable_interrupts(&var); // Start critical section
+
+   cs = printk_rbuf_stat; // Get a consistent snapshot of the state
+   used = printk_calc_used(&cs);
+
+   to_read = MIN((u32)buf_size, used);
+
+   /*
+    * The ring buffer can wrap around, so we might need two memcpy operations.
+    * Part 1: from read_pos to the end of the buffer.
+    * Part 2: from the start of the buffer to the write_pos (if it wrapped).
+    */
+
+   part1_len = MIN(to_read, (u32)sizeof(printk_rbuf) - cs.read_pos);
+   memcpy(buf, &printk_rbuf[cs.read_pos], part1_len);
+
+   part2_len = to_read - part1_len;
+
+   if (part2_len > 0) {
+      memcpy(buf + part1_len, &printk_rbuf[0], part2_len);
+   }
+
+   enable_interrupts(&var); // End critical section
+
+   return to_read;
+}
+
 void printk(const char *fmt, ...)
 {
    va_list args;

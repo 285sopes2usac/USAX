@@ -45,7 +45,7 @@ WORKDIR /work
 COPY . .
 
 RUN scripts/build_toolchain
-RUN scripts/build_toolchain -s gtest gmock
+RUN scripts/build_toolchain -s gtest gmock lcov
 
 #---------------------- Final Builder Image ----------------------
 FROM ubuntu:24.04 as Builder

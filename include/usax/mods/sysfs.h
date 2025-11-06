@@ -127,6 +127,7 @@ extern struct sysobj sysfs_serbus_obj;
 extern struct sysobj sysfs_wifi_obj;
 extern struct sysobj sysfs_sigproc_obj;
 extern struct sysobj sysfs_other_obj;
+extern struct sysobj sysfs_proc_obj; /* /syst/proc (per-process entries) */
 
 /*
  * Create a sysfs instance.

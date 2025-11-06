@@ -15,6 +15,8 @@ jobs:
       GTEST_SHUFFLE: '0'
       DUMP_COV: '1'
       REPORT_COV: '1'
+      TEST_GCOV: '1'
+      KERNEL_GCOV: '1'
       CMAKE_ARGS: -DEXTRA_TCC=1
     steps:
 

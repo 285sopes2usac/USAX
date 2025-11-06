@@ -176,7 +176,10 @@ CREATE_STUB_SYSCALL_IMPL(sys_ioperm)
 
 int sys_socketcall(int call, ulong *args);
 
-CREATE_STUB_SYSCALL_IMPL(sys_syslog)
+
+// CREATE_STUB_SYSCALL_IMPL(sys_syslog)
+int sys_syslog(int type, char *buf, int len);
+
 CREATE_STUB_SYSCALL_IMPL(sys_setitimer)
 CREATE_STUB_SYSCALL_IMPL(sys_getitimer)
 CREATE_STUB_SYSCALL_IMPL(sys_newstat)

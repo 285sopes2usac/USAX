@@ -67,6 +67,8 @@ include_directories(${ZLIB_DIR}/install/include)
    add_usermode_app(termtest)
    add_usermode_app(fbtest)
    add_usermode_app(play)
+   add_usermode_app(hello)
+   add_usermode_app(dmesg)
 
    if (MOD_debugpanel)
       add_usermode_app(dp)
@@ -219,3 +221,4 @@ include_directories(${ZLIB_DIR}/install/include)
    endif(USERAPPS_busybox)
 
 # [/busybox]
+

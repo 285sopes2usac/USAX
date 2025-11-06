@@ -10,6 +10,7 @@
 
    ATTR_PRINTF_LIKE(1)
    void printk(const char *fmt, ...);
+   int read_printk_ringbuf(char *buf, int buf_size);
 
    #if defined(__usax_KERNEL__) || defined(UNIT_TEST_ENVIRONMENT)
 

@@ -690,6 +690,7 @@ DEF_SHARED_EMPTY_SYSOBJ(sysfs_serbus_obj);    /* sysfs path: /hw/serbus */
 DEF_SHARED_EMPTY_SYSOBJ(sysfs_wifi_obj);      /* sysfs path: /hw/wireless */
 DEF_SHARED_EMPTY_SYSOBJ(sysfs_sigproc_obj);   /* sysfs path: /hw/sigproc */
 DEF_SHARED_EMPTY_SYSOBJ(sysfs_other_obj);     /* sysfs path: /hw/other */
+DEF_SHARED_EMPTY_SYSOBJ(sysfs_proc_obj);      /* sysfs path: /proc (per-process entries) */
 
 #define REGISTER_SYSFS_HW_OBJ(name, obj)  \
    sysfs_register_obj(sysfs, &sysfs_hw_obj, name, obj)
@@ -730,6 +731,9 @@ main_sysfs_create_default_objects(void)
    if ((rc = REGISTER_SYSFS_HW_OBJ("sigproc", &sysfs_sigproc_obj)))
       return rc;
    if ((rc = REGISTER_SYSFS_HW_OBJ("other", &sysfs_other_obj)))
+      return rc;
+
+   if ((rc = sysfs_register_obj(sysfs, &sysfs_root_obj, "proc", &sysfs_proc_obj)))
       return rc;
 
    return 0;

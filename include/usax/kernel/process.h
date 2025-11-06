@@ -50,6 +50,7 @@ struct process {
    struct list children;
 
    void *proc_tty;
+   struct sysobj *sysfs_obj;               /* per-process sysfs object (/syst/proc/<pid>) */
    bool did_call_execve;
    bool automatic_reaping;       /* the parent explicitly ignored SIGCHLD */
    bool vforked;                 /* after vfork(), before execve() */
@@ -165,4 +166,8 @@ int setup_sig_handler(struct task *ti,
                       ulong user_func,
                       int signum);
 void setup_pause_trampoline(regs_t *r);
+
+/* sysfs helpers (per-process entries) */
+void sysfs_proc_add(struct process *pi);
+void sysfs_proc_remove(struct process *pi);
 

@@ -2,6 +2,7 @@
 
 #include <usax_gen_headers/config_debug.h>
 #include <usax_gen_headers/mod_debugpanel.h>
+#include <usax_gen_headers/mod_sysfs.h>
 
 #include <usax/common/basic_defs.h>
 #include <usax/common/printk.h>
@@ -292,6 +293,10 @@ allocate_new_process(struct task *parent, int pid, pdir_t *new_pdir)
    list_add_tail(&parent_pi->children, &ti->siblings_node);
 
    pi->proc_tty = parent_pi->proc_tty;
+   /* create sysfs per-process entries (if sysfs is enabled) */
+#if MOD_sysfs
+   sysfs_proc_add(pi);
+#endif
    return ti;
 
 oom_case:
