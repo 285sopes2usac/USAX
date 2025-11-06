@@ -259,6 +259,9 @@ out:
    saved_multiboot_mbi = NULL;
 }
 
+/* forward declare procfs init (defined in procfs module) */
+void init_procfs(void);
+
 static void
 mount_initrd(void)
 {
@@ -342,6 +345,7 @@ static void do_async_init()
 
    mount_initrd();
    init_devfs();
+   init_procfs();
    init_modules();
    init_extra_debug_features();
 
