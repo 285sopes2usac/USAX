@@ -38,9 +38,8 @@ static offt proc_status_load(struct sysobj *obj,
    const char *cmd = pi->debug_cmdline ? pi->debug_cmdline : "";
 
    len = snprintk(buf, (size_t)buf_sz,
-                  "Pid:\t%d\nPPid:\t%d\nState:\t%s\nCmd:\t%s\n",
+                  "Pid:\t%d\nState:\t%s\nCmd:\t%s\n",
                   pi->pid,
-                  pi->parent_pid,
                   state,
                   cmd);
 

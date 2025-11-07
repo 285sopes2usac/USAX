@@ -706,6 +706,9 @@ main_sysfs_create_default_objects(void)
    if ((rc = sysfs_register_obj(sysfs, &sysfs_root_obj, "hw", &sysfs_hw_obj)))
       return rc;
 
+   if ((rc = sysfs_register_obj(sysfs, &sysfs_root_obj, "proc", &sysfs_proc_obj)))
+      return rc;
+
    if ((rc = REGISTER_SYSFS_HW_OBJ("power", &sysfs_power_obj)))
       return rc;
    if ((rc = REGISTER_SYSFS_HW_OBJ("storage", &sysfs_storage_obj)))
@@ -732,9 +735,8 @@ main_sysfs_create_default_objects(void)
       return rc;
    if ((rc = REGISTER_SYSFS_HW_OBJ("other", &sysfs_other_obj)))
       return rc;
-
-   if ((rc = sysfs_register_obj(sysfs, &sysfs_root_obj, "proc", &sysfs_proc_obj)))
-      return rc;
+   // if ((rc = REGISTER_SYSFS_HW_OBJ("proc", &sysfs_proc_obj)))
+   //    return rc;
 
    return 0;
 }
