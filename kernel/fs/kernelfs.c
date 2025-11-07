@@ -46,7 +46,35 @@ kernelfs_on_close_last_handle(fs_handle h)
 int
 kernelfs_stat(struct mnt_fs *fs, vfs_inode_ptr_t i, struct k_stat64 *statbuf)
 {
-   NOT_IMPLEMENTED();
+   struct kobj_base *kobj = i;
+
+   if (!kobj)
+      return -ENOENT;
+
+   /* Fill a minimal stat suitable for pipe-like kernel objects */
+   bzero(statbuf, sizeof(struct k_stat64));
+
+   statbuf->st_dev = fs->device_id;
+
+   /* Use the kernel object pointer as a stable-ish inode identifier */
+   statbuf->st_ino = (usax_ino_t)(uintptr_t)kobj;
+
+   /* kernelfs currently hosts pipes: represent them as FIFOs */
+   statbuf->st_mode = S_IFIFO | 0666;
+   statbuf->st_nlink = 1;
+   statbuf->st_uid = 0;
+   statbuf->st_gid = 0;
+
+   statbuf->st_size = 0;
+   statbuf->st_blksize = PAGE_SIZE;
+   statbuf->st_blocks = 0;
+
+   /* No meaningful timestamps for these kernel objects; zero them */
+   statbuf->st_ctim.tv_sec = 0;
+   statbuf->st_mtim = statbuf->st_ctim;
+   statbuf->st_atim = statbuf->st_mtim;
+
+   return 0;
 }
 
 static int
