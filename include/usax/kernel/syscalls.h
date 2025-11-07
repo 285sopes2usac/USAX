@@ -176,7 +176,13 @@ CREATE_STUB_SYSCALL_IMPL(sys_ioperm)
 
 int sys_socketcall(int call, ulong *args);
 
-CREATE_STUB_SYSCALL_IMPL(sys_syslog)
+/* sys_syslog: read kernel printk/tracing messages
+ * Prototype chosen to match a traditional signature:
+ *    long sys_syslog(int type, char *u_buf, int len);
+ * `type` is currently ignored; `u_buf` is a user pointer where the
+ * implementation will copy up to `len` bytes of kernel log text.
+ */
+long sys_syslog(int type, char *u_buf, int len);
 CREATE_STUB_SYSCALL_IMPL(sys_setitimer)
 CREATE_STUB_SYSCALL_IMPL(sys_getitimer)
 CREATE_STUB_SYSCALL_IMPL(sys_newstat)
