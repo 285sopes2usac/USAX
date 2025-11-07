@@ -179,10 +179,17 @@ printk_direct_flush(const char *buf, size_t size, u8 color)
          if (UNLIKELY(in_kernel_shutdown()))
             tty_write_on_all_ttys(buf, size);
          else if (KRN_PRINTK_ON_CURR_TTY || !get_curr_process_tty())
-            term_write(buf, size, color);
+            if(IS_RELEASE_BUILD){
+               term_write(buf, size, color);
+            }else{
+               tty_write_on_all_ttys(buf, size);
+            }
          else
-            tty_curr_proc_write(buf, size);
-
+            if(IS_RELEASE_BUILD){
+               tty_curr_proc_write(buf, size);
+            }else{
+               tty_write_on_all_ttys(buf, size);
+            }
       } else {
 
          printk_direct_flush_no_tty(buf, size, color);
