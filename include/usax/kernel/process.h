@@ -50,7 +50,7 @@ struct process {
    struct list children;
 
    void *proc_tty;
-   struct sysobj *sysfs_obj;               /* per-process sysfs object (/syst/proc/<pid>) */
+   struct sysobj *sysfs_proc;               /* per-process sysfs object (/syst/proc/<pid>) */
    bool did_call_execve;
    bool automatic_reaping;       /* the parent explicitly ignored SIGCHLD */
    bool vforked;                 /* after vfork(), before execve() */

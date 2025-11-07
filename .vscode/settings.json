@@ -235,6 +235,7 @@
       "config_userlim.h": "c",
       "config_boot.h": "c",
       "paging.h": "c",
-      "color_defs.h": "c"
+      "color_defs.h": "c",
+      "sysfs.h": "c"
    },
 }

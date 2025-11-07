@@ -47,8 +47,36 @@ static offt proc_status_load(struct sysobj *obj,
    return len;
 }
 
+static offt proc_parent_load(struct sysobj *obj,
+                             void *data,
+                             void *buf,
+                             offt buf_sz,
+                             offt off)
+{
+   struct process *pi = (struct process *)data;
+   offt len = 0;
+
+   if (!pi)
+      return 0; /* no data available */
+
+   /* keep the process alive while we format */
+   retain_obj(pi);
+
+   len = snprintk(buf, (size_t)buf_sz,
+                  "PPid:\t%d\n",
+                  pi->parent_pid
+                  );
+
+   release_obj(pi);
+   return len;
+}
+
 static const struct sysobj_prop_type proc_status_ptype = {
    .load = &proc_status_load,
+};
+
+static const struct sysobj_prop_type proc_parent_ptype = {
+   .load = &proc_parent_load,
 };
 
 static struct sysobj_prop prop_status = {
@@ -56,31 +84,37 @@ static struct sysobj_prop prop_status = {
    .type = (struct sysobj_prop_type *)&proc_status_ptype,
 };
 
+static struct sysobj_prop prop_parent = {
+   .name = "parent",
+   .type = (struct sysobj_prop_type *)&proc_parent_ptype,
+};
+
 void sysfs_proc_add(struct process *pi)
 {
    char name[16];
-   struct sysobj *obj;
+   struct sysobj *proc_pid_dir;
 
    if (!pi)
       return;
 
    snprintk(name, sizeof(name), "%d", pi->pid);
 
-   /* Create an object with one property: status -> pi */
-   obj = sysfs_create_custom_obj("proc_proc", NULL,
+   /* Create an object with multiple properties: status -> pi */
+   proc_pid_dir = sysfs_create_custom_obj("proc_proc", NULL,
                                  &prop_status, pi,
+                                 &prop_parent, pi,
                                  NULL);
 
-   if (!obj)
+   if (!proc_pid_dir)
       return;
 
-   if (sysfs_register_obj(NULL, &sysfs_proc_obj, name, obj) < 0) {
-      sysfs_destroy_unregistered_obj(obj);
+   if (sysfs_register_obj(NULL, &sysfs_proc_obj, name, proc_pid_dir) < 0) {
+      sysfs_destroy_unregistered_obj(proc_pid_dir);
       return;
    }
 
    /* store pointer for later cleanup */
-   pi->sysfs_obj = obj;
+   pi->sysfs_proc = proc_pid_dir;
 }
 
 void sysfs_proc_remove(struct process *pi)
@@ -88,12 +122,15 @@ void sysfs_proc_remove(struct process *pi)
    if (!pi)
       return;
 
-   if (!pi->sysfs_obj)
+   if (!pi->sysfs_proc)
       return;
 
    /* Null the prop_data so callbacks won't dereference freed memory */
-   if (pi->sysfs_obj->prop_data)
-      pi->sysfs_obj->prop_data[0] = NULL;
+   if (
+      pi->sysfs_proc->prop_data
+   ){
+      pi->sysfs_proc->prop_data[0] = NULL;
+   }
 
-   pi->sysfs_obj = NULL;
+   pi->sysfs_proc = NULL;
 }
